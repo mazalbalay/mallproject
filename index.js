@@ -1,1 +1,1 @@
-console.log("mazal");
+console.log("main");
