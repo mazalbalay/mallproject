@@ -1,8 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const Store = require('../models/subscriber')
+const Store = require('../models/store')
 
-// Getting all
 router.get('/', async (req, res) => {
   try {
     const Stores = await Store.find()
@@ -12,12 +11,10 @@ router.get('/', async (req, res) => {
   }
 })
 
-// Getting One
 router.get('/:id', getSubscriber, (req, res) => {
   res.json(res.Store)
 })
  
-// // Creating one
 router.post('/', async (req, res) => {
   const store = new Store({
     name: req.body.name,
@@ -36,7 +33,6 @@ router.post('/', async (req, res) => {
 
 
 
-// // Deleting One
 router.delete('/:id', getStore, async (req, res) => {
     try {
       await res.store.remove()
@@ -51,7 +47,7 @@ async function getSubscriber(req, res, next) {
   try {
     store = await Store.findById(req.params.id)
     if (store == null) {
-      return res.status(404).json({ message: 'Cannot find subscriber' })
+      return res.status(404).json({ message: 'Cannot find store' })
     }
   } catch (err) {
     return res.status(500).json({ message: err.message })
