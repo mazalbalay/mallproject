@@ -6,9 +6,3 @@ console.log("oshrat")
 console.log("oshrat")
 console.log("oshrat")
 console.log("oshrat")
-console.log("oshratbranch");
-console.log("oshratbranch");
-console.log("oshratbranch");
-console.log("oshratbranch");
-console.log("oshratbranch");
-
