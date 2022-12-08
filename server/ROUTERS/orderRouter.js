@@ -14,7 +14,7 @@ router.get("/order", async (req, res) => {
   }
 });
 
-router.get("/order", async (req, res) => {
+router.get("/order/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const getOrder = await Order.findById(id);
@@ -23,12 +23,6 @@ router.get("/order", async (req, res) => {
   } catch (e) {
     return res.status(400).json(e);
   }
-});
-
-router.route("/order").post(async function (req, resp) {
-  let obj = req.body;
-  let status = await bll.createorder(obj);
-  return resp.json(status);
 });
 
 router.post("/order", async (req, res) => {
