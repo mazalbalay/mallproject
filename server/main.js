@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors")
 const orderRouter = require("./ROUTERS/orderRouter")
 const userRouter = require('./ROUTERS/userRoute')
-const storeRouter = require('./ROUTERS/storeRoute')
+const storeRouter = require('./ROUTERS/srotRouter')
 // const mongoose = require("mongoose");
 
 require("./config")
