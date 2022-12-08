@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema({
-  orderId: String,
   product: [
     {
       productsId: String,
@@ -35,6 +34,6 @@ const orderSchema = new mongoose.Schema({
   ],
 });
 
-const OrderModel = mongoose.model("order", orderSchema);
+const OrderModel = mongoose.model("orders", orderSchema);
 
 module.exports = OrderModel;

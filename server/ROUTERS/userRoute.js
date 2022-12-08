@@ -1,8 +1,9 @@
 const express = require("express");
 const Users = require("../MODELS/userModel");
 const bcrypt = require("bcryptjs");
-
 const router = express.Router();
+
+// http://localhost:8000/register
 
 router.post("/register", async (req, res) => {
   const { email, password, confirmpass, name, username } = req.body;
@@ -52,7 +53,6 @@ router.delete("/register/:id", async (req, res) => {
 
 router.get("/register", async (req, res) => {
   try {
-
     const users = await Users.find();
 
     return res.status(200).json(users);
