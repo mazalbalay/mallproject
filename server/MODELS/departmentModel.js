@@ -16,4 +16,6 @@ const DepartmentSchema = new mongoose.Schema({
 
 })
 
-module.exports = mongoose.model('Subscriber', subscriberSchema)
+const DepartmentModel = mongoose.model('departments', DepartmentSchema)
+
+module.exports = DepartmentModel

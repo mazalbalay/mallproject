@@ -1,6 +1,5 @@
 const express = require("express");
 const Order = require("../MODELS/orderModel");
-const bcrypt = require("bcryptjs");
 const router = express.Router();
 
 // http://localhost:8000/order
