@@ -1,39 +1,43 @@
 const Products = require ('../MODELS/productModel')
 
-const getProducts = async () => {
+const getAllProducts = async (req, res) => {
     try {
-        return await Products.find({})
+        const products = await Products.find({})
+        return res.status(200).json(products)
     } catch (error) {
-        throw `error: ${error}`
+        return res.status(400).json(error)
     }
 };
 
-const createProduct = async (obj) => {
+const createProduct = async (req ,res) => {
+    const obj = req.body
  try {
-    const product = new Products(obj);
-    await product.save();
-    return 'Created';
- } catch (error) {
-    throw`Error: ${error}`;
+    const product = await Products.create(obj);
+    return res.status(200).json(product)
+ } catch (e) {
+    return res.status(400).json(e)
  }
 };
 
-const updateProduct = async(id, obj) => {
+const updateProduct = async(req, res) => {
     try {
-        await Products.findByIdAndUpdate(id, obj)
-        return'Updated';
-    } catch (error) {
-        throw `Error:${error}`
+        const { id } = req.params;
+        const obj = req.body;
+        const product = await Products.findByIdAndUpdate(id, obj)
+        return res.status(200).json(product);
+    } catch (e) {
+        return res.status(400).json(e);
     }
 };
 
-const deleteProduct = async (id) => {
+const deleteProduct = async (req, res) => {
     try {
-        await Products.findByIdAndDelete(id)
-        return 'Deleted'
-    } catch (error) {
-        throw `Error :${error}`
+        const { id } = req.params;
+        const product = await Products.findByIdAndDelete(id)
+        return res.status(200).json(product)
+    } catch (e) {
+        return res.status(400).json(e)
     }
 }
 
-module.exports = {getProducts, createProduct, updateProduct, deleteProduct}
+module.exports = {getAllProducts, createProduct, updateProduct, deleteProduct}
