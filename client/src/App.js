@@ -1,7 +1,8 @@
+
 function App() {
   
   return (
-    <div className="App">
+    <div cl className="App text-5xl">
       App
     </div>
   );
