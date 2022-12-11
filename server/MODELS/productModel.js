@@ -8,7 +8,7 @@ const productSchema = new mongoose.Schema({
     brand: String,
     quantity: Number,
     description: String,
-    deprtment: String
+    department: String
 })
 
 const productModel = mongoose.model("products", productSchema)
