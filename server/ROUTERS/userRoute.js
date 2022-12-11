@@ -12,7 +12,6 @@ router.post("/register", async (req, res) => {
     const exsist = await Users.findOne({ email });
     console.log(exsist);
     if (exsist) return res.json("user alrady exsist");
-
     if (password !== confirmpass)
       return res.status(404).json({ message: "Password don't match" });
     const userResults = await Users.create({
