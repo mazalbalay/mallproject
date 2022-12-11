@@ -3,6 +3,7 @@ const cors = require("cors")
 const orderRouter = require("./ROUTERS/orderRouter")
 const userRouter = require('./ROUTERS/userRoute')
 const storeRouter = require('./ROUTERS/srotRouter')
+const productRouter = require('./ROUTERS/productRouter')
 // const mongoose = require("mongoose");
 
 require("./config")
@@ -14,5 +15,7 @@ app.use(express.json())
 app.use('/' , userRouter)
 app.use('/', orderRouter)
 app.use('/', storeRouter)
+app.use('/', productRouter)
 
 app.listen(8000, ()=>console.log("app listen"))
+
