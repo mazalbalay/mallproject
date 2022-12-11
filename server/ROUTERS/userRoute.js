@@ -17,4 +17,5 @@ router.delete("/user/:id",BLL.deleteUser())
 
 router.get("/user", BLL.getAllUsers())
 
+
 module.exports = router;
