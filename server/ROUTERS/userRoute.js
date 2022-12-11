@@ -1,12 +1,21 @@
 const express = require("express");
-const Bll = require("../BLLS/usersProductBLL");
+const BLL = require("../BLLS/usersProductBLL");
+
+
+
 const router = express.Router();
 
-//http://localhost:8000/order
+router.post("/singUp", BLL.singUp());
 
-router.post("/user", Bll.register());
-router.put("/user/:id", Bll.updateUser());
-router.delete("/user/:id", Bll.deleteUser());
-router.get("/user", Bll.getAllUsers());
+router.post("/singIn", BLL.singIn());
+
+router.get("/user/:id", BLL.getUserById());
+
+router.put("/user/:id",BLL.updateUser())
+
+router.delete("/user/:id",BLL.deleteUser())
+
+router.get("/user", BLL.getAllUsers())
+
 
 module.exports = router;
