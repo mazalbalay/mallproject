@@ -10,9 +10,17 @@ const getAllProducts = async (req, res) => {
 };
 
 const createProduct = async (req ,res) => {
-    const obj = req.body
+    const {name, image, price, brand, quantity, description, department} = req.body
  try {
-    const product = await Products.create(obj);
+    const product = await Products.create({
+      name : name,
+      image: image,
+      price: price,
+      brand: brand,
+      quantity: quantity,
+      description: description,
+      department: department,
+    });
     return res.status(200).json(product)
  } catch (e) {
     return res.status(400).json(e)

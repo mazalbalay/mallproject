@@ -1,4 +1,6 @@
+const express = require('express')
 const router = express.Router();
+const BLL = require('../BLLS/usersProductBLL')
 
 router.post("/user", BLL.register());
 router.put("/user/:id",BLL.updateUser());
