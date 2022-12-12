@@ -13,6 +13,17 @@ const updateUser = () => async (req, res) => {
     }
   }
 
+  const getUserById = () => async (req, res) => {
+    try {
+      const { id } = req.params;
+      const user = await Users.findById(id);
+  
+      return res.status(200).json(user);
+    } catch (e) {
+      return res.status(400).json(e);
+    }
+  }
+
   const deleteUser = () => async (req, res) => {
     try {
       const { id } = req.params;
@@ -35,7 +46,7 @@ const updateUser = () => async (req, res) => {
     }
   }
 
- const register = () => async (req, res) => {
+ const singUp = () => async (req, res) => {
     const { email, password, confirmpass, name, username } = req.body;
   
     try {
@@ -58,4 +69,22 @@ const updateUser = () => async (req, res) => {
     }
   }
 
-  module.exports = {getAllUsers , deleteUser ,updateUser ,register}
+  const singIn = () => async (req, res) => {
+    const { email, password } = req.body;
+  
+    try {
+      const exsist = await Users.findOne({ email });
+      
+      if (!exsist) return res.json("user not exsist");
+  
+      const currect = password === exsist.password
+     
+      if(!currect)return res.json("password not currect");
+
+      return res.status(200).json(exsist);
+    } catch (e) {
+      return res.status(400).json(e);
+    }
+  }
+
+  module.exports = {getAllUsers , deleteUser ,updateUser ,singUp ,singIn,getUserById}
