@@ -1,9 +1,7 @@
 const express = require("express");
-const BLL = require("../BLLS/usersProductBLL");
-
-
 
 const router = express.Router();
+const BLL = require('../BLLS/usersProductBLL')
 
 router.post("/singUp", BLL.singUp());
 
