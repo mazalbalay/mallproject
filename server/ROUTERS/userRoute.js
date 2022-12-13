@@ -5,9 +5,9 @@ const BLL = require("../BLLS/usersProductBLL");
 
 const router = express.Router();
 
-router.post("/singUp", BLL.singUp());
+router.post("/singup", BLL.singUp());
 
-router.post("/singIn", BLL.singIn());
+router.post("/singin", BLL.singIn());
 
 router.get("/user/:id", BLL.getUserById());
 

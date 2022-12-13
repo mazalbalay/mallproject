@@ -1,8 +1,12 @@
+import Auth from "./authentication/Auth";
+import React ,{useState} from 'react'
+
+
 function App() {
   
   return (
-    <div className="App text-3xl">
-      App
+    <div className="App ">
+      <Auth/>
     </div>
   );
 }
