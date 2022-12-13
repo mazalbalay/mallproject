@@ -1,7 +1,7 @@
-import About from "./components/About"
+import FAQ from "./components/FAQ"
 function App() {
   return <div>
-    < About/>
+    < FAQ/>
     
     </div>;
 }
