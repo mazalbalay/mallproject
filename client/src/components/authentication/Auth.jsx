@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import * as api from "../api/api";
+import * as api from "../../api/api";
 import { GoogleLogin } from "react-google-login";
 
 export default function Auth() {
