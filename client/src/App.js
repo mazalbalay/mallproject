@@ -1,7 +1,7 @@
-import Footer from "./components/Footer"
+import About from "./components/About"
 function App() {
   return <div>
-    <Footer/>
+    < About/>
     
     </div>;
 }

@@ -24,10 +24,10 @@ const StoreListNav = () => {
               name="search"
             />
             <span className="absolute inset-y-2 right-2 flex items-center py-2">
-              <ImSearch className="text-2xl fill-slate-400 py-1 "/>
+              <ImSearch className="text-2xl fill-slate-400 py-1 cursor-pointer"/>
             </span>
             <span className="absolute inset-y-2 left-0 flex items-center py-2">
-              <IoIosClose className="text-4xl fill-slate-400 py-1 "/>
+              <IoIosClose className="text-4xl fill-slate-400 py-1 cursor-pointer "/>
             </span>
           </label>
         </form>
