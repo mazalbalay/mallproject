@@ -1,5 +1,5 @@
 const Users = require("../MODELS/userModel");
-const bcrypt = require("bcryptjs");
+const bcryptjs = require('bcryptjs')
 
 const updateUser = () => async (req, res) => {
     try {
@@ -47,26 +47,24 @@ const updateUser = () => async (req, res) => {
   }
 
  const singUp = () => async (req, res) => {
-    const { email, password, confirmpass, name, username } = req.body;
+    const { email, password, confirmPassword,fullName, userName } = req.body;
   
-    try {
+    
       const exsist = await Users.findOne({ email });
-      console.log(exsist);
       if (exsist) return res.json("user alrady exsist");
   
-      if (password !== confirmpass)
+      if (password !== confirmPassword)
         return res.status(404).json({ message: "Password don't match" });
-      const userResults = await Users.create({
+        
+        const userResults = await Users.create({
         email: email,
-        name: name,
+        name: fullName,
         password: password,
-        username: username,
+        username: userName,
       });
   
       return res.status(200).json(userResults);
-    } catch (e) {
-      return res.status(400).json(e);
-    }
+   
   }
 
   const singIn = () => async (req, res) => {
