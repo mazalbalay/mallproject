@@ -2,7 +2,7 @@ import React from "react";
 import { HiCreditCard } from "react-icons/hi";
 import { AiOutlinePlus } from "react-icons/ai";
 
-export default function CheckOut3() {
+export default function CheckOut3({ setOrder, order }) {
   return (
     <div className="w-full md:w-2/3 min-h-screen p-10 flex flex-col items-end justify-between bg-white my-4">
       <div className="flex items-center">
@@ -10,21 +10,20 @@ export default function CheckOut3() {
         <HiCreditCard className="text-cyan-600 text-4xl ml-4" />
       </div>
       <div>
-        <div className="flex">
-          <p className="mx-2"> ****-****-****-8888</p>
+        <div className="flex items-center">
+          <p className="mx-2 font-bold"> ****-****-****-8888</p>
           <input type="radio" className="w-6 h-6" />
         </div>
-        <div className="flex">
-          <p className="mx-2"> ****-****-****-8754</p>
+        <div className="flex items-center">
+          <p className="mx-2 font-bold"> ****-****-****-8754</p>
           <input type="radio" className="w-6 h-6" />
         </div>
-      </div> <div className="flex items-center font-medium">
-          <p className="border-b border-black">הוסף אמצעי תשלום אחר</p>
-          <AiOutlinePlus />
-        </div>
-      <div className=" w-full md:w-1/2 h-1/2 flex flex-col justify-between items-end">
-       
-
+      </div>{" "}
+      <div className="flex items-center font-medium">
+        <p className="border-b border-black">הוסף אמצעי תשלום אחר</p>
+        <AiOutlinePlus />
+      </div>
+      <div className=" w-full md:w-2/3 h-1/2 flex flex-col justify-between items-end">
         <div className="w-full">
           <h3>מספר כרטיס</h3>
           <input
