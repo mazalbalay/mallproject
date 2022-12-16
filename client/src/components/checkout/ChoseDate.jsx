@@ -40,10 +40,10 @@ export default function ChoseDate({ setOrder, order, callback }) {
   };
 
   return (
-    <div className="flex w-full md:w-2/3 justify-between">
+    <div className="flex w-full md:w-full justify-between">
       {date.map((v, i) => {
         return (
-          <div>
+          <div key={i}>
             {v.boolean ? (
               <input
                 className="rounded-md bg-cyan-600 text-white md:w-24 w-20 h-16"

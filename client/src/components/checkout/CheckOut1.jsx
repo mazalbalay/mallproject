@@ -76,7 +76,20 @@ export default function CheckOut1({ setOrder, order }) {
                 </button>
               </div>
               <button
-                onClick={() => setDropDwon(!dropDwon)}
+                onClick={() => {
+                  if (
+                    order.addres.city &&
+                    order.addres.street &&
+                    order.addres.number &&
+                    order.addres.postalCode&&
+                    order.addres.shippingCompanyName
+                  ){
+                   setDropDwon(!dropDwon); 
+                  }else{
+                    alert("מלא את כל השדות")
+                  }
+                    
+                }}
                 className="bg-cyan-600 rounded-md text-white px-10 py-3"
               >
                 שמור

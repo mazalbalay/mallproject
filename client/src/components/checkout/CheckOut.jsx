@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import CheckOut1 from "./checkout/CheckOut1";
-import CheckOut2 from "./checkout/CheckOut2";
-import CheckOut3 from "./checkout/CheckOut3";
+import CheckOut1 from "./CheckOut1";
+import CheckOut2 from "./CheckOut2";
+import CheckOut3 from "./CheckOut3";
 
 export default function CheckOut() {
   const [order, setOrder] = useState({
