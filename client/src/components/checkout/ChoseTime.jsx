@@ -85,7 +85,7 @@ export default function ChoseTime({ setOrder, order, callback }) {
               if (order.shipping.date && order.shipping.time) {
                 callback(!dropDwon);
               } else {
-                alert("chose date and time");
+                alert("מלא את כל השדות");
               }
             }}
             className="bg-gray-200 text-cyan-600 border-2 border-cyan-600 font-bold rounded-md  px-10 py-3"
