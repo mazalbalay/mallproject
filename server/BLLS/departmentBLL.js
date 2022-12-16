@@ -20,6 +20,7 @@ const getDepartment = async (req, res) => {
 };
 
 const createDepartment = async (req, res) => {
+  
   const obj = req.body;
   try {
     const department = await Department.create(obj);
