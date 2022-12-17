@@ -8,6 +8,14 @@ export default function CheckOut3({ setOrder, order }) {
     description: "description",
     price: 19,
   };
+
+  const handleInput = (e) => {
+    setOrder({
+      ...order,
+      payment: { ...order.payment, [e.target.name]: e.target.value },
+    });
+  };
+
   return (
     <div className="w-full md:w-2/3 min-h-screen p-10 flex flex-col items-end justify-between bg-white my-4">
       <div className="flex items-center">
@@ -28,29 +36,43 @@ export default function CheckOut3({ setOrder, order }) {
         <p className="border-b border-black">הוסף אמצעי תשלום אחר</p>
         <AiOutlinePlus />
       </div>
+
       <div className=" w-full md:w-2/3 h-1/2 flex flex-col justify-between items-end">
         <div className="w-full">
           <h3>מספר כרטיס</h3>
           <input
+            onChange={(e) => {
+              handleInput(e);
+            }}
+            name="cardNumber"
             type="password"
             placeholder="3434-3434-3434-3434"
-            className="border-b placeholder:text-right outline-none p-3 w-fit"
+            className="border-b placeholder:text-right outline-none p-3 w-fit text-right"
           />
         </div>
+
         <div className="w-full">
           <h3>תוקף</h3>
           <input
+            onChange={(e) => {
+              handleInput(e);
+            }}
+            name="cardValidity"
             type="text"
             placeholder="34 / 02"
-            className=" border-b placeholder:text-right outline-none p-2 my-1 w-16"
+            className=" border-b placeholder:text-right text-right outline-none p-2 my-1 w-16"
           />
         </div>
         <div className="w-full">
           <h3>3 ספרות מאחורי הכרטיס CW</h3>
           <input
+            onChange={(e) => {
+              handleInput(e);
+            }}
+            name="threeDigits"
             type="text"
             placeholder="321"
-            className="border-b placeholder:text-right outline-none p-2 my-1 w-16"
+            className="border-b placeholder:text-right text-right outline-none p-2 my-1 w-16"
           />
         </div>
       </div>
@@ -59,7 +81,7 @@ export default function CheckOut3({ setOrder, order }) {
           אישור קנייה
         </button>
         <button className=" mx-1 py-1 w-2/3">
-          <PaypalCheckOutButton product={product}/>
+          <PaypalCheckOutButton product={product} />
         </button>
       </div>
     </div>

@@ -7,7 +7,7 @@ export default function CheckOut1({ setOrder, order }) {
   const [dropDwon, setDropDwon] = useState(false);
   const inputs = [
     { value: "עיר", valueEnglish: "city" },
-    { value: "רחוב", valueEnglish: "streקt" },
+    { value: "רחוב", valueEnglish: "street" },
     { value: "מספר", valueEnglish: "number" },
     { value: "מיקוד", valueEnglish: "postalCode" },
     { value: "שם חברה", valueEnglish: "shippingCompanyName" },
@@ -81,14 +81,13 @@ export default function CheckOut1({ setOrder, order }) {
                     order.addres.city &&
                     order.addres.street &&
                     order.addres.number &&
-                    order.addres.postalCode&&
+                    order.addres.postalCode &&
                     order.addres.shippingCompanyName
-                  ){
-                   setDropDwon(!dropDwon); 
-                  }else{
-                    alert("מלא את כל השדות")
+                  ) {
+                    setDropDwon(!dropDwon);
+                  } else {
+                    alert("מלא את כל השדות");
                   }
-                    
                 }}
                 className="bg-cyan-600 rounded-md text-white px-10 py-3"
               >

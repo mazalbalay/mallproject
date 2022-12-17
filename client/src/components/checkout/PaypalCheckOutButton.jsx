@@ -3,7 +3,7 @@ import { PayPalButtons } from "@paypal/react-paypal-js";
 import { useState } from "react";
 
 export default function PaypalCheckOutButton(props) {
-  const { product } = props;
+  const {product } = props;
   const [paidFor, setPaidFot] = useState(false);
   const [error, setError] = useState(null);
 
@@ -12,7 +12,7 @@ export default function PaypalCheckOutButton(props) {
   };
 
   if (paidFor) {
-    alert("thank you for your order");
+    alert("תודה שהזמנת");
   }
   if (error) {
     alert(error);
@@ -43,8 +43,7 @@ export default function PaypalCheckOutButton(props) {
         layout: "horizontal",
         tagline: false,
         shape: "rect",
-        height:52,
-        // layout: "vertical",
+        height: 52,
         label: "paypal",
       }}
     />
