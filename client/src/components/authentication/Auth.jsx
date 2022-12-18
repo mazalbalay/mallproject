@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
 import * as api from "../../api/api";
+import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
+import { gapi } from "gapi-script";
+import FacebookLogin from "react-facebook-login";
+import axios from "axios";
 
 export default function Auth() {
-  const [singUp, setsingUp] = useState(true);
+  const navigate = useNavigate();
+  const [singUp, setsingUp] = useState(false);
   const [users, setUsers] = useState();
+  const [message, setMessage] = useState();
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -17,6 +23,37 @@ export default function Auth() {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
 
+  gapi.load("client:auth2", () => {
+    gapi.client.init({
+      clientId:
+        "727555427268-u0l3487tpitph7t1s2lir4vsdk6153se.apps.googleusercontent.com",
+      plugin_name: "chat",
+    });
+  });
+
+  const responseFacebook = async (response) => {
+    console.log(response);
+    const { data } = await axios.post("http://localhost:8000/facebooklogin", {
+      accessToken: response.accessToken,
+      userID: response.userID,
+    });
+    const user = data.user;
+    localStorage.setItem("user", JSON.stringify({ data: user }));
+    console.log("facebook login success ,client side", user);
+    navigate("/userprofile");
+  };
+
+  const responseGoogleFailure = (response) => {
+    console.log(response);
+  };
+  const responseGoogleSuccess = async (response) => {
+    console.log(response);
+    const { data } = await axios.post("http://localhost:8000/googlelogin", {
+      tokenId: response.tokenId,
+    });
+    console.log("facebook login success ,client side", data);
+  };
+
   const allUsers = async () => {
     const { data } = await api.users();
     setUsers(data);
@@ -26,25 +63,34 @@ export default function Auth() {
     allUsers();
   }, []);
 
-  console.log(users);
-
   const handleClick = async () => {
     if (singUp) {
-      await api.singup(userData);
-      setUserData({
-        email: "",
-        password: "",
-        confirmPassword: "",
-        fullName: "",
-        userName: "",
-      });
-    } else if (!singUp) {
-      await api.singin(userData);
-    }
-  };
+      try {
+        const { data } = await api.singup(userData);
 
-  const responseGoogle = (response) => {
-    console.log(response);
+        localStorage.setItem("user", JSON.stringify({ data }));
+
+        setUserData({
+          email: "",
+          password: "",
+          confirmPassword: "",
+          fullName: "",
+          userName: "",
+        });
+        navigate("/userprofile");
+      } catch (e) {
+        setMessage(e.response.data);
+      }
+    } else if (!singUp) {
+      try {
+        const { data } = await api.singin(userData);
+        localStorage.setItem("user", JSON.stringify({ data }));
+
+        navigate("/userprofile");
+      } catch (e) {
+        setMessage(e.response.data);
+      }
+    }
   };
 
   return (
@@ -56,10 +102,16 @@ export default function Auth() {
           className="w-[30%] bg-white flex flex-col items-center text-sm "
         >
           <h1 className="text-3xl my-1">{singUp ? "הרשמה" : "כניסה"}</h1>
+
           <h4 className="my-1">
             {" "}
             {singUp ? 'הירשם באמצעות דוא"ל' : 'התחבר באמצעות דוא"ל ששלך וסיסמא'}
           </h4>
+          {message && (
+            <span className="text-white bg-red-600 p-1 font-medium rounded">
+              {message}
+            </span>
+          )}
           {singUp && (
             <>
               <input
@@ -81,7 +133,7 @@ export default function Auth() {
           <input
             onChange={handleChange}
             name="email"
-            type="text"
+            type="email"
             className="my-1 text-right w-[60%] outline-none border-b-2 p-2 border-neutral-300"
             placeholder='הזן כתובת דוא"ל'
           />
@@ -112,14 +164,18 @@ export default function Auth() {
               או
             </span>
           </span>
+
+          <FacebookLogin
+            appId="884021796289155"
+            autoLoad={false}
+            callback={responseFacebook}
+          />
           <GoogleLogin
-            clientId="118741861745-5ehsla9o2defvpgfvgahjv3s22d2tn28.apps.googleusercontent.com"
-            buttonText="Login"
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle}
+            clientId="727555427268-u0l3487tpitph7t1s2lir4vsdk6153se.apps.googleusercontent.com"
+            onSuccess={responseGoogleSuccess}
+            onFailure={responseGoogleFailure}
             cookiePolicy={"single_host_origin"}
-          />{" "}
-          <button className="my-1">google</button>
+          />
           <span className="text-[10px] flex justify-between w-[70%]">
             <span onClick={() => setsingUp(!singUp)} className="cursor-pointer">
               {singUp ? "כבר יש חשבון ? התחבר" : "אין לך חשבון? הרשם"}
