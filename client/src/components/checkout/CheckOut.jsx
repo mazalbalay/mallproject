@@ -2,11 +2,9 @@ import React, { useEffect, useState } from "react";
 import CheckOut1 from "./CheckOut1";
 import CheckOut2 from "./CheckOut2";
 import CheckOut3 from "./CheckOut3";
-import ThancksPage from "./ThancksPage";
 
 export default function CheckOut() {
   const [order, setOrder] = useState({
-    id: "1234567",
     product: [
       {
         productsId: "",
@@ -28,16 +26,19 @@ export default function CheckOut() {
       number: "",
       postalCode: "",
       shippingCompanyName: "",
+      allData: false,
     },
     shipping: {
       type: "משלוח רגיל",
       date: "",
       time: "",
+      allData: false,
     },
     payment: {
       cardNumber: "",
       cardValidity: "",
       threeDigits: "",
+      allData: true,
     },
   });
   useEffect(() => {
@@ -48,7 +49,6 @@ export default function CheckOut() {
       <CheckOut1 order={order} setOrder={setOrder} />
       <CheckOut2 order={order} setOrder={setOrder} />
       <CheckOut3 order={order} setOrder={setOrder} />
-      <ThancksPage order={order} setOrder={setOrder} />
     </div>
   );
 }

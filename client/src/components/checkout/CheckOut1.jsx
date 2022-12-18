@@ -22,7 +22,7 @@ export default function CheckOut1({ setOrder, order }) {
   return (
     <>
       {dropDwon ? (
-        <div className="w-full md:w-2/3 p-10 flex flex-col items-end justify-between bg-white my-1">
+        <div className="w-full md:w-2/3 p-5 flex flex-col items-end justify-between bg-white my-1">
           <div className="w-full flex items-end justify-between bg-white my-1">
             <BsChevronDown
               className="md:text-3xl text-2xl"
@@ -85,6 +85,10 @@ export default function CheckOut1({ setOrder, order }) {
                     order.addres.shippingCompanyName
                   ) {
                     setDropDwon(!dropDwon);
+                    setOrder({
+                      ...order,
+                      addres: { ...order.addres, allData: true },
+                    });
                   } else {
                     alert("מלא את כל השדות");
                   }

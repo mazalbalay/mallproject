@@ -1,24 +1,27 @@
 import React from "react";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function PaypalCheckOutButton(props) {
-  const {product } = props;
+  const { product } = props;
   const [paidFor, setPaidFot] = useState(false);
   const [error, setError] = useState(null);
+  const navigetor = useNavigate();
 
   const handleApprove = (orderID) => {
     setPaidFot(true);
   };
 
   if (paidFor) {
-    alert("תודה שהזמנת");
+    navigetor("/ThancksPage");
   }
   if (error) {
-    alert(error);
+    navigetor("/ErrPage");
   }
   return (
     <PayPalButtons
+      className="w-full md:w-2/3 m-1 z-10"
       createOrder={(data, action) => {
         return action.order.create({
           purchase_units: [
