@@ -1,18 +1,17 @@
-
 import CheckOut from "./components/checkout/CheckOut";
 import React, { useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import Auth from "./components/authentication/Auth";
-import ThancksPage from './components/checkout/ThancksPage'
+import ThancksPage from "./components/checkout/ThancksPage";
 import Home from "./components/Home";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import ErrPage from "./components/checkout/ErrPage";
+import ChangePWD from "./components/userProfile/ChangePWD";
+import PersonalInfo from "./components/userProfile/PersonalInfo";
+import UserProfile from "./components/userProfile/UserProfile";
 
 function App() {
-
- 
   return (
-  
     <PayPalScriptProvider
       options={{
         "client-id":
@@ -27,12 +26,12 @@ function App() {
           <Route path="/changepassword" element={<ChangePWD />} />
           <Route path="/ThancksPage" element={<ThancksPage />} />
           <Route path="/ErrPage" element={<ErrPage />} />
-          <Route path="/userprofile" element={< UserProfile/>} />
-          <Route path="/personalinfo" element={< PersonalInfo/>} />  
+          <Route path="/userprofile" element={<UserProfile />} />
+          <Route path="/personalinfo" element={<PersonalInfo />} />
         </Routes>
       </div>
     </PayPalScriptProvider>
-    );
+  );
 }
 
 export default App;
