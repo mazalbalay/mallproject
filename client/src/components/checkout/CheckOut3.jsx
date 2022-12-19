@@ -1,7 +1,7 @@
 import React from "react";
 import { HiCreditCard } from "react-icons/hi";
 import { AiOutlinePlus } from "react-icons/ai";
-import PaypalCheckOutButton from "./PaypalCheckOutButton";
+// import PaypalCheckOutButton from "./PaypalCheckOutButton";
 
 export default function CheckOut3({ setOrder, order }) {
   const product = {
@@ -59,7 +59,7 @@ export default function CheckOut3({ setOrder, order }) {
           אישור קנייה
         </button>
         <button className=" mx-1 py-1 w-2/3">
-          <PaypalCheckOutButton product={product}/>
+          {/* <PaypalCheckOutButton product={product}/> */}
         </button>
       </div>
     </div>

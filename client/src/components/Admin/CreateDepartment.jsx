@@ -14,6 +14,8 @@ export default function CreateDepartment() {
         getDepartmentsData();
       },[]);
 
+      
+
     
    console.log(Departments);
   
