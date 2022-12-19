@@ -84,6 +84,13 @@ export default function ChoseTime({ setOrder, order, callback }) {
               console.log(order.shipping);
               if (order.shipping.date && order.shipping.time) {
                 callback(!dropDwon);
+                setOrder({
+                  ...order,
+                  shipping: {
+                    ...order.shipping,
+                    allData: true,
+                  },
+                });
               } else {
                 alert("מלא את כל השדות");
               }
