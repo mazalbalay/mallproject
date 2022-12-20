@@ -13,11 +13,11 @@ const cookieSession = require("cookie-session");
 require("./config");
 const app = express();
 app.use(
-  cookieSession({
-    name: "session",
-    keys: ["cyberwolve"],
-    maxAge: 24 * 60 * 60 * 100,
-  })
+    cookieSession({
+        name: "session",
+        keys: ["cyberwolve"],
+        maxAge: 24 * 60 * 60 * 100,
+    })
 );
 app.use(passport.initialize());
 app.use(passport.session());
@@ -25,9 +25,8 @@ app.use(passport.session());
 app.use(cors())
 app.use(express.json())
 
-app.use('/' , userRouter)
-app.use('/' , orderRouter)
-app.use('/' , productRouter)
+app.use('/', userRouter)
+app.use('/', orderRouter)
+app.use('/', productRouter)
 
-app.listen(8000, ()=>console.log("app listen"))
-
+app.listen(8000, () => console.log("app listen"))
