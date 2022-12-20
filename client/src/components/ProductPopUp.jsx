@@ -1,13 +1,18 @@
 import React from 'react'
+import { useEffect } from 'react';
+import { useState } from 'react';
 import { FiPlusCircle } from "react-icons/fi";
 import { FiMinusCircle } from "react-icons/fi";
 
-export default function ProductPopUp({visible, onClose}) {
+export default function ProductPopUp({visible, onClose, product}) {
+  const [products, setProducts] = useState([])
    const handleOnClose = (e) => {
     if(e.target.id === "product")   onClose()
    }
 
     if(!visible) return null
+
+
   return (
     <div id='product' onClick={handleOnClose} className='fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center'>
     <div className='bg-white p-2 '>
