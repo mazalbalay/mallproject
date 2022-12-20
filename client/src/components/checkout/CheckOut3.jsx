@@ -28,8 +28,6 @@ export default function CheckOut3({ setOrderS, orderS }) {
   ]);
   const navigetor = useNavigate();
 
-  useEffect(() => {});
-
   return (
     <div className="w-full md:w-2/3 min-h-screen p-10 flex flex-col items-end justify-between bg-white my-4">
       <div className="flex items-end">
