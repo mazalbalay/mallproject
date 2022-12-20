@@ -195,4 +195,8 @@ export default function CheckOut3({ setOrderS, orderS }) {
       </div>
     </div>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin

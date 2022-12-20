@@ -1,5 +1,5 @@
 import React from 'react'
-// import { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useState } from 'react';
 import { FiPlusCircle } from "react-icons/fi";
 import { FiMinusCircle } from "react-icons/fi";
