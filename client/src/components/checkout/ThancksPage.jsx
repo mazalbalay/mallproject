@@ -5,7 +5,7 @@ import {useNavigate} from 'react-router-dom'
 export default function ThancksPage({ setOrder, order }) {
   const navigetor = useNavigate()
   return (
-    <div className=" w-full md:w-2/3 p-10 flex flex-col items-center justify-between bg-white my-1">
+    <div className=" w-full p-10 flex flex-col items-center justify-center bg-white my-1">
       <div className="md:w-2/3 w-full text-center h-screen flex flex-col items-center justify-center">
         <div className="w-full h-1/3 flex flex-col items-center justify-evenly">
           <BsCheck2Circle className="text-cyan-600 text-5xl" />

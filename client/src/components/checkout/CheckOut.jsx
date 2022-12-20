@@ -50,7 +50,6 @@ export default function CheckOut() {
       <CheckOut1 order={order} setOrder={setOrder} />
       <CheckOut2 order={order} setOrder={setOrder} />
       <CheckOut3 order={order} setOrder={setOrder} />
-      <ErrPage/>
     </div>
   );
 }
