@@ -6,9 +6,6 @@ import { HiCreditCard } from "react-icons/hi";
 import { AiOutlinePlus } from "react-icons/ai";
 import PaypalCheckOutButton from "./PaypalCheckOutButton";
 import AddCard from "./AddCard";
-
-
-
 export default function CheckOut3({ setOrder, order }) {
   const [addCard, setAddCard] = useState(false);
   const [saveCard, setSaveCard] = useState(false);
@@ -25,14 +22,12 @@ export default function CheckOut3({ setOrder, order }) {
     },
   ]);
   const navigetor = useNavigate();
-
   return (
     <div className="w-full md:w-2/3 min-h-screen p-10 flex flex-col items-end justify-between bg-white my-4">
       <div className="flex items-end">
         <h1 className="font-medium text-2xl">פרטי תשלום</h1>
         <HiCreditCard className="text-cyan-600 text-4xl ml-4" />
       </div>
-
       <div>
         <p className="my-8 font-medium">בחר אמצעי תשלום:</p>
         {payment.map((v, i) => {
@@ -131,7 +126,6 @@ export default function CheckOut3({ setOrder, order }) {
       ) : (
         ""
       )}
-
       <div className="flex flex-col w-full md:w-2/3 items-end">
         <button
           onClick={() => {

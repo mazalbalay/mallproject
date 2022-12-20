@@ -1,6 +1,6 @@
 require("dotenv").config();
 const express = require("express");
-const bodyParser = require("body-parser") 
+const bodyParser = require("body-parser")
 const cors = require("cors");
 // const nodemailer = require("nodemailer");
 const userRouter = require("./ROUTERS/userRoute");
@@ -45,10 +45,10 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: false }));
 app.use("/", userRouter);
 app.use("/", orderRouter);
 app.use("/", productRouter);
-app.get("/",(req,res)=>{
-    sendEmail()
-    .then(response=>res.send(response.message))
-    .catch(err=>res.status(500).send(err.message))
-})
+// app.get("/",(req,res)=>{
+//     sendEmail()
+//     .then(response=>res.send(response.message))
+//     .catch(err=>res.status(500).send(err.message))
+// })
 
 app.listen(8000, () => console.log("app listen"));

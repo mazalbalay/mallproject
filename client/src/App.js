@@ -4,7 +4,10 @@ import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import CheckOut from "./components/checkout/CheckOut";
 import CheckOutNav from "./components/CheckOutNav";
 import Auth from "./components/authentication/Auth";
-import ThancksPage from './components/checkout/ThancksPage'
+import ThancksPage from "./components/checkout/ThancksPage";
+
+
+
 import Home from "./components/Home";
 import ErrPage from "./components/checkout/ErrPage";
 import ChangePWD from "./components/userProfile/ChangePWD";
