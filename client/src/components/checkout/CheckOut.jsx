@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import CheckOut1 from "./CheckOut1";
 import CheckOut2 from "./CheckOut2";
 import CheckOut3 from "./CheckOut3";
+import ErrPage from "./ErrPage";
 
 export default function CheckOut() {
   const [order, setOrder] = useState({
@@ -49,6 +50,7 @@ export default function CheckOut() {
       <CheckOut1 order={order} setOrder={setOrder} />
       <CheckOut2 order={order} setOrder={setOrder} />
       <CheckOut3 order={order} setOrder={setOrder} />
+      <ErrPage/>
     </div>
   );
 }
