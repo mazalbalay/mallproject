@@ -26,21 +26,28 @@ export default function CheckOut() {
       number: "",
       postalCode: "",
       shippingCompanyName: "",
+      allData: false,
     },
     shipping: {
-      type: "משלוח רגיל",
+      typeS: "משלוח רגיל",
       date: "",
       time: "",
+      allData: false,
+    },
+    payment: {
+      cardNumber: "",
+      fourNum:"",
+      cardValidity: "",
+      threeDigits: "",
+      allData: true,
     },
   });
-  // useEffect(() => {
-  //   console.log(order);
-  // }, []);
+
   return (
     <div className="w-full bg-gray-200 text-right flex flex-col items-center justify-center">
       <CheckOut1 order={order} setOrder={setOrder} />
       <CheckOut2 order={order} setOrder={setOrder} />
-      <CheckOut3 order={order} setOrder={setOrder} />
+      <CheckOut3 orderS={order} setOrderS={setOrder} />
     </div>
   );
 }
