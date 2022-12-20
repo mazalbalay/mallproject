@@ -26,8 +26,7 @@ function App() {
  
   return (
      <PayPalScriptProvider options={{"client-id":"ATZnLpZdreIw8GDvsCs-eguhcXT3gn4gmDrTi8L0n0arR08UvMJeSOoAeVQCJSFuaC-2EWi669UKRbUc"}}>
-
-      <div className="w-full bg-gray-200 text-right flex flex-col items-center justify-center">
+      <div>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Auth" element={<Auth />} />

@@ -76,9 +76,8 @@ const singUp = () => async (req, res) => {
   }
 };
 
-// const singUp = () => async (req, res) => {
-//   const { email, password, confirmPassword, fullName, userName } = req.body;
 
+<<<<<<< HEAD
 //   const exsist = await Users.findOne({ email });
 
 //   if (exsist) return res.status(404).json("user alrady exsist");
@@ -107,6 +106,8 @@ sgMail
   .catch((error) => {
     console.error(error);
   });
+=======
+>>>>>>> e6564fb16955ad33bbd7d6077fc078174bd69a50
 
 const singIn = () => async (req, res) => {
   const { email, password } = req.body;
@@ -140,7 +141,7 @@ const facebooklogin = () => async (req, res) => {
       expiresIn: "1d",
     });
 
-    return res.json({ token, user: user });
+    return res.json({ user: user });
   } else {
     console.log(newUser);
     const newUserd = await Users.create(newUser);
@@ -148,7 +149,7 @@ const facebooklogin = () => async (req, res) => {
       expiresIn: "1d",
     });
 
-    return res.json({ token, user: newUserd });
+    return res.json({ user: newUserd });
   }
 };
 
@@ -166,6 +167,7 @@ try{
    const user = await Users.findOne({ email });
  
    if (user ) {
+<<<<<<< HEAD
      const token = jwt.sign({ _id: user._id }, "test", {
        expiresIn: "1d",
      });
@@ -179,6 +181,17 @@ try{
      });
  
      return res.json({ token, user: newUserd });
+=======
+     
+ 
+     return res.json({ user: user });
+   } else {
+     console.log(newUser);
+     const newUserd = await Users.create(newUser);
+     
+ 
+     return res.json({  user: newUserd });
+>>>>>>> e6564fb16955ad33bbd7d6077fc078174bd69a50
    }
    }catch(e){
     return res.status(400).json('samething went worng !!')

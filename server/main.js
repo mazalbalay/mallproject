@@ -1,44 +1,46 @@
 require("dotenv").config();
 const express = require("express");
-
+const bodyParser = require("body-parser") 
+const cors = require("cors");
+// const nodemailer = require("nodemailer");
 const userRouter = require("./ROUTERS/userRoute");
 const productRouter = require("./ROUTERS/productRouter");
 const orderRouter = require("./ROUTERS/orderRouter");
-const nodemailer = require("nodemailer");
-
-const cors = require("cors");
-const { response } = require("express");
-
-const sendEmail = () => {
-  return new Promise((resolve, reject) => {
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: "",
-        pass: "",
-      },
-    });
-    const mailOptions = {
-        from: '', // sender address
-        to: '', // list of receivers
-        subject: 'Subject of your email', // Subject line
-        html: '<p>Your html here</p>'// plain text body
-      };
-
-      transporter.sendMail(mailOptions, function (err, info) {
-        if(err)
-          console.log(err)
-        else
-          console.log(info);
-     });
-  });
-};
-
 require("./config");
 const app = express();
 
+
+
+// const sendEmail = () => {
+//   return new Promise((resolve, reject) => {
+//     const transporter = nodemailer.createTransport({
+//       service: "gmail",
+//       auth: {
+//         user: "",
+//         pass: "",
+//       },
+//     });
+//     const mailOptions = {
+//         from: '', // sender address
+//         to: '', // list of receivers
+//         subject: 'Subject of your email', // Subject line
+//         html: '<p>Your html here</p>'// plain text body
+//       };
+
+//       transporter.sendMail(mailOptions, function (err, info) {
+//         if(err)
+//           console.log(err)
+//         else
+//           console.log(info);
+//      });
+//   });
+// };
+
 app.use(cors());
 app.use(express.json());
+
+app.use(bodyParser.json({ limit: "30mb", extended: true }));
+app.use(bodyParser.urlencoded({ limit: "30mb", extended: false }));
 
 app.use("/", userRouter);
 app.use("/", orderRouter);
