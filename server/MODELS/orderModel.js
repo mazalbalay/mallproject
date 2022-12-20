@@ -24,13 +24,12 @@ const orderSchema = new mongoose.Schema({
     postalCode: String,
   },
   shipping: {
-    typeS: String,
+    type: String,
     date: String,
     time: String,
   },
   payment: {
-    cardNumber:String,
-    fourNum:String,
+    cardNumber: String,
     cardValidity: String,
     threeDigits: String,
   },
@@ -39,5 +38,3 @@ const orderSchema = new mongoose.Schema({
 const OrderModel = mongoose.model("orders", orderSchema);
 
 module.exports = OrderModel;
-
-

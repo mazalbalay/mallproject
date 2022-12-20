@@ -1,5 +1,4 @@
 const Order = require("../MODELS/orderModel");
-const bcrypt = require("bcryptjs");
 
 const getAllOrder = async (req, res) => {
   try {
@@ -22,15 +21,8 @@ const getOrder = async (req, res) => {
 
 const createOrder = async (req, res) => {
   const obj = req.body;
-  const  cardNumber  = obj.payment.cardNumber;
-  const salt = bcrypt.genSaltSync(10)
-  const hashedCard = await bcrypt.hash(cardNumber, salt);
-
   try {
-    const order = await Order.create({
-      ...obj,
-      payment: { ...obj.payment, cardNumber: hashedCard },
-    });
+    const order = await Order.create(obj);
     return res.status(200).json(order);
   } catch (e) {
     return res.status(400).json(e);
@@ -63,6 +55,6 @@ module.exports = {
   getAllOrder,
   getOrder,
   updatedorder,
-  createOrder,
   deleteOrder,
+  createOrder,
 };
