@@ -3,11 +3,7 @@ import { MdCancel } from "react-icons/md";
 import { MdDoneAll } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
-<<<<<<< HEAD
-export default function AddCard({ payment, order }) {
-=======
 export default function AddCard({ payment, setPayment, order }) {
->>>>>>> origin
   const navigetor = useNavigate();
   return (
     <div className="w-full h-screen bg-black bg-opacity-70 z-20 fixed top-0 right-0 flex items-center justify-center">
@@ -25,12 +21,6 @@ export default function AddCard({ payment, setPayment, order }) {
           </button>
           <button
             onClick={() => {
-<<<<<<< HEAD
-              // await axios.put(
-              //   `http://localhost:8000/order/${id}`,
-              //   order.payment,
-              // );
-=======
             //   setPayment([
             //     ...payment,
             //     {
@@ -39,7 +29,6 @@ export default function AddCard({ payment, setPayment, order }) {
             //       cardValidity: order.payment.cardValidity,
             //     },
             //   ]);
->>>>>>> origin
               navigetor("/ThancksPage");
             }}
             className="flex items-center text-2xl text-cyan-600"

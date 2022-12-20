@@ -9,10 +9,6 @@ import axios from "axios";
 export default function Auth() {
   const navigate = useNavigate();
   const [singUp, setsingUp] = useState(false);
-<<<<<<< HEAD
-  const [users, setUsers] = useState();
-=======
->>>>>>> origin
   const [message, setMessage] = useState();
   const [userData, setUserData] = useState({
     email: "",
@@ -44,25 +40,6 @@ export default function Auth() {
     localStorage.setItem("user", JSON.stringify({ data: user }));
     console.log("facebook login success ,client side", user);
     navigate("/userprofile");
-<<<<<<< HEAD
-  };
-
-  const responseGoogleFailure = (response) => {
-    console.log(response);
-  };
-  const responseGoogleSuccess = async (response) => {
-    console.log(response);
-    const { data } = await axios.post("http://localhost:8000/googlelogin", {
-      tokenId: response.tokenId,
-    });
-    console.log("facebook login success ,client side", data);
-  };
-
-  const allUsers = async () => {
-    const { data } = await api.users();
-    setUsers(data);
-=======
->>>>>>> origin
   };
 
  
@@ -73,42 +50,11 @@ export default function Auth() {
     });
     localStorage.setItem("user", JSON.stringify({ data }));
 
-<<<<<<< HEAD
-  const handleClick = async () => {
-    if (singUp) {
-      try {
-        const { data } = await api.singup(userData);
-
-        localStorage.setItem("user", JSON.stringify({ data }));
-
-        setUserData({
-          email: "",
-          password: "",
-          confirmPassword: "",
-          fullName: "",
-          userName: "",
-        });
-        navigate("/userprofile");
-      } catch (e) {
-        setMessage(e.response.data);
-      }
-    } else if (!singUp) {
-      try {
-        const { data } = await api.singin(userData);
-        localStorage.setItem("user", JSON.stringify({ data }));
-
-        navigate("/userprofile");
-      } catch (e) {
-        setMessage(e.response.data);
-      }
-    }
-=======
     console.log("google login success ,client side", data);
   };
   
   const responseGoogleFailure = (response) => {
     console.log(response);
->>>>>>> origin
   };
 
   const handleClick = async () => {
@@ -159,11 +105,8 @@ export default function Auth() {
               {message}
             </span>
           )}
-<<<<<<< HEAD
-=======
           <div className="flex flex-col-reverse md:flex-col justify-center ">
           <div className="text-center">
->>>>>>> origin
           {singUp && (
             <>
               <input
@@ -186,11 +129,7 @@ export default function Auth() {
             onChange={handleChange}
             name="email"
             type="email"
-<<<<<<< HEAD
-            className="my-1 text-right w-[60%] outline-none border-b-2 p-2 border-neutral-300"
-=======
             className="my-1 text-right w-[80%] md:w-[] outline-none border-b-2 p-2 border-neutral-300"
->>>>>>> origin
             placeholder='הזן כתובת דוא"ל'
           />
           <input
@@ -220,38 +159,25 @@ export default function Auth() {
             <span className="relative bg-white px-1 text-xs top-2 left-[46%]">
               או
             </span>
-<<<<<<< HEAD
-          </span>
-
-          <FacebookLogin
-=======
           </div>
         <div className="flex flex-col items-center w-[100%] ">
           <FacebookLogin
           buttonStyle={{width:'100%'}}
->>>>>>> origin
             appId="884021796289155"
             autoLoad={false}
             callback={responseFacebook}
           />
           <GoogleLogin
-<<<<<<< HEAD
-=======
             className="w-[54%] md:w-[70%] h-12 mt-2"
->>>>>>> origin
             clientId="727555427268-u0l3487tpitph7t1s2lir4vsdk6153se.apps.googleusercontent.com"
             onSuccess={responseGoogleSuccess}
             onFailure={responseGoogleFailure}
             cookiePolicy={"single_host_origin"}
-<<<<<<< HEAD
-          />
-=======
             
 
           />
           </div>
 </div>
->>>>>>> origin
           <span className="text-[10px] flex justify-between w-[70%]">
             <span onClick={() => setsingUp(!singUp)} className="cursor-pointer">
               {singUp ? "כבר יש חשבון ? התחבר" : "אין לך חשבון? הרשם"}
