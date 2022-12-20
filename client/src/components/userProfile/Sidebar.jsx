@@ -18,7 +18,7 @@ export default function Sidebar({setShowPage}) {
         <div className='border-2 w-[100%] h-60 flex flex-col items-center'>
             <div className=' bg-black w-[100%] h-[100%]'></div>
             <div className='h-[100%] w-[100%] flex justify-center items-center  flex-col'>
-            <div className='w-[15%] h-[100%] flex justify-center items-center  border-2 rounded-full bottom-11 relative  bg-white'>
+            <div className='w-[100px]  h-[100px] flex justify-center items-center  border-2 rounded-full bottom-11 relative  bg-white'>
               {user.data.profileImg ?
             <img src={user.data.profileImg} alt="" />  :
             <div className='text-4xl'>{user.data.email[0].toUpperCase()}</div>
@@ -27,7 +27,7 @@ export default function Sidebar({setShowPage}) {
             <div className='bottom-11 relative '>{user.data.name} </div>
            </div> 
         </div>
-        <div className='w-[100%] flex justify-around mt-2'>
+        <div className='w-[100%] flex md:hidden justify-around mt-2 '>
           <span onClick={()=>{setShowPage('personalInfo')}} className='px-2'>< BsFillPersonBadgeFill size={35} className='ml-2'/></span>
           <span onClick={()=>{setShowPage('changePassword')}}>< AiOutlineLock size={35} className='ml-2'/> </span>
           <span onClick={()=>{setShowPage('order')}}>< BsBoxSeam size={35} className='ml-2'/> </span>

@@ -88,7 +88,7 @@ export default function Auth() {
   };
 
   return (
-    <div className="w-screen  flex justify-center fixed ">
+    <div className="w-screen  flex justify-center  ">
       <div className=" flex justify-center flex-col  md:flex-row w-[100%] md:m-20 ">
         <div className=" my-1 w-[100%] h-52 md:h-full  md:w-[20%] bg-red-400"></div>
         <div
