@@ -4,8 +4,32 @@ const sgMail = require("@sendgrid/mail");
 const axios = require("axios");
 const jwt = require("jsonwebtoken");
 const {OAuth2Client} = require('google-auth-library');
+const nodemailer = require('nodemailer');
 
 const client =  new OAuth2Client('727555427268-u0l3487tpitph7t1s2lir4vsdk6153se.apps.googleusercontent.com')
+
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'mazalbalay3@gmail.com',
+    pass: 'yourpassword'
+  }
+});
+
+const mailOptions = {
+  from: 'youremail@gmail.com',
+  to: 'myfriend@yahoo.com',
+  subject: 'Sending Email using Node.js',
+  text: 'That was easy!'
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+  }
+});
 
 const updateUser = () => async (req, res) => {
   try {
