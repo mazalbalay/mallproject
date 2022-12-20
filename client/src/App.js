@@ -4,7 +4,11 @@ import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import CheckOut from "./components/checkout/CheckOut";
 import CheckOutNav from "./components/CheckOutNav";
 import Auth from "./components/authentication/Auth";
+<<<<<<< HEAD
 import ThancksPage from "./components/checkout/ThancksPage";
+=======
+import ThancksPage from './components/checkout/ThancksPage'
+>>>>>>> origin
 import Home from "./components/Home";
 import ErrPage from "./components/checkout/ErrPage";
 import ChangePWD from "./components/userProfile/ChangePWD";
@@ -22,10 +26,18 @@ import Department from "./components/Department";
 import Footer from "./components/Footer";
 
 function App() {
+<<<<<<< HEAD
   return (
      <PayPalScriptProvider options={{"client-id":"ATZnLpZdreIw8GDvsCs-eguhcXT3gn4gmDrTi8L0n0arR08UvMJeSOoAeVQCJSFuaC-2EWi669UKRbUc"}}>
 
       <div className="w-full bg-gray-200 text-right flex flex-col items-center justify-center">
+=======
+
+ 
+  return (
+     <PayPalScriptProvider options={{"client-id":"ATZnLpZdreIw8GDvsCs-eguhcXT3gn4gmDrTi8L0n0arR08UvMJeSOoAeVQCJSFuaC-2EWi669UKRbUc"}}>
+      <div>
+>>>>>>> origin
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Auth" element={<Auth />} />

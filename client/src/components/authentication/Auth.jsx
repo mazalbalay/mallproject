@@ -9,7 +9,10 @@ import axios from "axios";
 export default function Auth() {
   const navigate = useNavigate();
   const [singUp, setsingUp] = useState(false);
+<<<<<<< HEAD
   const [users, setUsers] = useState();
+=======
+>>>>>>> origin
   const [message, setMessage] = useState();
   const [userData, setUserData] = useState({
     email: "",
@@ -41,6 +44,7 @@ export default function Auth() {
     localStorage.setItem("user", JSON.stringify({ data: user }));
     console.log("facebook login success ,client side", user);
     navigate("/userprofile");
+<<<<<<< HEAD
   };
 
   const responseGoogleFailure = (response) => {
@@ -57,11 +61,55 @@ export default function Auth() {
   const allUsers = async () => {
     const { data } = await api.users();
     setUsers(data);
+=======
+>>>>>>> origin
   };
 
-  useEffect(() => {
-    allUsers();
-  }, []);
+ 
+  const responseGoogleSuccess = async (response) => {
+    console.log(response);
+    const { data } = await axios.post("http://localhost:8000/googlelogin", {
+      tokenId: response.tokenId,
+    });
+    localStorage.setItem("user", JSON.stringify({ data }));
+
+<<<<<<< HEAD
+  const handleClick = async () => {
+    if (singUp) {
+      try {
+        const { data } = await api.singup(userData);
+
+        localStorage.setItem("user", JSON.stringify({ data }));
+
+        setUserData({
+          email: "",
+          password: "",
+          confirmPassword: "",
+          fullName: "",
+          userName: "",
+        });
+        navigate("/userprofile");
+      } catch (e) {
+        setMessage(e.response.data);
+      }
+    } else if (!singUp) {
+      try {
+        const { data } = await api.singin(userData);
+        localStorage.setItem("user", JSON.stringify({ data }));
+
+        navigate("/userprofile");
+      } catch (e) {
+        setMessage(e.response.data);
+      }
+    }
+=======
+    console.log("google login success ,client side", data);
+  };
+  
+  const responseGoogleFailure = (response) => {
+    console.log(response);
+>>>>>>> origin
+  };
 
   const handleClick = async () => {
     if (singUp) {
@@ -94,12 +142,11 @@ export default function Auth() {
   };
 
   return (
-    <div className="w-screen  flex justify-center fixed">
-      <div className=" flex justify-center w-[100%] m-20 ">
-        <div className=" my-1 w-[20%] bg-red-400"></div>
+    <div className="w-screen  flex justify-center  ">
+      <div className=" flex justify-center flex-col  md:flex-row w-[100%] md:m-20 ">
+        <div className=" my-1 w-[100%] h-52 md:h-full  md:w-[20%] bg-red-400"></div>
         <div
-          style={{ boxShadow: "0px 1px 3px 0px rgba(0,0,0,0.3)" }}
-          className="w-[30%] bg-white flex flex-col items-center text-sm "
+          className="w-[100%]  md:w-[30%] bg-white flex flex-col  items-center text-sm py-5  md:py-0 "
         >
           <h1 className="text-3xl my-1">{singUp ? "הרשמה" : "כניסה"}</h1>
 
@@ -112,20 +159,25 @@ export default function Auth() {
               {message}
             </span>
           )}
+<<<<<<< HEAD
+=======
+          <div className="flex flex-col-reverse md:flex-col justify-center ">
+          <div className="text-center">
+>>>>>>> origin
           {singUp && (
             <>
               <input
                 onChange={handleChange}
                 name="fullName"
                 type="text"
-                className=" my-1 text-right w-[60%] outline-none border-b-2 p-2 border-neutral-300"
+                className=" my-1 text-right w-[80%] md:w-[] outline-none border-b-2 p-2 border-neutral-300"
                 placeholder="שם מלא"
               />
               <input
                 onChange={handleChange}
                 name="userName"
                 type="text"
-                className="my-1 text-right w-[60%] outline-none border-b-2 p-2 border-neutral-300"
+                className="my-1 text-right w-[80%] md:w-[] outline-none border-b-2 p-2 border-neutral-300"
                 placeholder="שם משתמש"
               />
             </>
@@ -134,14 +186,18 @@ export default function Auth() {
             onChange={handleChange}
             name="email"
             type="email"
+<<<<<<< HEAD
             className="my-1 text-right w-[60%] outline-none border-b-2 p-2 border-neutral-300"
+=======
+            className="my-1 text-right w-[80%] md:w-[] outline-none border-b-2 p-2 border-neutral-300"
+>>>>>>> origin
             placeholder='הזן כתובת דוא"ל'
           />
           <input
             onChange={handleChange}
             name="password"
             type="text"
-            className="my-1 text-right w-[60%] outline-none border-b-2 p-2 border-neutral-300"
+            className="my-1 text-right w-[80%] md:w-[] outline-none border-b-2 p-2 border-neutral-300"
             placeholder="הזן סיסמא"
           />
           {singUp && (
@@ -149,33 +205,53 @@ export default function Auth() {
               onChange={handleChange}
               type="text"
               name="confirmPassword"
-              className="text-right w-[60%] outline-none border-b-2 p-2 border-neutral-300"
+              className="text-right w-[80%] md:w-[] outline-none border-b-2 p-2 border-neutral-300"
               placeholder="אשר סיסמא"
             />
           )}
           <button
-            className="mt-3 p-2 border-2 w-[60%] rounded border-blue-200"
+            className="mt-3 p-2 border-2 w-[80%] md:w-[] rounded border-blue-200"
             onClick={handleClick}
           >
             {singUp ? "הירשם" : "התחבר"}
           </button>
-          <span className="border-b-2 w-[60%] my-2">
+          </div>
+          <div className="border-b-2 w-[80%] md:w-[] my-2 self-center">
             <span className="relative bg-white px-1 text-xs top-2 left-[46%]">
               או
             </span>
+<<<<<<< HEAD
           </span>
 
           <FacebookLogin
+=======
+          </div>
+        <div className="flex flex-col items-center w-[100%] ">
+          <FacebookLogin
+          buttonStyle={{width:'100%'}}
+>>>>>>> origin
             appId="884021796289155"
             autoLoad={false}
             callback={responseFacebook}
           />
           <GoogleLogin
+<<<<<<< HEAD
+=======
+            className="w-[54%] md:w-[70%] h-12 mt-2"
+>>>>>>> origin
             clientId="727555427268-u0l3487tpitph7t1s2lir4vsdk6153se.apps.googleusercontent.com"
             onSuccess={responseGoogleSuccess}
             onFailure={responseGoogleFailure}
             cookiePolicy={"single_host_origin"}
+<<<<<<< HEAD
           />
+=======
+            
+
+          />
+          </div>
+</div>
+>>>>>>> origin
           <span className="text-[10px] flex justify-between w-[70%]">
             <span onClick={() => setsingUp(!singUp)} className="cursor-pointer">
               {singUp ? "כבר יש חשבון ? התחבר" : "אין לך חשבון? הרשם"}

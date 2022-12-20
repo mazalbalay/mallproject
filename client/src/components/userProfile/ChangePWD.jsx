@@ -31,6 +31,7 @@ export default function ChangePWD() {
 
     
   return (
+<<<<<<< HEAD
     <div className='w-[38%] pt-20 flex flex-col text-right py-5 px-10  border-4 border-black items-end'>
       <h1 className='text-2xl mb-5'>החלף סיסמא </h1>
       {message}
@@ -38,6 +39,15 @@ export default function ChangePWD() {
         <input className='w-[70%] text-right  p-1 outline-none border-b-2 border-gray-500 mb-4' type="text" onChange={(e)=>setCurrentPSW(e.target.value)} placeholder='סיסמא נוכחית' name="" id="" />
        <label htmlFor=""> סיסמא חדשה</label>
         <input className='w-[70%] text-right  p-1 outline-none border-b-2 border-gray-500 mb-4'type="text" onChange={(e)=>setNewPSW(e.target.value)} placeholder='סיסמא חדשה' />
+=======
+    <div className='w-[100%] h-[100%] pt-20 flex flex-col text-right py-5 px-10   bg-white items-end'>
+      <h1 className='text-2xl mb-5'>החלף סיסמא </h1>
+      {message}
+      <label htmlFor="סיסמא נוכחית"></label>
+        <input className='w-[70%] text-right  p-1 outline-none border-b-2 border-gray-200 mb-4' type="text" onChange={(e)=>setCurrentPSW(e.target.value)} placeholder='סיסמא נוכחית' name="" id="" />
+       <label htmlFor=""> סיסמא חדשה</label>
+        <input className='w-[70%] text-right  p-1 outline-none border-b-2 border-gray-200 mb-4'type="text" onChange={(e)=>setNewPSW(e.target.value)} placeholder='סיסמא חדשה' />
+>>>>>>> origin
         <button onClick={checkPSW} className='p-2 border-black border-2 rounded font-medium'>שמור סיסמה</button>
     </div>
   )

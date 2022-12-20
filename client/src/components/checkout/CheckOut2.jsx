@@ -12,7 +12,11 @@ export default function CheckOut2({ setOrder, order }) {
       ...order,
       shipping: {
         ...order.shipping,
+<<<<<<< HEAD
         time: `${new Date().getHours() + 1}:00-${new Date().getHours() + 2}:00`,
+=======
+        time: `${new Date().getHours()}:00-${new Date().getHours() + 1}:00`,
+>>>>>>> origin
         date: `${new Date().getDate()}/${new Date().getMonth() + 1}`,
         type: "משלוח אקספרס",
         allData:true
@@ -25,9 +29,26 @@ export default function CheckOut2({ setOrder, order }) {
       {dropDwon ? (
         <div className="w-full md:w-2/3 p-5 flex flex-col items-end justify-between bg-white my-1">
           <div className="w-full flex items-end justify-between bg-white my-1">
+<<<<<<< HEAD
            <BsChevronDown
               className="md:text-3xl text-2xl"
               onClick={() => setDropDwon(!dropDwon)}
+=======
+            <BsChevronDown
+              className="md:text-3xl text-2xl"
+              onClick={() => {
+                setDropDwon(!dropDwon);
+                setOrder({
+                  ...order,
+                  shipping: {
+                    ...order.shipping,
+                    time: "",
+                    date: "",
+                    allData:false
+                  },
+                });
+              }}
+>>>>>>> origin
             />
             <div className="flex items-center">
               <h1 className="font-medium text-2xl">זמן משלוח</h1>

@@ -24,13 +24,21 @@ const orderSchema = new mongoose.Schema({
     postalCode: String,
   },
   shipping: {
+<<<<<<< HEAD
     typeS: String,
+=======
+    type: String,
+>>>>>>> origin
     date: String,
     time: String,
   },
   payment: {
+<<<<<<< HEAD
     cardNumber:String,
     fourNum:String,
+=======
+    cardNumber: String,
+>>>>>>> origin
     cardValidity: String,
     threeDigits: String,
   },
