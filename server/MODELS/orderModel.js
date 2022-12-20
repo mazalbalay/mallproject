@@ -11,29 +11,28 @@ const orderSchema = new mongoose.Schema({
       productQuantity: String,
     },
   ],
-  user: [
-    {
-      userId: String,
-      userName: String,
-      userMail: String,
-    },
-  ],
-  addres: [
-    {
-      city: String,
-      street: String,
-      number: String,
-      shippingCompanyName: String,
-      postalCode: String,
-    },
-  ],
-  shipping: [
-    {
-      type: String,
-      date: String,
-      time: String,
-    },
-  ],
+  user: {
+    userId: String,
+    userName: String,
+    userMail: String,
+  },
+  addres: {
+    city: String,
+    street: String,
+    number: String,
+    shippingCompanyName: String,
+    postalCode: String,
+  },
+  shipping: {
+    type: String,
+    date: String,
+    time: String,
+  },
+  payment: {
+    cardNumber: String,
+    cardValidity: String,
+    threeDigits: String,
+  },
 });
 
 const OrderModel = mongoose.model("orders", orderSchema);

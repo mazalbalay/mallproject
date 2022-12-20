@@ -15,6 +15,7 @@ export default function CheckOut2({ setOrder, order }) {
         time: `${new Date().getHours()}:00-${new Date().getHours() + 1}:00`,
         date: `${new Date().getDate()}/${new Date().getMonth() + 1}`,
         type: "משלוח אקספרס",
+        allData:true
       },
     });
   };
@@ -34,6 +35,7 @@ export default function CheckOut2({ setOrder, order }) {
                     ...order.shipping,
                     time: "",
                     date: "",
+                    allData:false
                   },
                 });
               }}
@@ -54,18 +56,22 @@ export default function CheckOut2({ setOrder, order }) {
           </div>
         </div>
       ) : (
-        <div className="w-full md:w-2/3 min-h-screen p-10 flex flex-col items-end justify-between bg-white my-1">
+        <div className="w-full md:w-2/3 min-h-screen p-5 flex flex-col items-end justify-between bg-white my-1">
           <div className="flex items-center">
-            <h1 className="text-2xl items-center">זמן משלוח</h1>
+            <h1 className="text-2xl font-medium items-center">זמן משלוח</h1>
             <BsFillClockFill className="text-cyan-600 text-3xl ml-4" />
           </div>
           <p>בחר שעה למשלוח בחר שעה למשלוח בחר שעה למשלוח</p>
           <button
             onClick={() => {
-              expressType();
-              setDropDwon(!dropDwon);
+              if (order.addres.allData) {
+                expressType();
+                setDropDwon(!dropDwon);
+              } else {
+                alert("מלא בבקשה את כתובת המשלוח");
+              }
             }}
-            name=""
+            // name=""
             className="w-fit flex items-center rounded-lg hover:border-cyan-600 border-2 p-1"
           >
             <p className="mx-3">משלוח אקספרס - מגיע לביתך תורך שעה</p>

@@ -7,7 +7,7 @@ export default function CheckOut1({ setOrder, order }) {
   const [dropDwon, setDropDwon] = useState(false);
   const inputs = [
     { value: "עיר", valueEnglish: "city" },
-    { value: "רחוב", valueEnglish: "streקt" },
+    { value: "רחוב", valueEnglish: "street" },
     { value: "מספר", valueEnglish: "number" },
     { value: "מיקוד", valueEnglish: "postalCode" },
     { value: "שם חברה", valueEnglish: "shippingCompanyName" },
@@ -22,7 +22,7 @@ export default function CheckOut1({ setOrder, order }) {
   return (
     <>
       {dropDwon ? (
-        <div className="w-full md:w-2/3 p-10 flex flex-col items-end justify-between bg-white my-1">
+        <div className="w-full md:w-2/3 p-5 flex flex-col items-end justify-between bg-white my-1">
           <div className="w-full flex items-end justify-between bg-white my-1">
             <BsChevronDown
               className="md:text-3xl text-2xl"
@@ -81,14 +81,17 @@ export default function CheckOut1({ setOrder, order }) {
                     order.addres.city &&
                     order.addres.street &&
                     order.addres.number &&
-                    order.addres.postalCode&&
+                    order.addres.postalCode &&
                     order.addres.shippingCompanyName
-                  ){
-                   setDropDwon(!dropDwon); 
-                  }else{
-                    alert("מלא את כל השדות")
+                  ) {
+                    setDropDwon(!dropDwon);
+                    setOrder({
+                      ...order,
+                      addres: { ...order.addres, allData: true },
+                    });
+                  } else {
+                    alert("מלא את כל השדות");
                   }
-                    
                 }}
                 className="bg-cyan-600 rounded-md text-white px-10 py-3"
               >
