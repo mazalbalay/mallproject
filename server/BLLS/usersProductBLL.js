@@ -76,37 +76,7 @@ const singUp = () => async (req, res) => {
   }
 };
 
-// const singUp = () => async (req, res) => {
-//   const { email, password, confirmPassword, fullName, userName } = req.body;
 
-//   const exsist = await Users.findOne({ email });
-
-//   if (exsist) return res.status(404).json("user alrady exsist");
-
-//   if (password !== confirmPassword)
-//     return res.status(404).json("Password don't match");
-
-//   // const hashedPassword = await bcryptjs.hash(password, 12);
-// };
-
-// sgMail.setApiKey(
-//   "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"
-// );
-
-// sgMail
-//   .send({
-//     to: "oshbalay@gmail.com", // Change to your recipient
-//     from: "oshbalay@gmail.com", // Change to your verified sender
-//     subject: "Sending with SendGrid is Fun",
-//     text: "and easy to do anywhere, even with Node.js",
-//     html: "<strong>and easy to do anywhere, even with Node.js</strong>",
-//   })
-//   .then(() => {
-//     console.log("Email sent");
-//   })
-//   .catch((error) => {
-//     console.error(error);
-//   });
 
 const singIn = () => async (req, res) => {
   const { email, password } = req.body;
@@ -140,7 +110,7 @@ const facebooklogin = () => async (req, res) => {
       expiresIn: "1d",
     });
 
-    return res.json({ token, user: user });
+    return res.json({ user: user });
   } else {
     console.log(newUser);
     const newUserd = await Users.create(newUser);
@@ -148,17 +118,37 @@ const facebooklogin = () => async (req, res) => {
       expiresIn: "1d",
     });
 
-    return res.json({ token, user: newUserd });
+    return res.json({ user: newUserd });
   }
 };
 
+
 const googlelogin = () => async (req, res) => {
   const { tokenId } = req.body;
+  
+  const data = await client.verifyIdToken({ idToken: tokenId , audience:'727555427268-u0l3487tpitph7t1s2lir4vsdk6153se.apps.googleusercontent.com' })
+   const {email_verified , email , name} = data.payload
+console.log(data);
+   if(!email_verified) return res.status(400).json('not email verified !!')
 
-    // const data = await client.verifyIdToken({ idToken: tokenId , audience:'727555427268-u0l3487tpitph7t1s2lir4vsdk6153se.apps.googleusercontent.com' })
-    // console.log(data);
-   
-
+try{
+   const newUser = { name, email, password: email };
+   const user = await Users.findOne({ email });
+ 
+   if (user ) {
+     
+ 
+     return res.json({ user: user });
+   } else {
+     console.log(newUser);
+     const newUserd = await Users.create(newUser);
+     
+ 
+     return res.json({  user: newUserd });
+   }
+   }catch(e){
+    return res.status(400).json('samething went worng !!')
+   }
 
 };
 
