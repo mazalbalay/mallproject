@@ -16,6 +16,8 @@ import StoreComp from "./components/StoreComp";
 import Department from "./components/Department";
 import Footer from "./components/Footer";
 import InStore from "./components/InStore";
+import CreateDepartment from "./components/Admin/CreateDepartment";
+import CreateStore from "./components/Admin/CreateStore"
 
 function App() {
   return (
@@ -40,11 +42,15 @@ function App() {
           <Route path="/personalinfo" element={<PersonalInfo />} />
           <Route path="/department/:depId" element={<Department />} />
           <Route path="/instore" element={<InStore />} />
+          <Route path="/department/new" element={<CreateDepartment />} />
+          <Route path="/store/new" element={<CreateStore />} />
         </Routes>
-        
+
       </div>
     </PayPalScriptProvider>
   );
 }
 
+
 export default App;
+
