@@ -18,25 +18,25 @@ export default function CreateStore() {
 
 console.log(Stores);
   return (
-    <div class="w-full max-w-xs m-auto ">
-    <p class="mx-auto m-10 text-xl		" >Create Store</p>
+    <div className="w-full max-w-xs m-auto ">
+    <p className="mx-auto m-10 text-xl		" >Create Store</p>
      
-   <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+   <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
   
-     <div class="mb-4">
-       <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+     <div className="mb-4">
+       <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
          department name
        </label>
        <input
-         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
          id="DepName"
          onChange={(e) => setStoreName(e.target.value)}
          type="text"
          placeholder="department name"
        />
      </div>
-     <div class="mb-4">
-       <label class="block text-gray-700 text-sm font-bold mb-2" for="image">
+     <div className="mb-4">
+       <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="image">
          department image
        </label>
        <FileBase64
@@ -45,13 +45,13 @@ console.log(Stores);
              onDone={({ base64 }) => setStoreImage({ ...StoreImage,image :  base64})}
            />
      </div>
-     <div class="mb-4">
-       <label class="block text-gray-700 text-sm font-bold mb-2"
-         for="description">
+     <div className="mb-4">
+       <label className="block text-gray-700 text-sm font-bold mb-2"
+         htmlFor="description">
          department description
        </label>
        <input
-         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
          id="DepDesc"
          onChange={(e) => setStoreDesc(e.target.value)}
          type="text"
@@ -59,9 +59,9 @@ console.log(Stores);
        />
      </div>
 
-     <div class="flex items-center justify-between">
+     <div className="flex items-center justify-between">
        <button
-         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
          type="button"
          onClick={()=>createStore(StoreName,StoreImage.base64,StoreDesc)}
        >

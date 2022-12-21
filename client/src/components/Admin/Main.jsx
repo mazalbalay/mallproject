@@ -22,10 +22,10 @@ function navigateTo (route) {
   return <div>
     
     {User==null?null:<div>hello {User.name}</div>}
-    <button  onClick={()=> navigateTo(`${"/Admin/departments"}`)}  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    <button  onClick={()=> navigateTo(`${"/Admin/departments"}`)}  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
   Departments
 </button>
-<button  onClick={()=> navigateTo(`${"/Admin/stores"}`)} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+<button  onClick={()=> navigateTo(`${"/Admin/stores"}`)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
   Stores
 </button>
   </div>;
