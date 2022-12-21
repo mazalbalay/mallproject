@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import * as api from "../../api/api";
 import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
@@ -7,6 +8,7 @@ import FacebookLogin from "react-facebook-login";
 import axios from "axios";
 
 export default function Auth() {
+  const dispatch = useDispatch()
   const navigate = useNavigate();
   const [singUp, setsingUp] = useState(false);
   const [message, setMessage] = useState();
@@ -37,7 +39,7 @@ export default function Auth() {
       userID: response.userID,
     });
     const user = data.user;
-    localStorage.setItem("user", JSON.stringify({ data: user }));
+    dispatch({type:'AUTH', payload:{ data: user }})
     console.log("facebook login success ,client side", user);
     navigate("/userprofile");
   };
@@ -78,6 +80,7 @@ export default function Auth() {
     } else if (!singUp) {
       try {
         const { data } = await api.singin(userData);
+
         localStorage.setItem("user", JSON.stringify({ data }));
 
         navigate("/userprofile");
@@ -160,15 +163,15 @@ export default function Auth() {
               או
             </span>
           </div>
-        <div className="flex flex-col items-center w-[100%] ">
+        <div className="flex flex-col mt-5 items-center w-[100%] ">
           <FacebookLogin
-          buttonStyle={{width:'100%'}}
+          buttonStyle={{width:'290px' , height:'50px'}}
             appId="884021796289155"
             autoLoad={false}
-            callback={responseFacebook}
+            callback={responseFacebook} 
           />
           <GoogleLogin
-            className="w-[54%] md:w-[70%] h-12 mt-2"
+            className="w-[290px] md:w-[70%] h-12 mt-2"
             clientId="727555427268-u0l3487tpitph7t1s2lir4vsdk6153se.apps.googleusercontent.com"
             onSuccess={responseGoogleSuccess}
             onFailure={responseGoogleFailure}
