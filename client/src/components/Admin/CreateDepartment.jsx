@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from "react";
-import {createDepartment,getDepartments} from './ApiCalls/Departments'
+// import {createDepartment,getDepartments} from './ApiCalls/Departments'
 
 
 export default function CreateDepartment() {
@@ -7,18 +7,18 @@ export default function CreateDepartment() {
     const [DepImage, setDepImage] = useState();
     const [DepDesc, setDepDesc] = useState();
     const [Departments, setDepartments] = useState([]);
-    useEffect(() => {
-        const getDepartmentsData = async () =>{
-          const result = await getDepartments();
-          setDepartments(result.data);
-        }
-        getDepartmentsData();
-      },[]);
+    // useEffect(() => {
+    //     const getDepartmentsData = async () =>{
+    //       const result = await getDepartments();
+    //       setDepartments(result.data);
+    //     }
+    //     getDepartmentsData();
+    //   },[]);
 
    console.log(Departments);
   
   return (
-    <div class="w-full m-auto rounded m-20 text-center h-screen w-1/2 ">
+    <div class="w-full m-auto rounded md:m-20 text-center h-screen md:w-1/2 ">
       
         
       <form class="w-full bg-white shadow-md rounded ">
@@ -72,7 +72,7 @@ export default function CreateDepartment() {
           <button
             class="bg-sky-300 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
             type="button"
-            onClick={()=>createDepartment(DepName,DepImage,DepDesc)}
+            // onClick={()=>createDepartment(DepName,DepImage,DepDesc)}
           >
             יצירת מחלקה
           </button>
