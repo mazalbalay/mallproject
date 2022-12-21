@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import CheckOut from "./components/checkout/CheckOut";
 import CheckOutNav from "./components/CheckOutNav";
@@ -20,6 +20,7 @@ import EditStore from "./components/Admin/EditStore";
 import MainPage from "./components/MainPage";
 import Department from "./components/Department";
 import Footer from "./components/Footer";
+import InStore from "./components/InStore";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
       }}
     >
       <div>
+        <Link to='instore'> store</Link>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Auth" element={<Auth />} />
@@ -50,6 +52,7 @@ function App() {
           <Route path="/Admin/stores" element={<Stores />} />
           <Route path="/Admin/departments" element={<Departments />} />
           <Route path="/department/:depId" element={<Department />} />
+          <Route path="/instore" element={<InStore />} />
         </Routes>
       </div>
     </PayPalScriptProvider>
