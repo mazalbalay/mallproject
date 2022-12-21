@@ -1,6 +1,7 @@
 import React, {useState,useEffect} from "react";
 import {createDepartment,getDepartments} from './ApiCalls/Departments'
 
+
 export default function CreateDepartment() {
     const [DepName, setDepName] = useState();
     const [DepImage, setDepImage] = useState();
@@ -14,58 +15,66 @@ export default function CreateDepartment() {
         getDepartmentsData();
       },[]);
 
-    
    console.log(Departments);
   
   return (
-    <div class="w-full max-w-xs m-auto ">
-       <p class="mx-auto m-10 text-xl		" >Create Department</p>
+    <div class="w-full m-auto rounded m-20 text-center h-screen w-1/2 ">
+      
         
-      <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-     
-        <div class="mb-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
-            department name
+      <form class="w-full bg-white shadow-md rounded ">
+        <div className="bg-sky-300">
+       <p class="mx-auto text-center p-4 text-xl text-white		" >יצירת מחלקה</p>
+       </div>
+        <div class="mb-4 p-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2 " for="name">
+            שם מחלקה
           </label>
           <input
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            // class="shadow appearance-none border text-end rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            class="shadow appearance-none border rounded text-end py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+
             id="DepName"
             onChange={(e) => setDepName(e.target.value)}
             type="text"
-            placeholder="department name"
+            placeholder="שם מחלקה"
           />
         </div>
-        <div class="mb-4">
+        <div class="mb-4 p-4">
+          <div>
           <label class="block text-gray-700 text-sm font-bold mb-2" for="image">
-            department image
+            תמונת מחלקה
           </label>
+          </div>
+          <div className="flex justify-center">
           <input
-              className="block text-right w-full md:w-3/4  text-sm text-gray-900 bg-gray-50 rounded-lg border "
+              className="block text-right  text-sm text-gray-900 bg-gray-50 rounded border "
               type="file"
               onChange={setDepImage}
+              placeholder={"בחירת קובץ"}
             />
+            </div>
         </div>
         <div class="mb-4">
           <label class="block text-gray-700 text-sm font-bold mb-2"
             for="description">
-            department description
+            תיאור מחלקה
           </label>
           <input
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            class="shadow appearance-none border rounded text-end py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="DepDesc"
             onChange={(e) => setDepDesc(e.target.value)}
             type="text"
-            placeholder="department description"
+            placeholder="תיאור מחלקה"
           />
         </div>
 
-        <div class="flex items-center justify-between">
+        <div class="flex items-center justify-center p-4">
           <button
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            class="bg-sky-300 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
             type="button"
             onClick={()=>createDepartment(DepName,DepImage,DepDesc)}
           >
-            create Department
+            יצירת מחלקה
           </button>
         </div>
       </form>
@@ -73,5 +82,6 @@ export default function CreateDepartment() {
         <img src={dep.image} alt=""  />
       </div>)} */}
     </div>
+    
   );
 }
