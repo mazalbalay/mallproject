@@ -123,24 +123,24 @@ const facebooklogin = () => async(req, res) => {
 
 
 const googlelogin = () => async(req, res) => {
-    const { tokenId } = req.body;
-try{
-   const newUser = { name, email, password: email };
-   const user = await Users.findOne({ email });
- 
-   if (user ) {
- 
-     return res.json({ user: user });
-   } else {
-     console.log(newUser);
-     const newUserd = await Users.create(newUser);
-     
- 
-     return res.json({  user: newUserd });
-   }
-   }catch(e){
-    return res.status(400).json('samething went worng !!')
-   }
+  const { tokenId } = req.body;
+  const data = await client.verifyIdToken({ idToken: tokenId, audience: '727555427268-u0l3487tpitph7t1s2lir4vsdk6153se.apps.googleusercontent.com' })
+  const { email_verified, email, name } = data.payload
+  console.log(data);
+  if (!email_verified) return res.status(400).json('not email verified !!')
+  try {
+      const newUser = { name, email, password: email };
+      const user = await Users.findOne({ email });
+      if (user) {
+          return res.json({ user: user });
+      } else {
+          console.log(newUser);
+          const newUserd = await Users.create(newUser);
+          return res.json({ user: newUserd });
+      }
+  } catch (e) {
+      return res.status(400).json('samething went worng !!')
+  }
 };
 
 module.exports = {
