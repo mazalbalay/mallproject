@@ -4,7 +4,7 @@ import { FaPlus, FaMinus } from "react-icons/fa";
 const FAQ = () => {
   const [expand, setExpand] = useState(false);
   const expandClass = expand ? "display" : "hidden";
-  const ansClass = `${expandClass} p-4`;
+  const ansClass = `${expandClass} p-4 px-1`;
  
   return (
     <div className="py-16 mx-auto w-full px-4 max-w-4xl text-right">
