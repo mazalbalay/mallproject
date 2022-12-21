@@ -46,7 +46,7 @@ export default function ProductPopUp({visible, onClose, product}) {
                 <p>נייק</p>
                 <p> מותג</p>
               </div>   
-              <div className='flex flex-col flex-row-reverse '>
+              <div className='flex flex-col '>
                 <p className=''> תיאור </p>
                 <p>הנעל ממש יפה מושלמת ואו ואו</p>
               </div>   

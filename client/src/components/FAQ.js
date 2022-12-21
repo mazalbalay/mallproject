@@ -5,8 +5,9 @@ const FAQ = () => {
   const [expand, setExpand] = useState(false);
   const expandClass = expand ? "display" : "hidden";
   const ansClass = `${expandClass} p-4`;
+ 
   return (
-    <div className="py-16 mx-auto w-full px-4 max-w-4xl">
+    <div className="py-16 mx-auto w-full px-4 max-w-4xl text-right">
       <h3 className="mb-12 text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
         שאלות נפוצות
       </h3>
@@ -16,7 +17,7 @@ const FAQ = () => {
           <button
             aria-label="question-expander"
             className="text-xl absolute top-0 right-0 p-4 focus:outline-none"
-            onClick={() => setExpand(!expand)}
+            onClick={(e) => setExpand(!expand)}
           >
             {expand ? <FaMinus className="w-5" /> : <FaPlus className="w-5" />}
           </button>
