@@ -10,14 +10,6 @@ import ErrPage from "./components/checkout/ErrPage";
 import ChangePWD from "./components/userProfile/ChangePWD";
 import PersonalInfo from "./components/userProfile/PersonalInfo";
 import UserProfile from "./components/userProfile/UserProfile";
-import AdminMain from "./components/Admin/Main";
-import CreateDepartment from "./components/Admin/CreateDepartment";
-import CreateStore from "./components/Admin/CreateStore";
-import Departments from "./components/Admin/Departments";
-import Stores from "./components/Admin/Stores";
-import EditDepartment from "./components/Admin/EditDepartment";
-import EditStore from "./components/Admin/EditStore";
-import MainPage from "./components/MainPage";
 import Department from "./components/Department";
 import Footer from "./components/Footer";
 import InStore from "./components/InStore";
@@ -41,16 +33,6 @@ function App() {
           <Route path="/ErrPage" element={<ErrPage />} />
           <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/personalinfo" element={<PersonalInfo />} />
-          <Route path="/Admin" element={<AdminMain />} />
-          <Route path="/Admin/department/new/" element={<CreateDepartment />} />
-          <Route path="/Admin/store/new/" element={<CreateStore />} />
-          <Route
-            path="/Admin/department/edit/;id"
-            element={<EditDepartment />}
-          />
-          <Route path="/Admin/store/edit/;id" element={<EditStore />} />
-          <Route path="/Admin/stores" element={<Stores />} />
-          <Route path="/Admin/departments" element={<Departments />} />
           <Route path="/department/:depId" element={<Department />} />
           <Route path="/instore" element={<InStore />} />
         </Routes>
