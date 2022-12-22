@@ -1,88 +1,101 @@
-import React,{useState,useEffect} from 'react'
-import DepartmentComp from './DepartmentComp'
-import {editDepartment,getDepartment, deleteDepartment} from '../ApiCalls/Departments'
-import {useParams } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { editDepartment, getDepartment, deleteDepartment } from "../ApiCalls/Departments";
+import { useParams } from "react-router-dom";
 import FileBase64 from "react-file-base64";
 
 export default function EditDepartment() {
-    let { depId } = useParams();
-    const [Department, setDepartment] = useState([]);
-    const [DepName, setDepName] = useState();
-    const [DepImage, setDepImage] = useState();
-    const [DepDesc, setDepDesc] = useState();
-      useEffect(() => {
-          const getDepartmentData = async () =>{
-            const result = await getDepartment(depId);
-            setDepartment([result.data]);
-          }
-          getDepartmentData();
-        },[depId]);
-        function editAndLoadPage () {
-          editDepartment(depId,DepName,DepImage.base64,DepDesc)
-          window.location.reload();
-        }
-        function deleteAndLoadPage () {
-          deleteDepartment(depId)
-          window.location.reload();
-        }
-        console.log(Department);
-        console.log(DepImage);
-        console.log(DepDesc);
+  let { depId } = useParams();
+  const [Department, setDepartment] = useState([]);
+  const [DepartmentName, setDepartmentName] = useState();
+  const [DepartmentImage, setDepImage] = useState();
+  const [DepartmentDesc, setDepartmentDesc] = useState();
+  useEffect(() => {
+    const getDepartmentData = async () => {
+      const result = await getDepartment(depId);
+      setDepartment([result.data]);
+    };
+    getDepartmentData();
+  }, [depId]);
+ async function editAndLoadPage() {
+     await editDepartment(depId, DepartmentName, DepartmentImage.image, DepartmentDesc);
+    }
+  async function deleteAndLoadPage() {
+   await deleteDepartment(depId);
+   window.location.reload();
+  }
+  console.log(Department);
   return (
-    <div>
-    <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-     
-     <div className="mb-4">
-       <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
-         department name
-       </label>
-       <input
-         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-         id="DepName"
-         onChange={(e) => setDepName(e.target.value)}
-         type="text"
-         placeholder="department name"
-       />
-     </div>
-     <div className="mb-4">
-       <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="image">
-         department image
-       </label>
-       <FileBase64
-             type="file"
-             multiple={false}
-             onDone={({ base64 }) => setDepImage({ ...DepImage,image :  base64})}
-           />
-     </div>
-     <div className="mb-4">
-       <label className="block text-gray-700 text-sm font-bold mb-2"
-         htmlFor="description">
-         department description
-       </label>
-       <input
-         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-         id="DepDesc"
-         onChange={(e) => setDepDesc(e.target.value)}
-         type="text"
-         placeholder="department description"
-       />
-     </div>
+    <div className="w-full m-auto rounded m-20 text-center h-screen md:w-4/12 w-10/12 container mx-auto">
+      <form className="w-full bg-white shadow-md rounded ">
+        <div className="bg-sky-300">
+          <p className="mx-auto text-center p-4 text-xl text-white		">עידכון מחלקה</p>
+        </div>
+        <div className="mb-4 p-4">
+          <label
+            className="block text-gray-700 pb-2 text-sm font-bold mb-2 "
+            htmlFor="name"
+          >
+            שם מחלקה
+          </label>
+          <input
+            className="shadow appearance-none border rounded text-end py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-10/12"
+            id="DepartmentName"
+            onChange={(e) => setDepartmentName(e.target.value)}
+            type="text"
+            placeholder="שם מחלקה"
+          />
+        </div>
+        <div className="mb-4 p-4">
+          <label
+            className="block text-gray-700 pb-2 text-sm font-bold mb-2 "
+            htmlFor="image"
+          >
+            תמונת מחלקה
+          </label>
 
-     <div className="flex items-center justify-between">
-       <button
-         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-         type="button"
-         onClick={()=>editAndLoadPage()}
-       
-       >
-         create Department
-       </button>
-     </div>
-   </form>
-   
+          <FileBase64
+            className="shadow appearance-none border rounded text-end py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-10/12"
+            type="file"
+            onDone={({ base64 }) =>
+              setDepImage({ ...DepartmentImage, image: base64 })
+            }
+            placeholder={"בחירת קובץ"}
+          />
+        </div>
+        <div className="mb-4 p-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2  text-xl pb-2"
+            htmlFor="description "
+          >
+            תיאור מחלקה
+          </label>
+          <input
+            className="shadow appearance-none border rounded text-end py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-10/12"
+            id="DepartmentDesc"
+            type="text"
+            onChange={(e) => setDepartmentDesc(e.target.value)}
+            placeholder="תיאור מחלקה"
+          />
+        </div>
 
-{Department[0]===null?<div>department deleted</div>:<button onClick={()=>deleteAndLoadPage(depId)}>Delete department</button>}
-  {Department[0]===null?null:<DepartmentComp img={Department.image} text={Department.name}/>}
+        <div className="flex items-center justify-center p-4">
+          <button
+            className="bg-sky-300 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
+            type="button"
+            onClick={() => editAndLoadPage()}
+          >
+            עידכון מחלקה
+          </button>
+        </div>
+      </form>
+
+      {Department[0] === null ? (
+        <div className="bg-red-700  mt-4 text-white font-bold py-2 px-4 rounded ">מחלקה נמחקה</div>) :
+         ( <button
+          className="bg-red-700 hover:bg-red-800 mt-4 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
+          onClick={() => deleteAndLoadPage(depId)}>
+         מחק מחלקה
+        </button>)}
     </div>
-  )
+  );
 }

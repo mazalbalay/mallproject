@@ -26,7 +26,7 @@ console.log(Departments);
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat'
       }}>
-        <div className='w-3/5 flex flex-col	'>
+        <div className='w-2/4 flex flex-col	'>
         
         <p className='text-4xl m-3 text-center '>m;dm;dsm mcd;smcdmcd</p>
         <input className='m-3 h-8' type="text" placeholder='מה תרצה לחפש?'/>
