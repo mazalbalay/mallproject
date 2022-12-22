@@ -10,13 +10,19 @@ import Auth from "./components/authentication/Auth";
 import ThancksPage from "./components/checkout/ThancksPage";
 import Home from "./components/Home";
 import ErrPage from "./components/checkout/ErrPage";
-import CreateDepartment from "./components/Admin/CreateDepartment";
 import CartStore from "./components/CartStore";
 import StoreComp from "./components/StoreComp";
-import Department from "./components/Department";
+import Departments from "./components/Admin/Departments";
 import Footer from "./components/Footer";
 import InStore from "./components/InStore";
-import CreateStore from "./components/Admin/CreateStore"
+import EditDepartment from "./components/Admin/EditDepartment";
+import CreateDepartment from './components/Admin/CreateDepartment';
+import Stores from './components/Admin/Stores';
+import AdminMain from './components/Admin/Main'
+// import CreateStore from "./components/Admin/CreateStore";
+import MainPage from "./components/MainPage";
+import EditStore from "./components/Admin/EditStore";
+import AddProduct from "./components/Manager/AddProduct";
 function App() {
   return (
     <PayPalScriptProvider
@@ -38,10 +44,19 @@ function App() {
           <Route path="/personalinfo" element={<PersonalInfo />} />
           <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/personalinfo" element={<PersonalInfo />} />
-          <Route path="/department/:depId" element={<Department />} />
           <Route path="/instore" element={<InStore />} />
-          <Route path="/department/new" element={<CreateDepartment />} />
-          <Route path="/store/new" element={<CreateStore />} />
+         <Route path="/admin" element={<AdminMain/>} />
+          <Route path="/admin/Department/new" element={< CreateDepartment/>} />
+          <Route path="/admin/Department/edit/:depId" element={< EditDepartment/>} />
+          <Route path="/Admin/Store/edit/:storeId" element={< EditStore/>} />
+          <Route path="/admin/stores" element={< Stores/>} />
+          <Route path="/admin/departments" element={< Departments/>} />
+          <Route path="/main" element={< MainPage/>} />
+          <Route path="/manager/products/addProduct" element={< AddProduct/>} />
+
+          {/* <Route path="/Admin/Store/new" element={< CreateStore/>} /> */}
+  
+
         </Routes>
       </div>
     </PayPalScriptProvider>
@@ -49,3 +64,4 @@ function App() {
 }
 
 export default App;
+

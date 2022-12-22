@@ -1,12 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
+
 const AddProduct = () => {
+
   return (
     <>
     <div>
-        <div className="bg-white rounded-xl shadow-lg p-8">
-            <form action="" className="flex flex-col space-y-4">
+        <div className="bg-white rounded-xl shadow-lg p-8 container mx-auto">
+            <form action="" className="flex flex-col space-y-4 w-5/12 container mx-auto">
                 <div>
                     <label htmlFor="" className="text-sm">Product name</label>
                 </div>
