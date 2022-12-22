@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 // import { Routes, Route, Link } from "react-router-dom";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
-import AddProduct from "./Manager/AddProduct";
-import EditProduct from "./Manager/EditProduct";
+import Home from './components/Home'
 
 function App() {
   return (
@@ -13,10 +12,9 @@ function App() {
       }}
     >
       <div>
-        <AddProduct />
-        <EditProduct />
+        <Home/>
         {/* <Routes>
-          
+          <Route path="/" element={<Home />} />
         </Routes> */}
       </div>
     </PayPalScriptProvider>

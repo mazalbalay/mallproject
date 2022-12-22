@@ -1,6 +1,6 @@
 import React, {useState,useEffect} from "react";
-import {createDepartment,getDepartments} from './ApiCalls/Departments'
-
+import {createDepartment,getDepartments} from '../ApiCalls/Departments';
+import FileBase64 from 'react-file-base64';
 
 export default function CreateDepartment() {
     const [DepName, setDepName] = useState();
@@ -15,73 +15,62 @@ export default function CreateDepartment() {
         getDepartmentsData();
       },[]);
 
+    
    console.log(Departments);
   
   return (
-    <div class="w-full m-auto rounded m-20 text-center h-screen w-1/2 ">
-      
+    <div class="w-full max-w-xs m-auto ">
+       <p class="mx-auto m-10 text-xl		" >Create Department</p>
         
-      <form class="w-full bg-white shadow-md rounded ">
-        <div className="bg-sky-300">
-       <p class="mx-auto text-center p-4 text-xl text-white		" >יצירת מחלקה</p>
-       </div>
-        <div class="mb-4 p-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2 " for="name">
-            שם מחלקה
+      <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+     
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+            department name
           </label>
           <input
-            // class="shadow appearance-none border text-end rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            class="shadow appearance-none border rounded text-end py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="DepName"
             onChange={(e) => setDepName(e.target.value)}
             type="text"
-            placeholder="שם מחלקה"
+            placeholder="department name"
           />
         </div>
-        <div class="mb-4 p-4">
-          <div>
+        <div class="mb-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="image">
-            תמונת מחלקה
+            department image
           </label>
-          </div>
-          <div className="flex justify-center">
-          <input
-              className="block text-right  text-sm text-gray-900 bg-gray-50 rounded border "
-              type="file"
-              onChange={setDepImage}
-              placeholder={"בחירת קובץ"}
-            />
-            </div>
+          <FileBase64
+                type="file"
+                multiple={false}
+                onDone={({ base64 }) => setDepImage({ ...DepImage,image :  base64})}
+              />
         </div>
         <div class="mb-4">
           <label class="block text-gray-700 text-sm font-bold mb-2"
             for="description">
-            תיאור מחלקה
+            department description
           </label>
           <input
-            class="shadow appearance-none border rounded text-end py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="DepDesc"
             onChange={(e) => setDepDesc(e.target.value)}
             type="text"
-            placeholder="תיאור מחלקה"
+            placeholder="department description"
           />
         </div>
 
-        <div class="flex items-center justify-center p-4">
+        <div class="flex items-center justify-between">
           <button
-            class="bg-sky-300 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="button"
-            onClick={()=>createDepartment(DepName,DepImage,DepDesc)}
+            onClick={()=>createDepartment(DepName,DepImage.base64,DepDesc)}
           >
-            יצירת מחלקה
+            create Department
           </button>
         </div>
       </form>
-      {/* {Departments.map(dep=><div key={dep._id}>
-        <img src={dep.image} alt=""  />
-      </div>)} */}
+     
     </div>
-    
   );
 }
