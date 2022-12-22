@@ -20,50 +20,60 @@ export default function CreateDepartment() {
    console.log(Departments);
   
   return (
-    <div class="w-full max-w-xs m-auto ">
-       <p class="mx-auto m-10 text-xl		" >Create Department</p>
+    <div className="w-full m-auto rounded m-20 text-center h-screen md:w-4/12 w-10/12 container mx-auto">
+      
         
-      <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-     
-        <div class="mb-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
-            department name
+      <form className="w-full bg-white shadow-md rounded ">
+        <div className="bg-sky-300">
+       <p className="mx-auto text-center p-4 text-xl text-white		" >יצירת מחלקה</p>
+       </div>
+        <div className="mb-4 p-4">
+          <label className="block text-gray-700 pb-2 text-sm font-bold mb-2 " for="name">
+            שם מחלקה
           </label>
           <input
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            // className="shadow appearance-none border text-end rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded text-end py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-10/12"
+
             id="DepName"
             onChange={(e) => setDepName(e.target.value)}
             type="text"
             placeholder="department name"
           />
         </div>
-        <div class="mb-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="image">
-            department image
+        <div className="mb-4 p-4">
+          
+          <label
+          className="block text-gray-700 pb-2 text-sm font-bold mb-2 "
+          htmlFor="image"
+          >
+            תמונת מחלקה
           </label>
+        
           <FileBase64
-                type="file"
-                multiple={false}
-                onDone={({ base64 }) => setDepImage({ ...DepImage,image :  base64})}
-              />
-        </div>
-        <div class="mb-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2"
-            for="description">
-            department description
+          className="shadow appearance-none border rounded text-end py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-10/12"
+          type="file"
+            onChange={setDepImage}
+            placeholder={"בחירת קובץ"}
+          />
+      </div>
+        <div className="mb-4 p-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2  text-xl pb-2"
+            for="description ">
+            תיאור מחלקה
           </label>
           <input
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="DepDesc"
-            onChange={(e) => setDepDesc(e.target.value)}
             type="text"
-            placeholder="department description"
+            onChange={(e) => setDepDesc(e.target.value)}
+            placeholder="תיאור מחלקה"
           />
         </div>
 
-        <div class="flex items-center justify-between">
+        <div className="flex items-center justify-center p-4">
           <button
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-sky-300 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
             type="button"
             onClick={()=>createDepartment(DepName,DepImage.base64,DepDesc)}
           >
