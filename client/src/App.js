@@ -11,7 +11,7 @@ import ThancksPage from "./components/checkout/ThancksPage";
 import Home from "./components/Home";
 import ErrPage from "./components/checkout/ErrPage";
 import CartStore from "./components/CartStore";
-import StoreComp from "./components/StoreComp";
+// import StoreComp from "./components/storeList/StorePage";
 import Departments from "./components/Admin/Departments";
 import Footer from "./components/Footer";
 import InStore from "./components/InStore";
@@ -19,7 +19,7 @@ import EditDepartment from "./components/Admin/EditDepartment";
 import CreateDepartment from './components/Admin/CreateDepartment';
 import Stores from './components/Admin/Stores';
 import AdminMain from './components/Admin/Main'
-// import CreateStore from "./components/Admin/CreateStore";
+import CreateStore from "./components/Admin/CreateStore";
 import MainPage from "./components/MainPage";
 import EditStore from "./components/Admin/EditStore";
 import AddProduct from "./components/Manager/AddProduct";
