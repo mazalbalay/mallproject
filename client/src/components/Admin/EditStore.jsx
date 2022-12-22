@@ -4,23 +4,23 @@ import { useParams } from "react-router-dom";
 import FileBase64 from "react-file-base64";
 
 export default function EditStore() {
-  let { depId } = useParams();
+  let { storeId } = useParams();
   const [Store, setStore] = useState([]);
   const [StoreName, setStoreName] = useState();
   const [StoreImage, setDepImage] = useState();
   const [StoreDesc, setStoreDesc] = useState();
   useEffect(() => {
     const getStoreData = async () => {
-      const result = await getStore(depId);
+      const result = await getStore(storeId);
       setStore([result.data]);
     };
     getStoreData();
-  }, [depId]);
+  }, [storeId]);
  async function editAndLoadPage() {
-     await editStore(depId, StoreName, StoreImage.image, StoreDesc);
+     await editStore(storeId, StoreName, StoreImage.image, StoreDesc);
     }
   async function deleteAndLoadPage() {
-   await deleteStore(depId);
+   await deleteStore(storeId);
    window.location.reload();
   }
   console.log(Store);
@@ -93,7 +93,7 @@ export default function EditStore() {
         <div className="bg-red-700  mt-4 text-white font-bold py-2 px-4 rounded ">חנות נמחקה</div>) :
          ( <button
           className="bg-red-700 hover:bg-red-800 mt-4 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
-          onClick={() => deleteAndLoadPage(depId)}>
+          onClick={() => deleteAndLoadPage(storeId)}>
          מחק חנות
         </button>)}
     </div>
