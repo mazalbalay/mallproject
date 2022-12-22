@@ -7,7 +7,7 @@ const AddProduct = () => {
 
   return (
     <>
-    <div>
+    <div className="h-40">
         <div className="bg-white rounded-xl shadow-lg p-8 container mx-auto">
             <form action="" className="flex flex-col space-y-4 w-5/12 container mx-auto">
                 <div>
@@ -50,14 +50,15 @@ const AddProduct = () => {
                     <label htmlFor="" className="text-sm">Description</label>
                 </div>
                 <div>
-                    <textarea rows="7" type="text" placeholder="Description" className="ring-1 ring-gray-300 w-full rounded-md px-4 py-2 outline-none focus:ring-2 focus:ring-teal-300" />
+                    <textarea rows="3" type="text" placeholder="Description" className="ring-1 ring-gray-300 w-full rounded-md px-4 py-2 outline-none focus:ring-2 focus:ring-teal-300" />
                 </div>
 
                 <div>
-                    <label htmlFor="" className="text-sm">Description</label>
+                    <label htmlFor="" className="text-sm">Images</label>
                 </div>
                 <div>
-                    <textarea rows="7" type="text" placeholder="Description" className="ring-1 ring-gray-300 w-full rounded-md px-4 py-2 outline-none focus:ring-2 focus:ring-teal-300" />
+                    <input type="text" placeholder="Enter image URL" className="ring-1 ring-gray-300 w-full rounded-md px-4 py-2 outline-none focus:ring-2 focus:ring-teal-300" />
+                    <input type="file" className="ring-1 ring-gray-300 w-full rounded-md px-4 py-2 outline-none focus:ring-2 focus:ring-teal-300" />
                 </div>
                 
 
