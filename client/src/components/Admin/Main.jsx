@@ -20,13 +20,13 @@ function navigateTo (route) {
 }
 
   return <div>
+    <div className="text-center">{User==null?null:<div>hello {User.name}</div>}</div>
     
-    {User==null?null:<div>hello {User.name}</div>}
-    <button  onClick={()=> navigateTo(`${"/Admin/departments"}`)}  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    <div className="flex-row"><button  onClick={()=> navigateTo(`${"/Admin/departments"}`)}   className=" bg-sky-300 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline">
   Departments
 </button>
-<button  onClick={()=> navigateTo(`${"/Admin/stores"}`)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+<button  onClick={()=> navigateTo(`${"/admin/stores"}`)}  className=" bg-sky-300 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline">
   Stores
-</button>
+</button></div>
   </div>;
 }
