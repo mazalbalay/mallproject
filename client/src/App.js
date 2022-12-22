@@ -10,7 +10,6 @@ import Auth from "./components/authentication/Auth";
 import ThancksPage from "./components/checkout/ThancksPage";
 import Home from "./components/Home";
 import ErrPage from "./components/checkout/ErrPage";
-import CreateDepartment from "./components/Admin/CreateDepartment";
 import CartStore from "./components/CartStore";
 import StoreComp from "./components/StoreComp";
 import Department from "./components/Department";
@@ -18,6 +17,7 @@ import Footer from "./components/Footer";
 import InStore from "./components/InStore";
 import CreateDepartment from "./components/Admin/CreateDepartment";
 import CreateStore from "./components/Admin/CreateStore"
+import MainPage from "./components/MainPage";
 function App() {
   return (
     <PayPalScriptProvider
@@ -27,10 +27,9 @@ function App() {
       }}
     >
       <div>
-        <Link to="instore"> store</Link>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/Auth" element={<Auth />} />
+          <Route path="/auth" element={<Auth />} />
           <Route path="/CheckOut" element={<CheckOut />} />
           <Route path="/changepassword" element={<ChangePWD />} />
           <Route path="/ThancksPage" element={<ThancksPage />} />
@@ -43,6 +42,8 @@ function App() {
           <Route path="/instore" element={<InStore />} />
           <Route path="/department/new" element={<CreateDepartment />} />
           <Route path="/store/new" element={<CreateStore />} />
+          <Route path="/main" element={<MainPage />} />
+
         </Routes>
       </div>
     </PayPalScriptProvider>

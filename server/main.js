@@ -6,6 +6,7 @@ const cors = require("cors");
 const userRouter = require("./ROUTERS/userRoute");
 const productRouter = require("./ROUTERS/productRouter");
 const orderRouter = require("./ROUTERS/orderRouter");
+const departmentRouter = require("./ROUTERS/departmentRouter");
 require("./config");
 const app = express();
 
@@ -45,6 +46,7 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: false }));
 app.use("/", userRouter);
 app.use("/", orderRouter);
 app.use("/", productRouter);
+app.use("/", departmentRouter);
 // app.get("/",(req,res)=>{
 //     sendEmail()
 //     .then(response=>res.send(response.message))

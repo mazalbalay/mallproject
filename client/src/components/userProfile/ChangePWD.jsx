@@ -1,6 +1,6 @@
 import React ,{useState}from 'react'
 import bcrypt from "bcryptjs-react";
-import { usersUpdate } from '../../api/api';
+import { usersUpdate } from '../../api/userApi';
 
 
 export default function ChangePWD() {
