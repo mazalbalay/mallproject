@@ -34,7 +34,8 @@ export default function Home() {
       {/* <AddProduct/> */}
       {/* <CreateStore/> */}
       {/* <EditProduct/>   */}
-      <About />
+      {/* <About/> */}
+      
     </div>
   );
 }
