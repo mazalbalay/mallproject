@@ -1,17 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-name: String,
-image: String,
-price: Number,
-brand: String,
-quantity: Number,
-description: String,
-department: String,
-section: String
+
 
 const AddProduct = () => {
-const productFormData=
 
   return (
     <>
