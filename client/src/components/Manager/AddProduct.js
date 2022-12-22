@@ -1,12 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+name: String,
+image: String,
+price: Number,
+brand: String,
+quantity: Number,
+description: String,
+department: String,
+section: String
+
 const AddProduct = () => {
+const productFormData=
+
   return (
     <>
     <div>
-        <div className="bg-white rounded-xl shadow-lg p-8">
-            <form action="" className="flex flex-col space-y-4">
+        <div className="bg-white rounded-xl shadow-lg p-8 container mx-auto">
+            <form action="" className="flex flex-col space-y-4 w-5/12 container mx-auto">
                 <div>
                     <label htmlFor="" className="text-sm">Product name</label>
                 </div>
