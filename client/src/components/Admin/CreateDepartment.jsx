@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { createDepartment, getDepartments } from "../ApiCalls/Departments";
 import FileBase64 from "react-file-base64";
+import DepartmentComp from "./DepartmentComp";
 
 export default function CreateDepartment() {
   const [DepName, setDepName] = useState();
@@ -89,6 +90,10 @@ export default function CreateDepartment() {
           </button>
         </div>
       </form>
+      {Department.length === 0? null:
+      <div>
+        <p className="bg-sky-700  mt-4 text-white font-bold py-2 px-4 rounded ">store preview</p>
+         {Department.map(dep => <DepartmentComp key={dep._id} img={dep.image} text={dep.name}/>)}</div>}
     </div>
   );
 }
