@@ -10,7 +10,7 @@ import Auth from "./components/authentication/Auth";
 import ThancksPage from "./components/checkout/ThancksPage";
 import Home from "./components/Home";
 import ErrPage from "./components/checkout/ErrPage";
-import CreateDepartment from "./components/Admin/CreateDepartment";
+// import CreateDepartment from "./components/Admin/CreateDepartment";
 import CartStore from "./components/CartStore";
 import StoreComp from "./components/StoreComp";
 import Department from "./components/Department";
