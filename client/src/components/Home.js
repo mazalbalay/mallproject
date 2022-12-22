@@ -30,11 +30,11 @@ export default function Home() {
       {/* <EditDepartment/>
       <CreateDepartment/> */}
       {/* <CreateStore/> */}
-     {/* <EditStore/> */}
-     {/* <AddProduct/> */}
+      {/* <EditStore/> */}
+      {/* <AddProduct/> */}
       {/* <CreateStore/> */}
       {/* <EditProduct/>   */}
-<About/>
+      {/* <About/> */}
       
     </div>
   );
