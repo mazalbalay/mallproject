@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import About from "./About";
 import CreateDepartment from "./Admin/CreateDepartment";
 import CreateStore from "./Admin/CreateStore";
 import EditDepartment from "./Admin/EditDepartment";
@@ -32,7 +33,8 @@ export default function Home() {
      {/* <EditStore/> */}
      {/* <AddProduct/> */}
       {/* <CreateStore/> */}
-      <EditProduct/>  
+      {/* <EditProduct/>   */}
+<About/>
       
     </div>
   );
