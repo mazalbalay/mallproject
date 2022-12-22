@@ -18,24 +18,23 @@ export default function Home() {
           navigate("/checkout");
         }}
       >
-        checkout | 
+        checkout |
       </button>
       <button
         onClick={() => {
           navigate("/Auth");
         }}
       >
-        Auth | 
+        Auth |
       </button>
       {/* <EditDepartment/>
       <CreateDepartment/> */}
       {/* <CreateStore/> */}
-     {/* <EditStore/> */}
-     {/* <AddProduct/> */}
+      {/* <EditStore/> */}
+      {/* <AddProduct/> */}
       {/* <CreateStore/> */}
       {/* <EditProduct/>   */}
-<About/>
-      
+      <About />
     </div>
   );
 }

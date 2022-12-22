@@ -16,9 +16,9 @@ import Departments from "./components/Admin/Departments";
 import Footer from "./components/Footer";
 import InStore from "./components/InStore";
 import EditDepartment from "./components/Admin/EditDepartment";
-import CreateDepartment from './components/Admin/CreateDepartment';
-import Stores from './components/Admin/Stores';
-import AdminMain from './components/Admin/Main'
+import CreateDepartment from "./components/Admin/CreateDepartment";
+import Stores from "./components/Admin/Stores";
+import AdminMain from "./components/Admin/Main";
 // import CreateStore from "./components/Admin/CreateStore";
 import MainPage from "./components/MainPage";
 import EditStore from "./components/Admin/EditStore";
@@ -45,18 +45,19 @@ function App() {
           <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/personalinfo" element={<PersonalInfo />} />
           <Route path="/instore" element={<InStore />} />
-         <Route path="/admin" element={<AdminMain/>} />
-          <Route path="/admin/Department/new" element={< CreateDepartment/>} />
-          <Route path="/admin/Department/edit/:depId" element={< EditDepartment/>} />
-          <Route path="/Admin/Store/edit/:storeId" element={< EditStore/>} />
-          <Route path="/admin/stores" element={< Stores/>} />
-          <Route path="/admin/departments" element={< Departments/>} />
-          <Route path="/main" element={< MainPage/>} />
-          <Route path="/manager/products/addProduct" element={< AddProduct/>} />
+          <Route path="/admin" element={<AdminMain />} />
+          <Route path="/admin/Department/new" element={<CreateDepartment />} />
+          <Route
+            path="/admin/Department/edit/:depId"
+            element={<EditDepartment />}
+          />
+          <Route path="/Admin/Store/edit/:storeId" element={<EditStore />} />
+          <Route path="/admin/stores" element={<Stores />} />
+          <Route path="/admin/departments" element={<Departments />} />
+          <Route path="/main" element={<MainPage />} />
+          <Route path="/manager/products/addProduct" element={<AddProduct />} />
 
           {/* <Route path="/Admin/Store/new" element={< CreateStore/>} /> */}
-  
-
         </Routes>
       </div>
     </PayPalScriptProvider>
@@ -64,4 +65,3 @@ function App() {
 }
 
 export default App;
-
