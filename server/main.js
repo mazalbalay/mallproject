@@ -10,26 +10,7 @@ const orderRouter = require("./ROUTERS/orderRouter");
 const departmentRouter = require("./ROUTERS/departmentRouter");
 const storeRouter = require("./ROUTERS/storeRouter");
 const app = express();
-const mailTransporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: "techteamproject555@gmail.com",
-    pass: "ozuahinyhwwwvxhi",
-  },
-});
-const details = {
-  from: "techteamproject555@gmail.com",
-  to: "mazalbalay3@gmail.com",
-  subject: "Subject of your email",
-  html: "<p>Your html here</p>",
-};
-mailTransporter.sendMail(details, (err) => {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log("email hs send");
-  }
-});
+
 app.use(cors());
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: false }));

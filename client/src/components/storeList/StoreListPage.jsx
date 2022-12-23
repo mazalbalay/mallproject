@@ -1,28 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { FiX } from "react-icons/fi";
 import { AiFillShop, AiOutlinePlusCircle } from "react-icons/ai";
-import { allStores } from "../../api/api";
+import { allStores } from "../../api/userApi";
 import { FaAddressCard } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 const StoreComp = () => {
+  const navigate = useNavigate()
   const [stores, setStores] = useState();
   const [location, setvalue] = useState('');
-  const [filtered, setFiltered] = useState();
-
-console.log(filtered);
-    console.log(location);
-
-  const storesFu = async () => {
+  const [filtered, setFiltered] = useState(); 
+ const storesFu = async () => {
     const { data } = await allStores();
     setStores(data);
   };
-
   
-    const newdata = stores?.filter((store) => store.location === location)
-
- 
-
   useEffect(() => {
-    
     storesFu();
   }, []);
 
@@ -104,7 +96,7 @@ console.log(filtered);
                 <div>(33)חוות דעת ***** </div>
                 <div className="my-1">{store.description}</div>
                 <div className="flex justify-between w-[90%]">
-                  <button className="p-3 bg-black text-white font-medium">
+                  <button onClick={()=>navigate(`/instore/${store.name}`)} className="p-3 bg-black text-white font-medium">
                     {" "}
                     קנה בחנות זו
                   </button>

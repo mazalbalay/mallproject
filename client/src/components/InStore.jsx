@@ -7,15 +7,16 @@ import { FiMinusCircle } from "react-icons/fi";
 import { FiX } from "react-icons/fi";
 import { AiFillShop } from "react-icons/ai";
 import ProductPopUp from "./ProductPopUp";
+import { useParams } from "react-router-dom";
 
 export default function InStore() {
+  const {name} = useParams()
  const[popUp, setPopUp] = useState(false)
  const [product, setProduct] = useState([])
-
  const allProduct = async () => {
   const {data} = await axios.get("http://localhost:8000/product")
-  setProduct(data)
-  console.log(product);
+  const filteredByName = data?.filter(store=>store.brand === name)
+  setProduct(filteredByName)
  }
  useEffect(() => {
   allProduct()

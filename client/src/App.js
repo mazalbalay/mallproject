@@ -11,7 +11,7 @@ import ThancksPage from "./components/checkout/ThancksPage";
 import Home from "./components/Home";
 import ErrPage from "./components/checkout/ErrPage";
 import CartStore from "./components/CartStore";
-import StoreComp from "./components/storeList/StoreListPage";
+import StoreListPage from "./components/storeList/StoreListPage";
 import Department from "./components/Department";
 import Footer from "./components/Footer";
 import InStore from "./components/InStore";
@@ -23,6 +23,7 @@ import CreateStore from "./components/Admin/CreateStore";
 import MainPage from "./components/MainPage";
 import EditStore from "./components/Admin/EditStore";
 import AddProduct from "./components/Manager/AddProduct";
+
 function App() {
   return (
     <PayPalScriptProvider
@@ -43,10 +44,10 @@ function App() {
           <Route path="/personalinfo" element={<PersonalInfo />} />
           <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/personalinfo" element={<PersonalInfo />} />
-          <Route path="/instore" element={<InStore />} />
+          <Route path="/instore/:name" element={<InStore />} />
           <Route path="/department/new" element={<CreateDepartment />} />
           <Route path="/store/new" element={<CreateStore />} />
-          <Route path="/storelist/" element={<StoreComp />} />
+          <Route path="/storelist/" element={<StoreListPage />} />
         </Routes>
       </div>
     </PayPalScriptProvider>

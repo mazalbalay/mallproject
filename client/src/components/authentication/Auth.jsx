@@ -73,7 +73,7 @@ export default function Auth() {
           fullName: "",
           userName: "",
         });
-        navigate("/userprofile");
+        // navigate("/userprofile");
       } catch (e) {
         setMessage(e.response.data);
       }
@@ -83,7 +83,7 @@ export default function Auth() {
 
         localStorage.setItem("user", JSON.stringify({ data }));
 
-        navigate("/userprofile");
+        // navigate("/userprofile");
       } catch (e) {
         setMessage(e.response.data);
       }
