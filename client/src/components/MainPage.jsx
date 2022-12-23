@@ -20,20 +20,20 @@ function navigateTo (route) {
 
 console.log(Departments);
   return (
-    <div class='flex justify-center' style={{  
+    <div className='flex justify-center' style={{  
         backgroundImage: `url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQiFxlK4AauN9A1iFM9HYZliv_dGzHD1iXhg&usqp=CAU)`,
         backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat'
       }}>
-        <div class='w-3/5 flex flex-col	'>
+        <div className='w-2/4 flex flex-col	'>
         
-        <p class='text-4xl m-3 text-center '>m;dm;dsm mcd;smcdmcd</p>
-        <input class='m-3 h-8' type="text" placeholder='מה תרצה לחפש?'/>
-        <p class='text-xl text-center m-3' >ndvsnvlnvd vnskldksl</p>
+        <p className='text-4xl m-3 text-center '>m;dm;dsm mcd;smcdmcd</p>
+        <input className='m-3 h-8' type="text" placeholder='מה תרצה לחפש?'/>
+        <p className='text-xl text-center m-3' >ndvsnvlnvd vnskldksl</p>
         
        
-        <div class=' flex flex-wrap'>
+        <div className=' flex flex-wrap'>
            {Departments.map(dep =>  <div key={dep.id}  onClick={()=> navigateTo(`${"/Admin/departments"}`)} ><DepartmentComp img={dep.image} text={dep.name}/></div>)}
            
         </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { usersUpdate } from '../../api/api'  
+import { usersUpdate } from '../../api/userApi'  
 import FileBase64 from "react-file-base64";
 import axios from 'axios'
 
