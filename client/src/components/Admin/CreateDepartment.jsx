@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from "react";
-import {createDepartment,getDepartments} from './ApiCalls/Departments'
+import {createDepartment,getDepartments} from '../ApiCalls/Departments'
 
 
 export default function CreateDepartment() {

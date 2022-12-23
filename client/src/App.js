@@ -10,9 +10,8 @@ import Auth from "./components/authentication/Auth";
 import ThancksPage from "./components/checkout/ThancksPage";
 import Home from "./components/Home";
 import ErrPage from "./components/checkout/ErrPage";
-import CreateDepartment from "./components/Admin/CreateDepartment";
 import CartStore from "./components/CartStore";
-import StoreComp from "./components/StoreComp";
+import StoreComp from "./components/storeList/StoreListPage";
 import Department from "./components/Department";
 import Footer from "./components/Footer";
 import InStore from "./components/InStore";
@@ -43,6 +42,7 @@ function App() {
           <Route path="/instore" element={<InStore />} />
           <Route path="/department/new" element={<CreateDepartment />} />
           <Route path="/store/new" element={<CreateStore />} />
+          <Route path="/storelist/" element={<StoreComp />} />
         </Routes>
       </div>
     </PayPalScriptProvider>
