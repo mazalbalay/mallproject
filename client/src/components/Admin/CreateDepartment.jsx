@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { createDepartment, getDepartments } from "../ApiCalls/Departments";
 import FileBase64 from "react-file-base64";
-import DepartmentComp from "./DepartmentComp";
 
 export default function CreateDepartment() {
   const [DepName, setDepName] = useState();
@@ -19,7 +18,7 @@ export default function CreateDepartment() {
 
   async function createAndLoadPage() {
     let dep = await createDepartment(DepName, DepImage.image, DepDesc);
-    setDepartment(dep.data);
+    setDepartment([dep.data]);
     console.log(dep);
   }
 
@@ -37,7 +36,7 @@ export default function CreateDepartment() {
         <div className="mb-4 p-4">
           <label
             className="block text-gray-700 pb-2 text-sm font-bold mb-2 "
-            for="name"
+            htmlFor="name"
           >
             שם מחלקה
           </label>
@@ -67,12 +66,12 @@ export default function CreateDepartment() {
         <div className="mb-4 p-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2  text-xl pb-2"
-            for="description "
+            htmlFor="description "
           >
             תיאור מחלקה
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded text-end py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-10/12"
             id="DepDesc"
             type="text"
             onChange={(e) => setDepDesc(e.target.value)}
@@ -81,19 +80,23 @@ export default function CreateDepartment() {
         </div>
 
         <div className="flex items-center justify-center p-4">
-          <button
+        {Department.length === 0?  <button
             className="bg-sky-300 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
             type="button"
             onClick={() => createAndLoadPage()}
           >
-            create Department
-          </button>
+           צור מחלקה
+          </button>:
+      
+       <button
+            className="bg-sky-300 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
+            type="button"
+          >
+           מחלקה נוצרה
+          </button>}
         </div>
       </form>
-      {Department.length === 0? null:
-      <div>
-        <p className="bg-sky-700  mt-4 text-white font-bold py-2 px-4 rounded ">store preview</p>
-         {Department.map(dep => <DepartmentComp key={dep._id} img={dep.image} text={dep.name}/>)}</div>}
+     
     </div>
   );
 }

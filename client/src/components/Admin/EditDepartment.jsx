@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { editDepartment, getDepartment, deleteDepartment } from "../ApiCalls/Departments";
+import {
+  editDepartment,
+  getDepartment,
+  deleteDepartment,
+} from "../ApiCalls/Departments";
 import { useParams } from "react-router-dom";
 import FileBase64 from "react-file-base64";
 
@@ -16,19 +20,26 @@ export default function EditDepartment() {
     };
     getDepartmentData();
   }, [depId]);
- async function editAndLoadPage() {
-     await editDepartment(depId, DepartmentName, DepartmentImage.image, DepartmentDesc);
-    }
+  async function editAndLoadPage() {
+    await editDepartment(
+      depId,
+      DepartmentName,
+      DepartmentImage.image,
+      DepartmentDesc
+    );
+    alert("מחלקה עודכנה");
+  }
   async function deleteAndLoadPage() {
-   await deleteDepartment(depId);
-   window.location.reload();
+    await deleteDepartment(depId);
   }
   console.log(Department);
   return (
     <div className="w-full m-auto rounded m-20 text-center h-screen md:w-4/12 w-10/12 container mx-auto">
       <form className="w-full bg-white shadow-md rounded ">
         <div className="bg-sky-300">
-          <p className="mx-auto text-center p-4 text-xl text-white		">עידכון מחלקה</p>
+          <p className="mx-auto text-center p-4 text-xl text-white		">
+            עידכון מחלקה
+          </p>
         </div>
         <div className="mb-4 p-4">
           <label
@@ -78,7 +89,7 @@ export default function EditDepartment() {
           />
         </div>
 
-        <div className="flex items-center justify-center p-4">
+        <div className="flex items-center justify-evenly p-4">
           <button
             className="bg-sky-300 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
             type="button"
@@ -86,16 +97,22 @@ export default function EditDepartment() {
           >
             עידכון מחלקה
           </button>
+          {Department[0] === null ? (
+            <div className="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline">
+              מחלקה נמחקה
+            </div>
+          ) : (
+            <button
+              className="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
+              onClick={() => deleteAndLoadPage(depId)}
+            >
+              מחק מחלקה
+            </button>
+          )}
         </div>
       </form>
 
-      {Department[0] === null ? (
-        <div className="bg-red-700  mt-4 text-white font-bold py-2 px-4 rounded ">מחלקה נמחקה</div>) :
-         ( <button
-          className="bg-red-700 hover:bg-red-800 mt-4 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
-          onClick={() => deleteAndLoadPage(depId)}>
-         מחק מחלקה
-        </button>)}
+      
     </div>
   );
 }
