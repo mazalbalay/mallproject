@@ -20,7 +20,7 @@ export async function editDepartment(id, name, image, description) {
     try {
         const response = await axios.put(`http://localhost:8000/department/${id}`, {
             name: name,
-            image,
+            image:image,
             description: description,
         });
         return response;
@@ -32,7 +32,7 @@ export async function createDepartment(name, image, description) {
     try {
         const response = axios.post("http://localhost:8000/department", {
             name: name,
-            image,
+            image:image,
             description: description,
         })
         return response;
