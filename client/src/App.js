@@ -11,7 +11,8 @@ import ThancksPage from "./components/checkout/ThancksPage";
 import Home from "./components/Home";
 import ErrPage from "./components/checkout/ErrPage";
 import CartStore from "./components/CartStore";
-import StoreComp from "./components/StoreComp";
+import StoreListPage from "./components/storeList/StoreListPage";
+
 import Departments from "./components/Admin/Departments";
 import Footer from "./components/Footer";
 import InStore from "./components/InStore";
@@ -44,7 +45,7 @@ function App() {
           <Route path="/personalinfo" element={<PersonalInfo />} />
           <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/personalinfo" element={<PersonalInfo />} />
-          <Route path="/instore" element={<InStore />} />
+          <Route path="/instore/:name" element={<InStore />} />
          <Route path="/admin" element={<AdminMain/>} />
           <Route path="/admin/Department/new" element={< CreateDepartment/>} />
           <Route path="/admin/Department/edit/:depId" element={< EditDepartment/>} />
@@ -52,6 +53,7 @@ function App() {
           <Route path="/admin/stores" element={< Stores/>} />
           <Route path="/admin/departments" element={< Departments/>} />
           <Route path="/main" element={< MainPage/>} />
+          <Route path="/storelist" element={< StoreListPage/>} />
           <Route path="/manager/products/addProduct" element={< AddProduct/>} />
 
           {/* <Route path="/Admin/Store/new" element={< CreateStore/>} /> */}
