@@ -7,26 +7,26 @@ const FAQ = () => {
   const ansClass = `${expandClass} p-4 px-1`;
  
   return (
-    <div className="py-16 mx-auto w-full px-4 max-w-4xl text-right">
-      <h3 className="mb-12 text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
+    <div className=" mx-auto w-full p-2 max-w-4xl text-right">
+      <h3 className=" text-3xl text-center leading-8  tracking-tight text-gray-500 sm:text-3xl sm:leading-10">
         שאלות נפוצות
       </h3>
       <div className="">
         <div className="p-4 text-xl relative font-medium">
-          <div className="text-sky-500 w-5/6">?מה הסכום המינימלי להזמנה</div>
+          <div className="text-sky-300 w-5/6">?מה הסכום המינימלי להזמנה</div>
           <button
             aria-label="question-expander"
             className="text-xl absolute top-0 right-0 p-4 focus:outline-none"
             onClick={(e) => setExpand(!expand)}
           >
-            {expand ? <FiMinusCircle className="text-sky-500 w-5 hover:bg-sky-500 hover:ring-sky-500 rounded-lg hover:text-white" /> : <FiPlusCircle className="text-sky-500 w-5 hover:bg-sky-500 hover:ring-sky-500 rounded-lg hover:text-white" />}
+            {expand ? <FiMinusCircle className="text-sky-300 w-5 hover:bg-sky-500 hover:ring-sky-500 rounded-lg hover:text-white" /> : <FiPlusCircle className="text-sky-500 w-5 hover:bg-sky-500 hover:ring-sky-500 rounded-lg hover:text-white" />}
           </button>
         </div>
         <div className={ansClass}>כדי בה מתוך ליצירתה אגרונומיה, או רפואה טכנולוגיה כלל. את בדפים מיוחדים צ'ט. המזנון ביולוגיה לויקיפדים צעד אם. מוסיקה מתמטיקה של זאת, אם ספרות הקהילה היא</div>
       </div>
       <div className="">
         <div className="p-4 text-xl relative font-medium">
-          <div className="text-sky-500 w-5/6">?איך יוצרים איתכם קשר</div>
+          <div className="text-sky-300 w-5/6">?איך יוצרים איתכם קשר</div>
           <button
             aria-label="question-expander"
             className="text-xl absolute top-0 right-0 p-4 focus:outline-none"
@@ -39,20 +39,20 @@ const FAQ = () => {
       </div>
       <div className="">
         <div className="p-4 text-xl relative font-medium">
-          <div className="text-sky-500 w-5/6">?אתם כשרים</div>
+          <div className="text-sky-300 w-5/6">?אתם כשרים</div>
           <button
             aria-label="question-expander"
             className="text-xl absolute top-0 right-0 p-4 focus:outline-none"
             onClick={() => setExpand(!expand)}
           >
-            {expand ? <FiMinusCircle className="text-sky-500 w-5 hover:bg-sky-500 hover:ring-sky-500 rounded-lg hover:text-white" /> : <FiPlusCircle className="text-sky-500 w-5 hover:bg-sky-500 hover:ring-sky-500 rounded-lg hover:text-white" />}
+            {expand ? <FiMinusCircle className="text-sky-300 w-5 hover:bg-sky-500 hover:ring-sky-500 rounded-lg hover:text-white" /> : <FiPlusCircle className="text-sky-500 w-5 hover:bg-sky-500 hover:ring-sky-500 rounded-lg hover:text-white" />}
           </button>
         </div>
         <div className={ansClass}>answer</div>
       </div>
       <div className="">
         <div className="p-4 text-xl relative font-medium">
-          <div className="text-sky-500 w-5/6">?האם האתר שלכם מאובטח</div>
+          <div className="text-sky-300 w-5/6">?האם האתר שלכם מאובטח</div>
           <button
             aria-label="question-expander"
             className="text-xl absolute top-0 right-0 p-4 focus:outline-none"
@@ -65,7 +65,7 @@ const FAQ = () => {
       </div>
       <div className="">
         <div className="p-4 text-xl relative font-medium">
-          <div className="text-sky-500 w-5/6">?איך אקבל את המוצרים</div>
+          <div className="text-sky-300 w-5/6">?איך אקבל את המוצרים</div>
           <button
             aria-label="question-expander"
             className="text-xl absolute top-0 right-0 p-4 focus:outline-none"
@@ -79,7 +79,7 @@ const FAQ = () => {
       </div>
       <div className="">
         <div className="p-4 text-xl relative font-medium">
-          <div className="text-sky-500 w-5/6">?מה אפשרויות התשלום באתר</div>
+          <div className="text-sky-300 w-5/6">?מה אפשרויות התשלום באתר</div>
           <button
             aria-label="question-expander"
             className="text-xl absolute top-0 right-0 p-4 focus:outline-none"

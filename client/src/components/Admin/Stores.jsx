@@ -1,24 +1,44 @@
-import React, {useState,useEffect} from "react";
-import {getStores} from '../ApiCalls/Store'
+import React, { useState, useEffect } from "react";
+import { getStores } from "../ApiCalls/Store";
 import { useNavigate } from "react-router-dom";
-import DepartmentComp from './DepartmentComp'
+import StoreComp from "./StoreComp";
+
 export default function Stores() {
-  const [Departments, setDepartments] = useState([]);
+  const [Stores, setStores] = useState([]);
   const navigate = useNavigate();
-    useEffect(() => {
-        const getStoresData = async () =>{
-          const result = await getStores();
-          setDepartments(result.data);
-        }
-        getStoresData();
-      },[]);
-      function navigateTo (route) {
-        navigate(`${route}`)
-      }
+  useEffect(() => {
+    const getStoresData = async () => {
+      const result = await getStores();
+      setStores(result.data);
+    };
+    getStoresData();
+  }, []);
+  function navigateTo(route) {
+    navigate(`${route}`);
+  }
   return (
-    <div><div onClick={()=> navigateTo(`${"/Admin/Store/new"}`)}> + add Store</div>
-
-
-    {Departments.map(store =>  <div  key={store._id} onClick={()=> navigateTo(`${`/Admin/Store/edit/${store._id}`}`)} ><DepartmentComp img={store.image} text={store.name}/></div>)}</div>
-  )
+    <div className="flex-col text-center w-full p-20">
+      <div className="w-2/4 m-auto">
+        <button
+          className=" bg-sky-300 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
+          type="button"
+          onClick={() => navigateTo(`${"/admin/Store/new"}`)}
+        >
+          + הוסף חנות
+        </button>
+        <div className=" flex flex-wrap">
+          {Stores.map((dep) => (
+            <div
+              key={dep._id}
+              onClick={() =>
+                navigateTo(`${`/admin/Store/edit/${dep._id}`}`)
+              }
+            >
+              <StoreComp img={dep.image} text={dep.name} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 }
