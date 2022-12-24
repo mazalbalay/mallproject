@@ -7,4 +7,5 @@ export const users =()=> axios.get('http://localhost:8000/user' )
 export const usersUpdate =(data , id)=> axios.put(`http://localhost:8000/user/${id}` , data )
 
 export const allStores = ()=> axios.get('http://localhost:8000/store' )
+// export const allStores = ()=> axios.get('http://localhost:8000/store' )
 
