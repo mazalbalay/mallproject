@@ -18,7 +18,7 @@ export default function CreateStore() {
 
 console.log(Product);
   return (
-<div className="w-full m-auto rounded m-20 text-center h-screen md:w-4/12 w-10/12 container mx-auto">
+<div className=" rounded m-20 text-center h-screen md:w-4/12 w-10/12 container mx-auto">
       
         
       <form className="w-full bg-white shadow-md rounded ">

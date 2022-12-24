@@ -5,16 +5,16 @@ import CheckOut from "./components/checkout/CheckOut";
 import React, { useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
-import CheckOutNav from "./components/CheckOutNav";
+import CheckOutNav from "./components/Navs/CheckOutNav";
 import Auth from "./components/authentication/Auth";
 import ThancksPage from "./components/checkout/ThancksPage";
 import Home from "./components/Home";
 import ErrPage from "./components/checkout/ErrPage";
-import CartStore from "./components/CartStore";
-import StoreComp from "./components/StoreComp";
+import CartStore from "./components/Cart/CartStore";
+import StoreComp from "./components/Stores/StoreComp";
 import Departments from "./components/Admin/Departments";
-import Footer from "./components/Footer";
-import InStore from "./components/InStore";
+import Footer from "./components/Footers/Footer";
+import InStore from "./components/Products/Products";
 import EditDepartment from "./components/Admin/EditDepartment";
 import CreateDepartment from './components/Admin/CreateDepartment';
 import Stores from './components/Admin/Stores';
@@ -53,6 +53,9 @@ function App() {
           <Route path="/admin/departments" element={< Departments/>} />
           <Route path="/main" element={< MainPage/>} />
           <Route path="/manager/products/addProduct" element={< AddProduct/>} />
+          <Route path="/home" element={< Home/>} />
+          <Route exact path="products" element={<InStore />} />
+
 
           {/* <Route path="/Admin/Store/new" element={< CreateStore/>} /> */}
   

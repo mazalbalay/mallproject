@@ -1,7 +1,7 @@
 import React from "react";
 import { FiX } from "react-icons/fi";
 import { AiFillShop } from "react-icons/ai";
-import CartStore from "./CartStore";
+import CartStore from "../Cart/CartStore";
 const StoreComp = () => {
   return (
     <div>
