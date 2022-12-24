@@ -17,14 +17,14 @@ export default function Departments() {
     navigate(`${route}`);
   }
   return (
-    <div className="flex-col items-center w-full">
-      <div className="w-2/4 m-auto">
+    <div className="flex-col text-center w-full p-20">
+      <div className="w-2/4 m-auto ">
         <button
           className=" bg-sky-300 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
           type="button"
           onClick={() => navigateTo(`${"/Admin/Department/new"}`)}
         >
-          + add Department
+          + הוסף מחלקה
         </button>
         <div className=" flex flex-wrap">
           {Departments.map((dep) => (

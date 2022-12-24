@@ -17,21 +17,21 @@ export default function Stores() {
     navigate(`${route}`);
   }
   return (
-    <div className="flex-col items-center w-full">
+    <div className="flex-col text-center w-full p-20">
       <div className="w-2/4 m-auto">
         <button
           className=" bg-sky-300 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
           type="button"
-          onClick={() => navigateTo(`${"/Admin/Store/new"}`)}
+          onClick={() => navigateTo(`${"/admin/Store/new"}`)}
         >
-          + add Store
+          + הוסף חנות
         </button>
         <div className=" flex flex-wrap">
           {Stores.map((dep) => (
             <div
               key={dep._id}
               onClick={() =>
-                navigateTo(`${`/Admin/Store/edit/${dep._id}`}`)
+                navigateTo(`${`/admin/Store/edit/${dep._id}`}`)
               }
             >
               <StoreComp img={dep.image} text={dep.name} />

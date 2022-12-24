@@ -130,19 +130,24 @@ export default function CreateStore() {
         </div>
 
         <div className="flex items-center justify-center p-4">
-          <button
+        {Store.length === 0?  <button
             className="bg-sky-300 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
             type="button"
             onClick={() => createAndLoadPage()}
           >
-            יצירת חנות
-          </button>
+           צור חנות
+          </button>:
+      
+       <button
+            className="bg-sky-300 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
+            type="button"
+          >
+           חנות נוצרה
+          </button>}
+         
         </div>
       </form>
-      {Store.length === 0? null:
-      <div>
-        <p className="bg-sky-700  mt-4 text-white font-bold py-2 px-4 rounded ">store preview</p>
-         {Store.map(store => <StoreComp key={store._id} img={store.image} text={store.name}/>)}</div>}
+    
       
     </div>
   );
