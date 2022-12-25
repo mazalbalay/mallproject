@@ -69,6 +69,7 @@ const singUp = () => async(req, res) => {
             name: fullName,
             password: password,
             username: userName,
+            access:'user'
         });
         return res.status(200).json(userResults);
     } catch (e) {
@@ -112,7 +113,7 @@ const facebooklogin = () => async(req, res) => {
         return res.json({ user: user });
     } else {
         console.log(newUser);
-        const newUserd = await Users.create(newUser);
+        const newUserd = await Users.create({...newUser , access:'user'});
         const token = jwt.sign({ _id: newUser._id }, "test", {
             expiresIn: "1d",
         });
@@ -135,7 +136,7 @@ const googlelogin = () => async(req, res) => {
           return res.json({ user: user });
       } else {
           console.log(newUser);
-          const newUserd = await Users.create(newUser);
+          const newUserd = await Users.create({...newUser , access:'user'});
           return res.json({ user: newUserd });
       }
   } catch (e) {

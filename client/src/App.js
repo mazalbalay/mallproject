@@ -7,7 +7,6 @@ import PersonalInfo from "./components/userProfile/PersonalInfo";
 import CheckOut from "./components/checkout/CheckOut";
 import Auth from "./components/authentication/Auth";
 import ThancksPage from "./components/checkout/ThancksPage";
-import Home from "./components/Home";
 import ErrPage from "./components/checkout/ErrPage";
 import Departments from "./components/Admin/Departments";
 import InStore from "./components/Products/InStore";
@@ -22,9 +21,14 @@ import StoreListPage from "./components/Stores/StoreListPage"
 import AddProduct from "./components/Manager/AddProduct";
 import HeaderStore from "./components/Stores/HeaderStore";
 import StoreComp from "./components/Stores/StoreComp";
-
+// import MainPage from './components/MainPage';
+import MainNav  from "./components/Navs/MainNav";
+import StoreListNav from './components/Navs/StoreListNav'
+import Footer from './components/Footers/Footer'
 
 function App() {
+  const user =  JSON.parse(localStorage.getItem(("user")))?.data
+console.log(user);
   return (
     <PayPalScriptProvider
       options={{
@@ -32,19 +36,23 @@ function App() {
           "ATZnLpZdreIw8GDvsCs-eguhcXT3gn4gmDrTi8L0n0arR08UvMJeSOoAeVQCJSFuaC-2EWi669UKRbUc",
       }}
     >
+      
+    {user ?  <StoreListNav/>:<MainNav/>}
+
+{/* <Footer/> */}
+
       <div>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/Auth" element={<Auth />} />
+          {/* <Route path="/" element={<Home />} />/ */}
+        {user ? null : <Route path="/Auth" element={<Auth />} /> }
+          <Route path="/" element={<MainPage />} />
           <Route path="/CheckOut" element={<CheckOut />} />
           <Route path="/changepassword" element={<ChangePWD />} />
           <Route path="/ThancksPage" element={<ThancksPage />} />
           <Route path="/ErrPage" element={<ErrPage />} />
           <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/personalinfo" element={<PersonalInfo />} />
-          <Route path="/userprofile" element={<UserProfile />} />
-          <Route path="/personalinfo" element={<PersonalInfo />} />
-          <Route path="/instore/:name" element={<InStore />} />
+          <Route path="/instore/:storeName" element={<InStore />} />
           <Route path="/admin" element={<AdminMain/>} />
           <Route path="/admin/Department/new" element={< CreateDepartment/>} />
           <Route path="/admin/Department/edit/:depId" element={< EditDepartment/>} />

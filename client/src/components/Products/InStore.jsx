@@ -5,14 +5,16 @@ import FilterProducts from "./FilterProducts";
 import Products from "./Products";
 import CartStore from "../Cart/CartStore";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
+
 
 const InStore = () => {
   const [inputSearch, setInputSearch] = useState("");
   const [prodactLength, setProdactLength] = useState("");
+  const {storeName}=useParams()
+
   return (
-    <div className="w-full">
-      <CheckOutNav />
-      <HeaderStore />
+    <div className="w-full">      <HeaderStore />
       <div className="flex">
         <div className="h-v">
           <CartStore />
@@ -23,6 +25,7 @@ const InStore = () => {
             prodactLength={prodactLength}
           />
           <Products
+           storeName={storeName}
             inputSearch={inputSearch}
             setProdactLength={setProdactLength}
           />
