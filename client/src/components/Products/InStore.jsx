@@ -6,6 +6,7 @@ import Products from "./Products";
 import CartStore from "../Cart/CartStore";
 import { useState } from "react";
 
+
 const InStore = () => {
   const [inputSearch, setInputSearch] = useState("");
   const [prodactLength, setProdactLength] = useState("");

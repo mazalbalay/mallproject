@@ -19,7 +19,7 @@ const mailTransporter = nodemailer.createTransport({
 });
 const details = {
   from: "techteamproject555@gmail.com",
-  to: "mazalbalay3@gmail.com",
+  to: "mazalbalay@gmail.com",
   subject: "Subject of your email",
   html: "<p>Your html here</p>",
 };
