@@ -19,14 +19,14 @@ const CartStore = () => {
   const calc = () => {
     let total = 0;
     state.map((product) => {
-      let productTotal = product.price * product.qty;
+      let productTotal = +product.price * +product.qty;
       return (total += productTotal);
     });
     return total;
   };
 
   return (
-    <div className="w-80 border border-gray">
+    <div className="w-80 border border-gray ml-2">
       <div className="bg-black text-white text-center p-4">
         <p className="text-xl"> עגלת קניות</p>
       </div>
@@ -46,7 +46,7 @@ const CartStore = () => {
         return (
           <>
 
-            <div className="flex">
+            <div className="flex p-2">
               <div className="plus-minus text-center grid  place-content-center">
                 <div className="">
                   <div className="minus-plus flex justify-around">
@@ -79,17 +79,17 @@ const CartStore = () => {
               </div>
             </div>
 
-            <hr className="w-24"></hr>
-            <div className="price p-2">
-              <h1>{product.price}</h1>
+            <div className="price pl-2">
+              <h1>{product.price * product.qty}</h1>
             </div>
+            <hr className="w-full my-3"></hr>
           </>
         );
       })}
       <hr />
       <div className="p-2">
         <div className="flex justify-between">
-          <h1 className="font-bold">{`${calc()}: סה"כ`}</h1>
+          <h1 className="font-bold">{calc()}</h1>
           <h1>:סה"כ</h1>
         </div>
         <div className="flex justify-between">
