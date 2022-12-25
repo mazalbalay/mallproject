@@ -1,6 +1,6 @@
 const Users = require("../MODELS/userModel");
 const bcryptjs = require("bcryptjs");
-const sgMail = require("@sendgrid/mail");
+const nodemailer = require("nodemailer");
 const axios = require("axios");
 const jwt = require("jsonwebtoken");
 const { OAuth2Client } = require('google-auth-library');
@@ -18,6 +18,7 @@ const updateUser = () => async(req, res) => {
         return res.status(400).json(e);
     }
 };
+
 
 const getUserById = () => async(req, res) => {
     try {
@@ -143,6 +144,39 @@ const googlelogin = () => async(req, res) => {
   }
 };
 
+const forgotPassword = () => async (req,res) =>{
+    const {email} = req.body
+
+    console.log(email);
+
+    const exsist = await Users.findOne({ email });
+console.log(exsist);
+    if (!exsist) return res.status(404).json("user is not exsist");
+
+    else{
+    const mailTransporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: "techteamproject555@gmail.com",
+          pass: "ozuahinyhwwwvxhi",
+        },
+      });
+      const details = {
+        from: "techteamproject555@gmail.com",
+        to: email,
+        subject: "Subject of your email",
+        html: `http://localhost:3000/forgot-password/${exsist[0]?._id}> change your password `,
+      };
+
+      mailTransporter.sendMail(details, (err) => {
+        if (err) {
+            return res.status(404).json(["email hs Fails", err]);
+        } else {
+            return res.status(200).json("email hs send to you");
+        }
+      });}
+}
+
 module.exports = {
     getAllUsers,
     deleteUser,
@@ -151,5 +185,6 @@ module.exports = {
     singIn,
     getUserById,
     facebooklogin,
-    googlelogin
+    googlelogin,
+    forgotPassword
 };

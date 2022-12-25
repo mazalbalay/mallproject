@@ -9,6 +9,8 @@ import Auth from "./components/authentication/Auth";
 import ThancksPage from "./components/checkout/ThancksPage";
 import Home from "./components/Home";
 import ErrPage from "./components/checkout/ErrPage";
+// import CartStore from "./components/CartStore";
+import ForgotPassPage from "./components/authentication/ForgotPassPage";
 import Departments from "./components/Admin/Departments";
 import InStore from "./components/Products/InStore";
 import EditDepartment from "./components/Admin/EditDepartment";
@@ -21,7 +23,7 @@ import EditStore from "./components/Admin/EditStore";
 import StoreListPage from "./components/Stores/StoreListPage"
 import AddProduct from "./components/Manager/AddProduct";
 import HeaderStore from "./components/Stores/HeaderStore";
-import StoreComp from "./components/Stores/StoreComp";
+// import StoreComp from "./components/Stores/StoreComp";
 
 
 function App() {
@@ -38,6 +40,7 @@ function App() {
           <Route path="/Auth" element={<Auth />} />
           <Route path="/CheckOut" element={<CheckOut />} />
           <Route path="/changepassword" element={<ChangePWD />} />
+          <Route path="/forgot-password/:id" element={<ForgotPassPage />} />
           <Route path="/ThancksPage" element={<ThancksPage />} />
           <Route path="/ErrPage" element={<ErrPage />} />
           <Route path="/userprofile" element={<UserProfile />} />

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as api from "../../api/api";
-import { useNavigate } from "react-router-dom";
+import { useNavigate ,Link} from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
 import { gapi } from "gapi-script";
 import FacebookLogin from "react-facebook-login";
@@ -181,12 +181,12 @@ export default function Auth() {
           />
           </div>
 </div>
-          <span className="text-[10px] flex justify-between w-[70%]">
+          <span className="text-[10px] flex justify-between w-[70%] mt-2">
             <span onClick={() => setsingUp(!singUp)} className="cursor-pointer">
               {singUp ? "כבר יש חשבון ? התחבר" : "אין לך חשבון? הרשם"}
             </span>
             <span className="cursor-pointer">
-              {singUp ? null : "שכחת סיסמא ?"}
+              {singUp ? null : <Link to='/forgot-password/undefined'> שכחת סיסמא ?</Link>}
             </span>
           </span>
         </div>
