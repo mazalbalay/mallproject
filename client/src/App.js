@@ -12,7 +12,7 @@ import Home from "./components/Home";
 import ErrPage from "./components/checkout/ErrPage";
 import CartStore from "./components/CartStore";
 import StoreListPage from "./components/storeList/StoreListPage";
-
+import ForgotPassPage from "./components/authentication/ForgotPassPage";
 import Departments from "./components/Admin/Departments";
 import Footer from "./components/Footer";
 import InStore from "./components/InStore";
@@ -39,6 +39,7 @@ function App() {
           <Route path="/Auth" element={<Auth />} />
           <Route path="/CheckOut" element={<CheckOut />} />
           <Route path="/changepassword" element={<ChangePWD />} />
+          <Route path="/forgot-password/:id" element={<ForgotPassPage />} />
           <Route path="/ThancksPage" element={<ThancksPage />} />
           <Route path="/ErrPage" element={<ErrPage />} />
           <Route path="/userprofile" element={<UserProfile />} />
