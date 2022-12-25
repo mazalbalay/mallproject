@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import CheckOut1 from "./CheckOut1";
 import CheckOut2 from "./CheckOut2";
 import CheckOut3 from "./CheckOut3";
-import ErrPage from "./ErrPage";
+import CartStore from "../Cart/CartStore";
 
 export default function CheckOut() {
   const [order, setOrder] = useState({
@@ -46,10 +46,17 @@ export default function CheckOut() {
     console.log(order);
   }, []);
   return (
-    <div className="w-full bg-gray-200 text-right flex flex-col items-center justify-center">
-      <CheckOut1 order={order} setOrder={setOrder} />
-      <CheckOut2 order={order} setOrder={setOrder} />
-      <CheckOut3 order={order} setOrder={setOrder} />
+    <div className="bg-slate-200">
+      <div className="md:w-3/4 w-full m-auto bg-white text-right flex md:flex-row flex-col items-start justify-start">
+        <div className="md:w-3/4 w-full">
+          <CartStore />
+        </div>
+        <div className="w-full bg-white md:border-l-8">
+          <CheckOut1 order={order} setOrder={setOrder} />
+          <CheckOut2 order={order} setOrder={setOrder} />
+          <CheckOut3 order={order} setOrder={setOrder} />
+        </div>
+      </div>
     </div>
   );
 }

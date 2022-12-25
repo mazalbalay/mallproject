@@ -26,7 +26,7 @@ const CartStore = () => {
   };
 
   return (
-    <div className="w-80 border border-gray ml-2">
+    <div className="w-full border border-gray">
       <div className="bg-black text-white text-center p-4">
         <p className="text-xl"> עגלת קניות</p>
       </div>
@@ -44,10 +44,9 @@ const CartStore = () => {
             </div>
       {state.map((product) => {
         return (
-          <>
-
-            <div className="flex p-2">
-              <div className="plus-minus text-center grid  place-content-center">
+          <div className="w-full">
+            <div className="flex p-2 justify-between">
+              <div className="plus-minus text-center grid place-content-center">
                 <div className="">
                   <div className="minus-plus flex justify-around">
                     <button className="text-teal-400">
@@ -79,17 +78,17 @@ const CartStore = () => {
               </div>
             </div>
 
-            <div className="price pl-2">
-              <h1>{product.price * product.qty}</h1>
+            <div className="price pr-7">
+              <h1>{product.price * product.qty} ש"ח</h1>
             </div>
             <hr className="w-full my-3"></hr>
-          </>
+          </div>
         );
       })}
       <hr />
       <div className="p-2">
         <div className="flex justify-between">
-          <h1 className="font-bold">{calc()}</h1>
+          <h1 className="font-bold">{calc()} ש"ח</h1>
           <h1>:סה"כ</h1>
         </div>
         <div className="flex justify-between">

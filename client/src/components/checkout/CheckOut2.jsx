@@ -23,7 +23,7 @@ export default function CheckOut2({ setOrder, order }) {
   return (
     <>
       {dropDwon ? (
-        <div className="w-full md:w-2/3 p-5 flex flex-col items-end justify-between bg-white my-1">
+        <div className="w-full p-5 flex flex-col items-end justify-between bg-white my-1 border-b-4">
           <div className="w-full flex items-end justify-between bg-white my-1">
             <BsChevronDown
               className="md:text-3xl text-2xl"
@@ -56,7 +56,7 @@ export default function CheckOut2({ setOrder, order }) {
           </div>
         </div>
       ) : (
-        <div className="w-full md:w-2/3 min-h-screen p-5 flex flex-col items-end justify-between bg-white my-1">
+        <div className="w-full min-h-screen p-5 flex flex-col items-end justify-between bg-white my-1">
           <div className="flex items-center">
             <h1 className="text-2xl font-medium items-center">זמן משלוח</h1>
             <BsFillClockFill className="text-cyan-600 text-3xl ml-4" />
@@ -78,7 +78,7 @@ export default function CheckOut2({ setOrder, order }) {
             <BsFillClockFill className="text-red-700 " />
             <BsTextLeft className="text-red-700 " />
           </button>
-          <div className="flex w-full md:w-2/3 justify-between">
+          <div className="flex w-full justify-between">
             <ChoseDate
               order={order}
               setOrder={setOrder}

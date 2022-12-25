@@ -2,6 +2,7 @@ import React from "react";
 import { MdCancel } from "react-icons/md";
 import { MdDoneAll } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+// import axios from "axios";
 
 export default function AddCard({ payment, setPayment, order }) {
   const navigetor = useNavigate();
@@ -21,14 +22,15 @@ export default function AddCard({ payment, setPayment, order }) {
           </button>
           <button
             onClick={() => {
-            //   setPayment([
-            //     ...payment,
-            //     {
-            //       cardNumber: order.payment.cardNumber,
-            //       threeDigits: order.payment.threeDigits,
-            //       cardValidity: order.payment.cardValidity,
-            //     },
-            //   ]);
+              setPayment([
+                ...payment,
+                {
+                  cardNumber: order.payment.cardNumber,
+                  threeDigits: order.payment.threeDigits,
+                  cardValidity: order.payment.cardValidity,
+                },
+              ]);
+              // axios.put(`http://localhost:8000/singup/${userId}`, payment);
               navigetor("/ThancksPage");
             }}
             className="flex items-center text-2xl text-cyan-600"
