@@ -15,13 +15,14 @@ import EditDepartment from "./components/Admin/EditDepartment";
 import CreateDepartment from './components/Admin/CreateDepartment';
 import Stores from './components/Admin/Stores';
 import AdminMain from './components/Admin/Main'
-// import CreateStore from "./components/Admin/CreateStore";
+import CreateStore from "./components/Admin/CreateStore";
 import MainPage from "./components/MainPage";
 import EditStore from "./components/Admin/EditStore";
 import StoreListPage from "./components/Stores/StoreListPage"
 import AddProduct from "./components/Manager/AddProduct";
-import HeaderStore from "./components/Stores/HeaderStore";
-import StoreComp from "./components/Stores/StoreComp";
+import EditProduct from "./components/Manager/EditProduct";
+import Maneger from './components/Manager/HomeScreen'
+import StoresManeger from './components/Manager/Stores'
 
 
 function App() {
@@ -47,13 +48,17 @@ function App() {
           <Route path="/instore/:name" element={<InStore />} />
           <Route path="/admin" element={<AdminMain/>} />
           <Route path="/admin/Department/new" element={< CreateDepartment/>} />
+          <Route path="/admin/Store/new" element={< CreateStore/>} />
           <Route path="/admin/Department/edit/:depId" element={< EditDepartment/>} />
           <Route path="/Admin/Store/edit/:storeId" element={< EditStore/>} />
           <Route path="/admin/stores" element={< Stores/>} />
           <Route path="/admin/departments" element={< Departments/>} />
           <Route path="/main" element={< MainPage/>} />
           <Route path="/storelist/:depName" element={< StoreListPage/>} />
-          <Route path="/manager/products/addProduct" element={< AddProduct/>} />
+          <Route path="/manager/product/edit/:productId" element={< EditProduct/>} />
+          <Route path="/manager/products/new" element={< AddProduct/>} />
+          <Route path="/manger/stores" element={<StoresManeger/>} />
+          {/* <Route path="/manager" element={< Maneger/>} /> */}
           <Route exact path="products" element={<InStore />} />
         </Routes>
       </div>
