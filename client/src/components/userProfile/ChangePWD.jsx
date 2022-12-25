@@ -1,11 +1,10 @@
 import React ,{useState}from 'react'
 import bcrypt from "bcryptjs-react";
-import { usersUpdate } from '../../api/api';
-
+import { usersUpdate ,users } from '../../api/api';
 
 export default function ChangePWD() {
-    const user = JSON.parse(localStorage.getItem(("user")))
-    const password = JSON.parse(localStorage.getItem(("user")))?.data.password
+    const user = JSON.parse(localStorage.getItem(("user"))).data
+    const password = user.password
     const [currentPSW , setCurrentPSW] = useState()
     const [newPSW , setNewPSW] = useState()   
     const [message , setMessage] = useState() 
@@ -23,8 +22,10 @@ export default function ChangePWD() {
 
       // setNewPSW(newPSW)
 
-      const {data} = await usersUpdate({...user.data , password:newPSW} ,user.data._id )
-      const update = localStorage.setItem(("user" ) ,JSON.stringify( {data} ))
+      const {data} = await usersUpdate({...user , password:newPSW} ,user._id )
+      const {data:use} = await users()
+      const filterd = use.filter(U =>U._id ===  user._id )
+      const update = localStorage.setItem(("user" ) ,JSON.stringify( {data :filterd} ))
       console.log(data);
   }
       
