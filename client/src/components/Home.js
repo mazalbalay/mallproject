@@ -5,6 +5,8 @@ import CreateDepartment from "./Admin/CreateDepartment";
 import CreateStore from "./Admin/CreateStore";
 import EditDepartment from "./Admin/EditDepartment";
 import EditStore from "./Admin/EditStore";
+import CartStore from "./CartStore";
+import ShopTags from "./EssentialMetaTags/ShopTags";
 import AddProduct from "./Manager/AddProduct";
 import EditProduct from "./Manager/EditProduct";
 
@@ -34,7 +36,9 @@ export default function Home() {
      {/* <AddProduct/> */}
       {/* <CreateStore/> */}
       {/* <EditProduct/>   */}
-<About/>
+{/* <About/> */}
+{/* <CartStore/> */}
+<ShopTags/>
       
     </div>
   );
