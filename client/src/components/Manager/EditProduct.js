@@ -17,6 +17,17 @@ export default function CreateStore() {
     getProductData();
   },[]);
 
+  
+  async function editAndLoadPage() {
+    await editDepartment(
+      depId,
+      DepartmentName,
+      DepartmentImage.image,
+      DepartmentDesc
+    );
+    alert("מחלקה עודכנה");
+  }
+
 
 console.log(Product);
   return ( <div>
@@ -122,7 +133,7 @@ type="text"
           <button
             class="bg-sky-300 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
             type="button"
-            onClick={()=>createProduct(ProductName,ProductImage.base64,ProductDesq)}
+            onClick={()=>editAndLoadPage(ProductName,ProductImage.base64,ProductDesq)}
           >
             עידכון מוצר
           </button>
