@@ -1,6 +1,8 @@
 import React, {useState,useEffect} from "react";
 import {createProduct,getProducts} from '../Manager/ApiCalls/products';
 import FileBase64 from 'react-file-base64';
+import Nav from '../Navs/MainNav';
+import MainPageFooter from "../Footers/MainPageFooter";
 
 export default function CreateStore() {
   const [ProductName, setProductName] = useState();
@@ -28,7 +30,8 @@ export default function CreateStore() {
 
 
 console.log(Product);
-  return (
+  return ( <div>
+    <Nav/>
 <div class=" rounded m-20 text-center h-screen md:w-4/12 w-10/12 container mx-auto">
       
         
@@ -141,6 +144,7 @@ type="text"
  onClick={()=>deleteAndLoadPage(storeId)}>Delete Store</button>}
 {Store[0]===null?null:<DepartmentComp img={Store.image} text={Store.name}/>} */}
    
+    </div><MainPageFooter/>
     </div>
 
   )

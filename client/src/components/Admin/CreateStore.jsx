@@ -6,6 +6,7 @@ import MainPageFooter from "../Footers/MainPageFooter";
 
 export default function CreateStore() {
   const [StoreName, setStoreName] = useState();
+  const [StoreMangerName, setStoreMangerName] = useState();
   const [StoreImage, setStoreImage] = useState();
   const [StoreDesc, setStoreDesc] = useState();
   const [StoreDep, setStoreDep] = useState();
@@ -24,6 +25,7 @@ export default function CreateStore() {
   async function createAndLoadPage() {
     let Store = await createStore(
       StoreName,
+      StoreMangerName,
       StoreImage.image,
       StoreDesc,
       StoreDep,
@@ -66,6 +68,21 @@ export default function CreateStore() {
           <div className="mb-4 p-4">
             <label
               className="block text-gray-700 pb-2 text-sm font-bold mb-2 "
+              htmlFor="manger name"
+            >
+              שם מנהל חנות
+            </label>
+            <input
+              className="shadow appearance-none border rounded text-end py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-10/12"
+              id="StoreName"
+              onChange={(e) => setStoreMangerName(e.target.value)}
+              type="text"
+              placeholder="שם מנהל חנות"
+            />
+          </div>
+          <div className="mb-4 p-4">
+            <label
+              className="block text-gray-700 pb-2 text-sm font-bold mb-2 "
               htmlFor="image"
             >
               תמונת חנות
@@ -88,7 +105,7 @@ export default function CreateStore() {
               תיאור חנות
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded text-end py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-10/12"
               id="StoreDesc"
               type="text"
               onChange={(e) => setStoreDesc(e.target.value)}
@@ -103,7 +120,7 @@ export default function CreateStore() {
               מחלקה
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded text-end py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-10/12"
               id="StoreDep"
               type="text"
               onChange={(e) => setStoreDep(e.target.value)}
@@ -118,7 +135,7 @@ export default function CreateStore() {
               מיקום
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded text-end py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-10/12"
               id="StoreLocation"
               type="text"
               onChange={(e) => setStoreLocation(e.target.value)}
@@ -133,7 +150,7 @@ export default function CreateStore() {
               דירוג חנות
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded text-end py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-10/12"
               id="StoreRatings"
               type="text"
               onChange={(e) => setStoreRatings(e.target.value)}

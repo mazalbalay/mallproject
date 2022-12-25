@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { createProduct, getProducts } from "../Manager/ApiCalls/products";
-import FileBase64 from "react-file-base64";
+import React, {useState,useEffect} from "react";
+import {createProduct,getProducts} from '../Manager/ApiCalls/products';
+import FileBase64 from 'react-file-base64';
+import Nav from '../Navs/MainNav';
+import MainPageFooter from "../Footers/MainPageFooter";
 
 export default function CreateStore() {
   const [ProductName, setProductName] = useState();
@@ -17,7 +19,12 @@ export default function CreateStore() {
 
   console.log(Product);
   return (
-    <div className=" rounded m-20 text-center h-screen md:w-4/12 w-10/12 container mx-auto">
+  <>
+  
+    <Nav/>
+<div className=" rounded m-20 text-center h-screen md:w-4/12 w-10/12 container mx-auto">
+      
+        
       <form className="w-full bg-white shadow-md rounded ">
         <div className="bg-sky-300">
           <p className="mx-auto text-center p-4 text-xl text-white		">
@@ -134,6 +141,9 @@ export default function CreateStore() {
           </button>
         </div>
       </form>
+   
     </div>
+  
+  </>
   );
 }

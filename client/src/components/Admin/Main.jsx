@@ -16,10 +16,7 @@ export default function Main() {
 
   console.log(User);
 
-  function navigateTo(route) {
-    navigate(`${route}`);
-  }
-
+  
   return (
     <div> <Nav/>
     <div className="w-full flex flex-col p-28">
@@ -31,13 +28,13 @@ export default function Main() {
      
       <div className="w-full flex flex-row justify-evenly m-6">
         <button
-          onClick={() => navigateTo(`${"/Admin/departments"}`)}
+        onClick={() => navigate(`${"/Admin/departments"}`)}
           className=" bg-sky-300 hover:bg-sky-700 text-white font-bold w-48 py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
         >
           מחלקות
         </button>
         <button
-          onClick={() => navigateTo(`${"/admin/stores"}`)}
+         onClick={() => navigate(`${"/admin/stores"}`)}
           className=" bg-sky-300 hover:bg-sky-700 text-white font-bold w-48 py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
         >
           חנויות
