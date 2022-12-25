@@ -5,9 +5,11 @@ import { CiBrightnessDown } from "react-icons/ci";
 import {IoIosClose, IoIosCart} from "react-icons/io"
 import {FiAlignRight} from "react-icons/fi";
 import { useSelector } from 'react-redux';
+import {useNavigate} from 'react-router-dom'
 
 const CheckOutNav = () => {
   const state = useSelector((state) => state.CartReducer);
+  const navigate =useNavigate()
   console.log(state);//undefine
   return (
     <nav className="shadow-md w-full fixed top-0 left-0">
@@ -37,7 +39,11 @@ const CheckOutNav = () => {
       </form>
 
       <ul className="flex items-center justify-end md:pb-0 w-full md:w-auto md:pl-0">
-        <li className="flex items-center ml-3 md:my-0 text-l">
+        <li
+        onClick={()=>{
+          navigate("/checkout")
+        }}
+         className="flex items-center ml-3 md:my-0 text-l">
           <Link to="/cart" >
           <span className="flex items-center text-xl px-1">
             <IoIosCart />

@@ -3,8 +3,7 @@ import { PayPalButtons } from "@paypal/react-paypal-js";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function PaypalCheckOutButton(props) {
-  const { product } = props;
+export default function PaypalCheckOutButton({product}) {
   const [paidFor, setPaidFot] = useState(false);
   const [error, setError] = useState(null);
   const navigetor = useNavigate();

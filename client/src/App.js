@@ -55,6 +55,7 @@ function App() {
           <Route path="/storelist/:depName" element={< StoreListPage/>} />
           <Route path="/manager/products/addProduct" element={< AddProduct/>} />
           <Route exact path="products" element={<InStore />} />
+          <Route exact path="/checkout" element={<CheckOut/>} />
         </Routes>
       </div>
     </PayPalScriptProvider>

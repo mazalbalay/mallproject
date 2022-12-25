@@ -6,12 +6,16 @@ import { HiCreditCard } from "react-icons/hi";
 import { AiOutlinePlus } from "react-icons/ai";
 import PaypalCheckOutButton from "./PaypalCheckOutButton";
 import AddCard from "./AddCard";
+import {useSelector,useDispatch} from 'react-redux'
+
 export default function CheckOut3({ setOrder, order }) {
+  const selector = useSelector(state => state.CartReducer)
   const [addCard, setAddCard] = useState(false);
   const [saveCard, setSaveCard] = useState(false);
+
+
   const product = {
-    description: "description",
-    price: 5,
+   selector
   };
   const [payment, setPayment] = useState([
     {
