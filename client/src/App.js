@@ -1,19 +1,15 @@
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import ChangePWD from "./components/userProfile/ChangePWD";
 import UserProfile from "./components/userProfile/UserProfile";
 import PersonalInfo from "./components/userProfile/PersonalInfo";
 import CheckOut from "./components/checkout/CheckOut";
-import React, { useState } from "react";
-import { Routes, Route, Link } from "react-router-dom";
-import { PayPalScriptProvider } from "@paypal/react-paypal-js";
-import CheckOutNav from "./components/Navs/CheckOutNav";
 import Auth from "./components/authentication/Auth";
 import ThancksPage from "./components/checkout/ThancksPage";
 import Home from "./components/Home";
 import ErrPage from "./components/checkout/ErrPage";
-import CartStore from "./components/Cart/CartStore";
-import StoreComp from "./components/Stores/StoreComp";
 import Departments from "./components/Admin/Departments";
-import Footer from "./components/Footers/Footer";
 import InStore from "./components/Products/Products";
 import EditDepartment from "./components/Admin/EditDepartment";
 import CreateDepartment from './components/Admin/CreateDepartment';
@@ -22,8 +18,11 @@ import AdminMain from './components/Admin/Main'
 // import CreateStore from "./components/Admin/CreateStore";
 import MainPage from "./components/MainPage";
 import EditStore from "./components/Admin/EditStore";
-import StoreListPage from "./components/Stores/storeList/StoreListPage"
+import StoreListPage from "./components/Stores/StoreListPage"
 import AddProduct from "./components/Manager/AddProduct";
+import HeaderStore from "./components/Stores/HeaderStore";
+import StoreComp from "./components/Stores/StoreComp";
+
 
 function App() {
   return (
@@ -34,7 +33,6 @@ function App() {
       }}
     >
       <div>
-        <Link to="instore"> store</Link>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Auth" element={<Auth />} />
@@ -47,22 +45,16 @@ function App() {
           <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/personalinfo" element={<PersonalInfo />} />
           <Route path="/instore/:name" element={<InStore />} />
-         <Route path="/admin" element={<AdminMain/>} />
+          <Route path="/admin" element={<AdminMain/>} />
           <Route path="/admin/Department/new" element={< CreateDepartment/>} />
           <Route path="/admin/Department/edit/:depId" element={< EditDepartment/>} />
           <Route path="/Admin/Store/edit/:storeId" element={< EditStore/>} />
           <Route path="/admin/stores" element={< Stores/>} />
           <Route path="/admin/departments" element={< Departments/>} />
           <Route path="/main" element={< MainPage/>} />
-          <Route path="/storelist" element={< StoreListPage/>} />
+          <Route path="/storelist/:depName" element={< StoreListPage/>} />
           <Route path="/manager/products/addProduct" element={< AddProduct/>} />
-          <Route path="/home" element={< Home/>} />
           <Route exact path="products" element={<InStore />} />
-
-
-          {/* <Route path="/Admin/Store/new" element={< CreateStore/>} /> */}
-  
-
         </Routes>
       </div>
     </PayPalScriptProvider>
