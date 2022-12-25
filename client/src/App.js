@@ -24,6 +24,8 @@ import StoreListPage from "./components/Stores/StoreListPage"
 import AddProduct from "./components/Manager/AddProduct";
 import HeaderStore from "./components/Stores/HeaderStore";
 // import StoreComp from "./components/Stores/StoreComp";
+import Maneger from './components/Manager/HomeScreen'
+import StoresManeger from './components/Manager/Stores'
 
 
 function App() {
@@ -58,6 +60,9 @@ function App() {
           <Route path="/storelist/:depName" element={< StoreListPage/>} />
           <Route path="/manager/products/addProduct" element={< AddProduct/>} />
           <Route exact path="products" element={<InStore />} />
+          <Route path="/manager/product/edit/:productId" element={< EditProduct/>} />
+            <Route path="/manager" element={< Maneger/>} />
+            <Route path="/manger/stores" element={<StoresManeger/>} />
         </Routes>
       </div>
     </PayPalScriptProvider>
