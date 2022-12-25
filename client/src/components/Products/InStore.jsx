@@ -5,6 +5,7 @@ import FilterProducts from "./FilterProducts";
 import Products from "./Products";
 import CartStore from "../Cart/CartStore";
 
+
 const InStore = () => {
   return (
     <div className="w-full">
