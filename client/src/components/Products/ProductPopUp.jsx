@@ -17,9 +17,7 @@ export default function ProductPopUp({product, onClose, visible}) {
       dispatch(AddProduct(product, product.qty));
     };
 
-    const handleIncresment=() =>{
-      // return qty < 10 ? setqty(prevQty => prevQty - 1) : qty;
-     }
+  
 
   return (
     <div key={product._id} id='product' onClick={handleOnClose} className={'fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center'}>

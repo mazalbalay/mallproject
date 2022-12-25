@@ -1,52 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import StoreListNav from "./Navs/StoreListNav";
-import Footer from "./Footers/Footer";
+import Footer from "../Footers/Footer";
 import FAQ from "./FAQ";
 
 const About = () => {
+  const data = [
+    "אודותת",
+    "שאלות נפוצות",
+    "החלפת סיסמא",
+    "נתוני תשלום",
+    "אודות",
+  ];
   return (
-    <main className="h-screen">
-      <div><StoreListNav /></div>
-      <div className="bg-gray-100">
 
-      <div className="flex flex-row container ms-auto md:w-8/12 w-10/12 text-gray-600  mx-auto border ">
-        <div className=" border md:w-8/12 basis-full p-5 text-end bg-white">
-          <FAQ/>
-        </div>
-          <ul className="border  md:w-4/12 text-end bg-white">
-            <li className="border p-5  text-end shadow hover:bg-gray-200">
-
-          <Link to='#'>אודות</Link>
-            </li>
-            <li className="border p-5  text-end shadow hover:bg-gray-200">
-          <Link to='#'> שאלות נפוצות</Link>
-              
-              </li>
-              <li  className="border p-5  text-end shadow hover:bg-gray-200">
-          <Link to='#'>החלפת סיסמא</Link>
-              
-              </li>
-              <li className="border p-5  text-end shadow hover:bg-gray-200">
-          <Link to='#'>נתוני התשלום</Link>
-              
-              </li>
-              <li className="border p-5  text-end shadow hover:bg-gray-200">
-              
-          <Link to='#'>אודות</Link>
-              </li>
-              <li>
-                
-              </li>
+      <div className=" my-20 bg-gray-100">
+        <div className=" text-gray-600 border ">
+          <ul className="border bg-white">
+            {data.map((item) => {
+              return (
+                <li className="border p-10  text-end shadow hover:bg-gray-200">
+                  <Link to="#">{item}</Link>
+                </li>
+              );
+            })}
           </ul>
-          
-      </div>
-      <div>
-        <Footer />
-      </div>
+        </div>
       </div>
 
-    </main>
   );
 };
 
