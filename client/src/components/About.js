@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import StoreListNav from "./StoreListNav";
-import Footer from "./Footer";
+import StoreListNav from "./Navs/StoreListNav";
+import Footer from "./Footers/Footer";
 import FAQ from "./FAQ";
 
 const About = () => {

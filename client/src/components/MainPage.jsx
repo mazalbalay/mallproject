@@ -20,21 +20,16 @@ function navigateTo (route) {
 
 console.log(Departments);
   return (
-    <div className='flex justify-center' style={{  
-        backgroundImage: `url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQiFxlK4AauN9A1iFM9HYZliv_dGzHD1iXhg&usqp=CAU)`,
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat'
-      }}>
+    <div className='flex justify-center p-8' >
         <div className='w-2/4 flex flex-col	'>
         
-        <p className='text-4xl m-3 text-center '>m;dm;dsm mcd;smcdmcd</p>
-        <input className='m-3 h-8' type="text" placeholder='מה תרצה לחפש?'/>
-        <p className='text-xl text-center m-3' >ndvsnvlnvd vnskldksl</p>
+        <p className='text-4xl m-6 text-center '>ברוך הבא לעולם החנויות שלך</p>
+        <input className='m-6 h-12 border-current	 border-2 border-solid' type="text" placeholder='מה תרצה לחפש?'/>
+        <p className='text-xl text-center m-6' >מחלקות שונות</p>
         
        
-        <div className=' flex flex-wrap'>
-           {Departments.map(dep =>  <div key={dep.id}  onClick={()=> navigateTo(`${"/Admin/departments"}`)} ><DepartmentComp img={dep.image} text={dep.name}/></div>)}
+        <div className=' flex flex-wrap justify-evenly'>
+           {Departments.map(dep =>  <div key={dep.id}  onClick={()=> navigateTo(`${`/storelist/${dep.name}`}`)} ><DepartmentComp img={dep.image} text={dep.name}/></div>)}
            
         </div>
         </div>

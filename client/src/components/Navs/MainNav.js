@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { CiBrightnessDown } from "react-icons/ci";
 import { FiMenu, FiX } from "react-icons/fi";
 
 const MainNav = ()=> {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+  function navigateTo (route) {
+    navigate(`${route}`)
+  }
   return (
-    <nav className="shadow-md w-full fixed top-0 left-0">
+    <nav className="shadow-md w-full  top-0 left-0">
       <div className=" container mx-auto md:flex items-center justify-between py-4 md:px-40 px-7">
         <div className=" text-4xl cursor-pointer flex items-center font-[poppins text-grey-600]">
           <span className="md:flex md:items-center">
@@ -50,7 +55,7 @@ const MainNav = ()=> {
           </li>
           <li className="md:ml-8 md:my-0 my-7  text-l hover:underline">
             <Link
-              to="/user-login"
+              to="/Auth"
               className="hover:text-green-400 duration-500">כניסת משתמש
             </Link>
           </li>
