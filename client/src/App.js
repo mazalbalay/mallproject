@@ -10,7 +10,7 @@ import ThancksPage from "./components/checkout/ThancksPage";
 import Home from "./components/Home";
 import ErrPage from "./components/checkout/ErrPage";
 import Departments from "./components/Admin/Departments";
-import InStore from "./components/Products/Products";
+import InStore from "./components/Products/InStore";
 import EditDepartment from "./components/Admin/EditDepartment";
 import CreateDepartment from './components/Admin/CreateDepartment';
 import Stores from './components/Admin/Stores';

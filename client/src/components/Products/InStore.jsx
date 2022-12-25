@@ -6,7 +6,6 @@ import Products from "./Products";
 import CartStore from "../Cart/CartStore";
 import { useState } from "react";
 
-
 const InStore = () => {
   const [inputSearch, setInputSearch] = useState("");
   const [prodactLength, setProdactLength] = useState("");
@@ -19,8 +18,14 @@ const InStore = () => {
           <CartStore />
         </div>
         <div>
-          <FilterProducts setInputSearch={setInputSearch} prodactLength={prodactLength}/>
-          <Products inputSearch={inputSearch} setProdactLength={setProdactLength} />
+          <FilterProducts
+            setInputSearch={setInputSearch}
+            prodactLength={prodactLength}
+          />
+          <Products
+            inputSearch={inputSearch}
+            setProdactLength={setProdactLength}
+          />
         </div>
       </div>
     </div>

@@ -11,6 +11,7 @@ export default function Products({inputSearch,setProdactLength}) {
   const [popUp, setPopUp] = useState(false)
   const [products, setProducts] = useState([]);
   const [qty, setQty] = useState(1);
+  setProdactLength(products.length)
 
   const dispatch = useDispatch();
   const state = useSelector((state) => state.CartReducer);
@@ -19,7 +20,6 @@ export default function Products({inputSearch,setProdactLength}) {
   const allProduct = async () => {
     const { data } = await getProducts();
     const productsObj = data.map((product) => {
-      setProdactLength(products.length)
       return { ...product, qty: qty };
     });
     setProducts(productsObj);
@@ -50,7 +50,6 @@ export default function Products({inputSearch,setProdactLength}) {
     })
   };
 
-
    const handleOneClose = () => setPopUp(false)
 
   return (
@@ -71,7 +70,7 @@ export default function Products({inputSearch,setProdactLength}) {
             return (
               <div
                 key={product._id}
-                // onClick={() => setPopUp(true)}
+                onClick={() => setPopUp(true)}
                 className="w-full border flex  flex-col my-4  hover:scale-105 duration-300"
               >
                 <img

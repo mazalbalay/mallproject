@@ -11,7 +11,7 @@ const FilterProducts = ({setInputSearch,prodactLength}) => {
             onChange={(e) => setInputSearch(e.target.value)}
             type="text"
             placeholder="חפש לפי שם"
-            className="border-2 border-red-700 w-1/3 p-2 rounded-md placeholder:text-center outline-none"
+            className="border-2 w-1/3 p-2 rounded-md placeholder:text-center outline-none"
           />
         </div>
       </div>
