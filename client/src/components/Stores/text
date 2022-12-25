@@ -1,0 +1,364 @@
+filter
+ <!-- <div className="flex  flex-row-reverse items-center">
+          <h1 className="text-2xl">:סנן תוצאות לפי</h1>
+          <span onClick={() => setvalue("")} className="flex items-center">
+            {location === "" ? null : <FiX size={10} />}
+            {location}
+          </span>
+        </div>
+        <div className="flex justify-end">
+          <div className=" flex text-right flex-row-reverse w-[30%]">
+            <ul className="text-cyan-500">
+              <input
+                type={"button"}
+                onClick={(e) => setvalue(e.target.value)}
+                value={"אזור השרון "}
+              />
+              <input
+                type={"button"}
+                onClick={(e) => setvalue(e.target.value)}
+                value={"אזור המרכז "}
+              />
+              <li>אזור השרון</li>
+            </ul>
+            <ul className="text-cyan-500">
+              <li className="underline text-lg">ישוב</li>
+              <input
+                type={"button"}
+                onClick={(e) => {
+                  setvalue(e.target.value);
+                }}
+                value={"רחובות"}
+              />
+              <input
+                type={"button"}
+                onClick={(e) => {
+                  setvalue(e.target.value);
+                }}
+                value={"אשקלון"}
+              />
+              <input
+                type={"button"}
+                onClick={(e) => setvalue(e.target.value)}
+                value={"אשדוד"}
+              />
+            </ul>
+          </div>
+        </div>
+        <div className=" flex flex-row-reverse my-2">
+          <AiFillShop className="text-2xl text-cyan-500 my-2" />
+          <h1 className="text-2xl">נמצאו</h1>
+          <h1 className="text-2xl mx-2 text-cyan-500">{stores?.length}</h1>
+          <h1 className="text-2xl">מוצרים בחנות זו </h1>
+        </div>  -->
+
+$filter
+<!-- import React, { useState, useEffect } from "react";
+import { FiX } from "react-icons/fi";
+import { AiFillShop, AiOutlinePlusCircle } from "react-icons/ai";
+import { allStores } from "../../api/api";
+import { FaAddressCard } from "react-icons/fa";
+import { useNavigate, useParams  } from "react-router-dom";
+import StoreComp from "./StoreComp";
+
+const StoreListPage = () => {
+  let { depName } = useParams();
+  const navigate = useNavigate();
+  const [stores, setStores] = useState();
+  const [location, setvalue] = useState("");
+  const [filtered, setFiltered] = useState();
+  const storesFu = async () => {
+    const { data } = await allStores();
+    const result = data.filter(store => store.department === depName )
+    setStores(result);
+  };
+
+  useEffect(() => {
+    storesFu();
+  }, []);
+console.log(stores);
+  return (
+    
+
+      <div className="md:w-[45%] m-auto md:m-0 w-[90%]  absolute right-0">
+    
+
+        <div className="  w-[100%] ">
+          {stores
+            ?.filter((store) => {
+              if (location === "") return store;
+              else if (store.location === location) return store;
+            })
+            .map((store) => (
+             <StoreComp name={store.name} desc={store.description} location={store.location} image={store.image} />
+            ))}
+        </div>
+        <div className="text-gray-400 flex justify-center my-3">
+          <AiOutlinePlusCircle size={60} />
+        </div>
+      </div>
+  );
+};
+
+export default StoreListPage; -->
+
+old store comp
+
+        <!-- import React from "react";
+import { FiX } from "react-icons/fi";
+import { AiFillShop } from "react-icons/ai";
+import CartStore from "../Cart/CartStore";
+
+const StoreComp = () => {
+  return (
+    <div>
+      
+      <header className="p-20 bg-[url('https://a7.org/pictures/000/979372.jpg')]">
+        <h1 className="text-white  text-2xl text-center">
+          קטגוריה ירקות טריים
+        </h1>
+      </header>
+      <div className="flex justify-center p-10">
+        <p className=" text-2xl">רשימת חנויות בקטגוריה</p>
+      </div>
+      <div className="flex  flex-row-reverse items-center">
+        <h1 className="text-2xl">:סנן תוצאות לפי</h1>
+        <h5 className="text-cyan-500 underline">
+          מודיעין
+          <button>
+            <FiX className="text-black" />
+          </button>
+        </h5>
+        <h5 className="text-cyan-500 underline">
+          נעליים
+          <button>
+            <FiX className="text-black" />
+          </button>
+        </h5>
+      </div>
+      <div className=" flex flex-row-reverse p-2">
+        <table className="table-auto flex-auto text-right">
+          <thead>
+            <tr>
+              <th className="underline">סוגי מוצרים</th>
+              <th className="underline">סוגי חנויות</th>
+              <th className="underline"> יישובים</th>
+              <th className="underline">אזורים</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="text-cyan-500">(4106)חלבי</td>
+              <td className="text-cyan-500"> (12)סופר שכונתי</td>
+              <td className="text-cyan-500">(32)אשדוד</td>
+              <td className="text-cyan-500">(1223)אזור המרכז</td>
+            </tr>
+            <tr>
+              <td className="text-cyan-500">(209)בשרי</td>
+              <td className="text-cyan-500">(209)מסעדת בשרים</td>
+              <td className="text-cyan-500">(4106)תל אביב</td>
+              <td className="text-cyan-500">(4106)אזור השרון</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div className=" flex flex-row-reverse">
+        <AiFillShop className="text-2xl text-cyan-500 my-2" />
+        <h1 className="text-2xl">נמצאו</h1>
+        <h1 className="text-2xl text-cyan-500">58</h1>
+        <h1 className="text-2xl">מוצרים בחנות זו </h1>
+      </div>
+      <div className="flex">
+        <div className="">
+          <CartStore />
+        </div>
+        <div className="border w-5/12 p-2 flex justify-center">
+          <div className="flex ">
+            <div className="border flex items-end">
+              <button className="bg-green-300 p-2 rounded text-white font-bold">
+                קנה בחנות זו
+              </button>
+            </div>
+            <div className="flex border text-end">
+              <ul className="">
+                <li className="font-bold">חוות הבית</li>
+                <li>(38 חוות דעת) * * * * * </li>
+                <li>חנות ירקות חוות הבית במודיעין-מכבים-רעות מגישה</li>
+                <li className="flex justify-end">
+                  <span>עמק זבולון 3, מודיעין אזור המרכז</span>
+                  <img
+                    className="w-10"
+                    src="https://d3m9l0v76dty0.cloudfront.net/system/photos/4848169/extra_large/06b445902adeec3905b20c44116d6652.jpg"
+                    alt=""
+                  />
+                </li>
+              </ul>
+            </div>
+            <div className="w-40">
+              <img
+                className=""
+                src="https://d3m9l0v76dty0.cloudfront.net/system/photos/4848169/extra_large/06b445902adeec3905b20c44116d6652.jpg"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default StoreComp; -->
+ 
+old storelist /store comp
+<!-- import React, { useState, useEffect } from "react";
+import { FiX } from "react-icons/fi";
+import { AiFillShop, AiOutlinePlusCircle } from "react-icons/ai";
+import { allStores } from "../../../api/api";
+import { FaAddressCard } from "react-icons/fa";
+import { useNavigate, useParams  } from "react-router-dom";
+// import MainNav from '';
+const StoreComp = () => {
+  let { depName } = useParams();
+  const navigate = useNavigate();
+  const [stores, setStores] = useState();
+  const [location, setvalue] = useState("");
+  const [filtered, setFiltered] = useState();
+  const storesFu = async () => {
+    const { data } = await allStores();
+    const result = data.filter(store => store.department === depName )
+    setStores(result);
+  };
+
+  useEffect(() => {
+    storesFu();
+  }, []);
+console.log(stores);
+  return (
+    <div>
+      {/* <MainNav/> */}
+      <header className="p-20 bg-[url('https://a7.org/pictures/000/979372.jpg')]">
+        <h1 className="text-white  text-2xl text-center">
+          קטגוריה ירקות טריים{depName}
+        </h1>
+      </header>
+      <div className="flex justify-center p-10">
+        <p className=" text-2xl"> {depName}רשימת חנויות בקטגוריה</p>
+      </div>
+      <div className="md:w-[45%] m-auto md:m-0 w-[90%]  absolute right-0">
+        {/* <div className="flex  flex-row-reverse items-center">
+          <h1 className="text-2xl">:סנן תוצאות לפי</h1>
+          <span onClick={() => setvalue("")} className="flex items-center">
+            {location === "" ? null : <FiX size={10} />}
+            {location}
+          </span>
+        </div>
+        <div className="flex justify-end">
+          <div className=" flex text-right flex-row-reverse w-[30%]">
+            <ul className="text-cyan-500">
+              <input
+                type={"button"}
+                onClick={(e) => setvalue(e.target.value)}
+                value={"אזור השרון "}
+              />
+              <input
+                type={"button"}
+                onClick={(e) => setvalue(e.target.value)}
+                value={"אזור המרכז "}
+              />
+              <li>אזור השרון</li>
+            </ul>
+            <ul className="text-cyan-500">
+              <li className="underline text-lg">ישוב</li>
+              <input
+                type={"button"}
+                onClick={(e) => {
+                  setvalue(e.target.value);
+                }}
+                value={"רחובות"}
+              />
+              <input
+                type={"button"}
+                onClick={(e) => {
+                  setvalue(e.target.value);
+                }}
+                value={"אשקלון"}
+              />
+              <input
+                type={"button"}
+                onClick={(e) => setvalue(e.target.value)}
+                value={"אשדוד"}
+              />
+            </ul>
+          </div>
+        </div>
+        <div className=" flex flex-row-reverse my-2">
+          <AiFillShop className="text-2xl text-cyan-500 my-2" />
+          <h1 className="text-2xl">נמצאו</h1>
+          <h1 className="text-2xl mx-2 text-cyan-500">{stores?.length}</h1>
+          <h1 className="text-2xl">מוצרים בחנות זו </h1>
+        </div> */}
+
+        <div className="  w-[100%] ">
+          {stores
+            ?.filter((store) => {
+              if (location === "") return store;
+              else if (store.location === location) return store;
+            })
+            .map((store) => (
+              <div
+                key={store.id}
+                className="flex border-4 md:flex-row flex-col-reverse  w-[90%] md:h-[160px] h-[550px] md:my-2 mb-4 "
+              >
+                <div className="md:w-[70%] w-[100%] flex flex-col items-end text-right md:p-2">
+                  <div className="text-2xl font-medium mb-1">{store.name}</div>
+                  <div>(33)חוות דעת ***** </div>
+                  <div className="my-1">{store.description}</div>
+                  <div className="flex justify-between w-[90%]">
+                    <button
+                      onClick={() => navigate(`/instore/${store.name}`)}
+                      className="p-3 bg-black text-white font-medium"
+                    >
+                      {" "}
+                      קנה בחנות זו
+                    </button>
+                    <div className="flex items-center md:flex-row flex-col ">
+                      <span>{store.location}</span>
+                      <FaAddressCard className="ml-3" size={25} />
+                    </div>
+                  </div>
+                </div>
+                <div className="md:w-[30%] w-[100%] ">
+                  <img
+                    className="w-[100%] md:w-[200px] h-full"
+                    src={store.image}
+                    alt=""
+                  />
+                </div>
+              </div>
+            ))}
+        </div>
+        <div className="text-gray-400 flex justify-center my-3">
+          <AiOutlinePlusCircle size={60} />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default StoreComp; -->
+old headerstore
+<!-- import React from "react";
+
+const HeaderStore = () => {
+  return (
+    <div>
+   
+      <header className="h-60 bg-[url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-lWPKOx3H_Z3dlImb1dZcYJrAtR4jigSTCA&usqp=CAU')]">
+        <h1 className="text-white font-bold text-6xl text-center">נעליים</h1>
+      </header>
+    </div>
+  );
+};
+
+export default HeaderStore; -->
