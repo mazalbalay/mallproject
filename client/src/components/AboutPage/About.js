@@ -17,6 +17,15 @@ const About = () => {
         <div className=" text-gray-600 border ">
           <ul className="border bg-white">
             {data.map((item) => {
+              if(item === "שאלות נפוצות"){
+                return(
+                  <li className="border p-10  text-end shadow bg-gray-200">
+                  <Link to="#">{item}</Link>
+                </li>
+
+                )
+              }
+
               return (
                 <li className="border p-10  text-end shadow hover:bg-gray-200">
                   <Link to="#">{item}</Link>

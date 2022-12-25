@@ -11,10 +11,10 @@ const AboutPage = () => {
         <StoreListNav />
       </div>
       <div className=" flex justify-center">
-          <div className="w-6/12">
+          <div className="w-4/12">
             <FAQ />
           </div>
-          <div className="w-4/12">
+          <div className="w-2/12">
             <About />
           </div>
       </div>
