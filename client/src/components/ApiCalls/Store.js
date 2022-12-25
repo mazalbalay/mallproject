@@ -16,10 +16,11 @@ export async function getStore(id) {
         return error;
     }
 }
-export async function editStore(id, name, image, description, department, location, rating) {
+export async function editStore(id, name,MangerName, image, description, department, location, rating) {
     try {
         const response = await axios.put(`http://localhost:8000/store/${id}`, {
             name: name,
+            MangerName :MangerName,
             image,
             description: description,
             department: department,
@@ -31,10 +32,11 @@ export async function editStore(id, name, image, description, department, locati
         return error;
     }
 }
-export async function createStore(name, image, description, department, location, rating) {
+export async function createStore(name,MangerName, image, description, department, location, rating) {
     try {
         const response = axios.post("http://localhost:8000/store", {
             name: name,
+            MangerName:MangerName,
             image,
             description: description,
             department: department,

@@ -46,7 +46,7 @@ export default function ChoseTime({ setOrder, order, callback }) {
   };
 
   return (
-    <div className=" w-full md:w-2/3">
+    <div className=" w-full">
       {time.splice(0, number).map((v, i) => {
         return (
           <div

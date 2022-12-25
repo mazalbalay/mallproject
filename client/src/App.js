@@ -8,6 +8,8 @@ import CheckOut from "./components/checkout/CheckOut";
 import Auth from "./components/authentication/Auth";
 import ThancksPage from "./components/checkout/ThancksPage";
 import ErrPage from "./components/checkout/ErrPage";
+// import CartStore from "./components/CartStore";
+import ForgotPassPage from "./components/authentication/ForgotPassPage";
 import Departments from "./components/Admin/Departments";
 import InStore from "./components/Products/InStore";
 import EditDepartment from "./components/Admin/EditDepartment";
@@ -25,6 +27,7 @@ import StoreComp from "./components/Stores/StoreComp";
 import MainNav  from "./components/Navs/MainNav";
 import StoreListNav from './components/Navs/StoreListNav'
 import Footer from './components/Footers/Footer'
+
 
 function App() {
   const user =  JSON.parse(localStorage.getItem(("user")))?.data
@@ -48,6 +51,7 @@ console.log(user);
           <Route path="/" element={<MainPage />} />
           <Route path="/CheckOut" element={<CheckOut />} />
           <Route path="/changepassword" element={<ChangePWD />} />
+          <Route path="/forgot-password/:id" element={<ForgotPassPage />} />
           <Route path="/ThancksPage" element={<ThancksPage />} />
           <Route path="/ErrPage" element={<ErrPage />} />
           <Route path="/userprofile" element={<UserProfile />} />
@@ -63,6 +67,7 @@ console.log(user);
           <Route path="/storelist/:depName" element={< StoreListPage/>} />
           <Route path="/manager/products/addProduct" element={< AddProduct/>} />
           <Route exact path="products" element={<InStore />} />
+          <Route exact path="/checkout" element={<CheckOut/>} />
         </Routes>
       </div>
     </PayPalScriptProvider>
