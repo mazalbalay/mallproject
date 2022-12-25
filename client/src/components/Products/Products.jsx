@@ -6,7 +6,7 @@ import {  getProducts } from "../Manager/ApiCalls/products";
 import { AddProduct, ReduceQty } from "../../Redux/action/cartActions";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function Products() {
+export default function Products({inputSearch,setProdactLength}) {
   const [popUpProduct, setPopUpProduct] = useState([]);
   const [popUp, setPopUp] = useState(false)
   const [products, setProducts] = useState([]);
@@ -19,6 +19,7 @@ export default function Products() {
   const allProduct = async () => {
     const { data } = await getProducts();
     const productsObj = data.map((product) => {
+      setProdactLength(products.length)
       return { ...product, qty: qty };
     });
     setProducts(productsObj);
@@ -58,7 +59,15 @@ export default function Products() {
 
       <div className="w-full scroll-p-[24rem] px-4 bg-white">
         <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products?.map((product) => {
+          {products
+          .filter((product) => {
+            if (inputSearch === "") {
+              return product;
+            } else if (product.name.toLowerCase().includes(inputSearch.toLowerCase())) {
+              return product;
+            }
+          })
+          ?.map((product) => {
             return (
               <div
                 key={product._id}
