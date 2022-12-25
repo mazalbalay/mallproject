@@ -18,7 +18,7 @@ export default function CreateStore() {
 
 console.log(Product);
   return (
-<div className="w-full m-auto rounded m-20 text-center h-screen md:w-4/12 w-10/12 container mx-auto">
+<div className=" rounded m-20 text-center h-screen md:w-4/12 w-10/12 container mx-auto">
       
         
       <form className="w-full bg-white shadow-md rounded ">
@@ -26,11 +26,11 @@ console.log(Product);
        <p className="mx-auto text-center p-4 text-xl text-white		" >יצירת מוצר</p>
        </div>
         <div className="mb-4 p-4">
-          <label className="block text-gray-700 pb-2 text-sm font-bold mb-2 " for="name">
+          <label className="block text-gray-700 pb-2 text-sm font-bold mb-2 " htmlFor="name">
             שם מוצר
           </label>
           <input
-            // className="shadow appearance-none border text-end rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            
             className="shadow appearance-none border rounded text-end py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-10/12"
 
             id="DepName"
@@ -41,7 +41,7 @@ type="text"
         </div>
        
         <div className="mb-4 p-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2  text-xl pb-2"
+          <label className="block text-gray-700  font-bold mb-2  text-xl pb-2"
             for="description ">
             תיאור מוצר
           </label>
@@ -55,7 +55,7 @@ type="text"
         </div>
 
         <div className="mb-4 p-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2  text-xl pb-2"
+          <label className="block text-gray-700  font-bold mb-2  text-xl pb-2"
             for="description ">
              מותג
           </label>
@@ -69,7 +69,7 @@ type="text"
         </div>
 
         <div className="mb-4 p-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2  text-xl pb-2"
+          <label className="block text-gray-700  font-bold mb-2  text-xl pb-2"
             for="description ">
              סעיף
           </label>
@@ -83,7 +83,7 @@ type="text"
         </div>
 
         <div className="mb-4 p-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2  text-xl pb-2"
+          <label className="block text-gray-700 font-bold mb-2  text-xl pb-2"
             for="description ">
              מחלקה
           </label>
@@ -111,7 +111,7 @@ type="text"
           onDone={({ base64 }) => setProductImage({ ...ProductImage,image :  base64})}
             placeholder={"בחירת קובץ"}
           />
-        {/* </div> */}
+      
       </div>
 
         <div className="flex items-center justify-center p-4">

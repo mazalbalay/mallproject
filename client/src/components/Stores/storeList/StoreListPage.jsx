@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FiX } from "react-icons/fi";
 import { AiFillShop, AiOutlinePlusCircle } from "react-icons/ai";
-import { allStores } from "../../api/api";
+import { allStores } from "../../../api/api";
 import { FaAddressCard } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 const StoreComp = () => {

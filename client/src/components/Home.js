@@ -5,8 +5,11 @@ import CreateDepartment from "./Admin/CreateDepartment";
 import CreateStore from "./Admin/CreateStore";
 import EditDepartment from "./Admin/EditDepartment";
 import EditStore from "./Admin/EditStore";
+import InStore from "./Products/InStore";
 import AddProduct from "./Manager/AddProduct";
 import EditProduct from "./Manager/EditProduct";
+import CartStore from "./Cart/CartStore";
+
 
 export default function Home() {
   const navigate = useNavigate();

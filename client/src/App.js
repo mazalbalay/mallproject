@@ -5,17 +5,16 @@ import CheckOut from "./components/checkout/CheckOut";
 import React, { useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
-import CheckOutNav from "./components/CheckOutNav";
+import CheckOutNav from "./components/Navs/CheckOutNav";
 import Auth from "./components/authentication/Auth";
 import ThancksPage from "./components/checkout/ThancksPage";
 import Home from "./components/Home";
 import ErrPage from "./components/checkout/ErrPage";
-import CartStore from "./components/CartStore";
-import StoreListPage from "./components/storeList/StoreListPage";
-
+import CartStore from "./components/Cart/CartStore";
+import StoreComp from "./components/Stores/StoreComp";
 import Departments from "./components/Admin/Departments";
-import Footer from "./components/Footer";
-import InStore from "./components/InStore";
+import Footer from "./components/Footers/Footer";
+import InStore from "./components/Products/Products";
 import EditDepartment from "./components/Admin/EditDepartment";
 import CreateDepartment from './components/Admin/CreateDepartment';
 import Stores from './components/Admin/Stores';
@@ -23,7 +22,9 @@ import AdminMain from './components/Admin/Main'
 // import CreateStore from "./components/Admin/CreateStore";
 import MainPage from "./components/MainPage";
 import EditStore from "./components/Admin/EditStore";
+import StoreListPage from "./components/Stores/storeList/StoreListPage"
 import AddProduct from "./components/Manager/AddProduct";
+
 function App() {
   return (
     <PayPalScriptProvider
@@ -55,6 +56,9 @@ function App() {
           <Route path="/main" element={< MainPage/>} />
           <Route path="/storelist" element={< StoreListPage/>} />
           <Route path="/manager/products/addProduct" element={< AddProduct/>} />
+          <Route path="/home" element={< Home/>} />
+          <Route exact path="products" element={<InStore />} />
+
 
           {/* <Route path="/Admin/Store/new" element={< CreateStore/>} /> */}
   

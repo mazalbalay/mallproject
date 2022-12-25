@@ -26,7 +26,9 @@ export default function CreateDepartment() {
   console.log(Department);
 
   return (
-    <div className="w-full m-auto rounded m-20 text-center h-screen md:w-4/12 w-10/12 container mx-auto">
+    <div className="rounded m-20 text-center h-screen md:w-4/12 w-10/12 container mx-auto">
+      
+        
       <form className="w-full bg-white shadow-md rounded ">
         <div className="bg-sky-300">
           <p className="mx-auto text-center p-4 text-xl text-white		">
@@ -41,6 +43,7 @@ export default function CreateDepartment() {
             שם מחלקה
           </label>
           <input
+           
             className="shadow appearance-none border rounded text-end py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-10/12"
             id="DepName"
             onChange={(e) => setDepName(e.target.value)}
@@ -64,10 +67,8 @@ export default function CreateDepartment() {
           />
         </div>
         <div className="mb-4 p-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2  text-xl pb-2"
-            htmlFor="description "
-          >
+          <label className="block text-gray-700 font-bold mb-2  text-xl pb-2"
+            for="description ">
             תיאור מחלקה
           </label>
           <input
