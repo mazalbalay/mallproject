@@ -1,6 +1,8 @@
 import React, {useState,useEffect} from "react";
 import {createProduct,getProducts} from '../Manager/ApiCalls/products';
 import FileBase64 from 'react-file-base64';
+import Nav from '../Navs/MainNav';
+import MainPageFooter from "../Footers/MainPageFooter";
 
 export default function CreateStore() {
   const [ProductName, setProductName] = useState();
@@ -15,9 +17,21 @@ export default function CreateStore() {
     getProductData();
   },[]);
 
+  
+  async function editAndLoadPage() {
+    await editDepartment(
+      depId,
+      DepartmentName,
+      DepartmentImage.image,
+      DepartmentDesc
+    );
+    alert("מחלקה עודכנה");
+  }
+
 
 console.log(Product);
-  return (
+  return ( <div>
+    <Nav/>
 <div class=" rounded m-20 text-center h-screen md:w-4/12 w-10/12 container mx-auto">
       
         
@@ -119,7 +133,7 @@ type="text"
           <button
             class="bg-sky-300 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
             type="button"
-            onClick={()=>createProduct(ProductName,ProductImage.base64,ProductDesq)}
+            onClick={()=>editAndLoadPage(ProductName,ProductImage.base64,ProductDesq)}
           >
             עידכון מוצר
           </button>
@@ -130,6 +144,7 @@ type="text"
  onClick={()=>deleteAndLoadPage(storeId)}>Delete Store</button>}
 {Store[0]===null?null:<DepartmentComp img={Store.image} text={Store.name}/>} */}
    
+    </div><MainPageFooter/>
     </div>
 
   )
