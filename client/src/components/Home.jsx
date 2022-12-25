@@ -12,7 +12,6 @@ export default function Home() {
       <MainNav/>
       <MainPage/>
       <Footer/>
-      <Orders/>
     </div>
   )
 }
