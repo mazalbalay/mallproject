@@ -4,9 +4,11 @@ import HeaderStore from "../Stores/HeaderStore";
 import FilterProducts from "./FilterProducts";
 import Products from "./Products";
 import CartStore from "../Cart/CartStore";
-
+import { useState } from "react";
 
 const InStore = () => {
+  const [inputSearch, setInputSearch] = useState("");
+  const [prodactLength, setProdactLength] = useState("");
   return (
     <div className="w-full">
       <CheckOutNav />
@@ -16,8 +18,14 @@ const InStore = () => {
           <CartStore />
         </div>
         <div>
-          <FilterProducts />
-          <Products />
+          <FilterProducts
+            setInputSearch={setInputSearch}
+            prodactLength={prodactLength}
+          />
+          <Products
+            inputSearch={inputSearch}
+            setProdactLength={setProdactLength}
+          />
         </div>
       </div>
     </div>
