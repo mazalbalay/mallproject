@@ -6,6 +6,13 @@ export const AddProduct = (product, qty) => {
     }
 }
 
+export const IncreaseQty = (productId) => {
+    return {
+        type: "INCREASE",
+        payload: productId
+    }
+}
+
 export const ReduceQty = (productId) => {
     return {
         type: "REDUCE",
@@ -13,12 +20,6 @@ export const ReduceQty = (productId) => {
     }
 }
 
-export const IncreaseQty = (productId) => {
-    return {
-        type: "INCREASE",
-        payload: productId
-    }
-}
 
 export const ClearCart = (state) => {
     return {

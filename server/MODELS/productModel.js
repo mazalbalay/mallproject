@@ -11,7 +11,8 @@ const productSchema = new mongoose.Schema({
     section: String,
     size: [String],
     color: String,
-    model: String
+    model: String,
+    storeName: String
 })
 
 const productModel = mongoose.model("products", productSchema)
