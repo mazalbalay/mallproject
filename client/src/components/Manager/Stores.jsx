@@ -16,7 +16,7 @@ export default function Stores() {
     };
     getStoresData(Stores);
   }, []);
-  console.log();
+  console.log(Stores);
   return (
     <div>
       <Nav/>
@@ -31,14 +31,14 @@ export default function Stores() {
           + הוסף חנות
         </button> */}
         <div className=" flex flex-wrap">
-          {Stores.map((dep) => (
+          {Stores.map((Store) => (
             <div
-              key={dep._id}
-              // onClick={() =>
-              //   navigate(`${`/admin/Store/edit/${dep._id}`}`)
-              // }
+              key={Store._id}
+              onClick={() =>
+                navigate(`${`/manager/prpducts/${Store.name}`}`)
+              }
             >
-              <StoreComp img={dep.image} text={dep.name} />
+              <StoreComp img={Store.image} text={Store.name} />
             </div>
           ))}
         </div>

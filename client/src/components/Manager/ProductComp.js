@@ -7,21 +7,19 @@ const Product = (props) => {
   const { product } = props;
   return (
     <>
-      <div className="my-3 text-center w-5/12" key={product.id}>
-        <div className="bg-slate-200 rounded-lg shadow-lg">
-          <img src={product.image} className="h-60 p-4" alt={product.title} />
-          <div>
-            <h5>{product.title.substring(0, 12)}...</h5>
-            <p>${product.price}</p>
-            <Link to={`/products/${product.id}/edit`}>
-              <FiEdit/>
-            </Link>
-            <Link to={`products/${product.id}/delete`}>
-              <BsTrash/>
-            </Link>
-          </div>
-        </div>
-      </div>
+  <div className=" flex justify-center w-72 h-72 m-5" style={{  
+        backgroundImage: `url(${props.image})`,
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat'
+      }}>
+<div className="flex  self-end  h-20 bg-slate-200	w-full opacity-80">
+  <p className="m-auto">{props.name}</p>
+  <p className="m-auto">{props.desc}</p>
+  <p className="m-auto">{props.price}</p>
+</div>
+    </div>
+     
     </>
   );
 };

@@ -1,23 +1,25 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import {Link, useParams ,useNavigate} from 'react-router-dom';
 import Product from './ProductComp';
+import { getProducts} from './ApiCalls/products';
 
-const API_URL = "https://fakestoreapi.com/products";
 
 const ProductsScreen = () => {
 
-    const [data, setData] = useState([]);
+    const [products, setproducts] = useState([]);
+    let { StoreName } = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
       async function getData() {
-        const response = await axios.get(API_URL);
-        console.log(response.data);
-        setData(response.data);
+        const response = await getProducts();
+        const filter = response.data.filter((store) => store.storeName === StoreName);
+        setproducts(filter);
       }
       getData();
     }, []);
-  
+  console.log(products);
   return (
     <div>
         <div>
@@ -29,7 +31,7 @@ const ProductsScreen = () => {
             </div>
         </div>
         <div>
-            <header>
+            {/* <header>
                 <div>
                     <div>
                         <input type="search"
@@ -53,13 +55,22 @@ const ProductsScreen = () => {
                         </select>
                     </div>
                 </div>
-            </header>
+            </header> */}
 
             <div>
-                <div>
-                    {data.map((product) =>(
-                        <Product product={product} key={product.id}/>
-                 ))}
+                <div> {products.map((product) => (
+            <div
+              key={product._id}
+              onClick={() =>
+                navigate(`${`/manager/product/edit/${product.name}`}`)
+              }
+            >
+              <Product image={product.image} name={product.name} desc={product.description} price={product.price} />
+            </div>
+          ))}
+                    {/* {products.map((product) =>(
+                        <Product key={product._id}  product={product} />
+                 ))} */}
                 </div>
 
                 <nav>
@@ -75,4 +86,4 @@ const ProductsScreen = () => {
   )
 }
 
-export default ProductsScreen
+export default ProductsScreen;
