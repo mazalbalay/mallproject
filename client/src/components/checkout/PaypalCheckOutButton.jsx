@@ -3,20 +3,22 @@ import { PayPalButtons } from "@paypal/react-paypal-js";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 export default function PaypalCheckOutButton() {
-  const selctor = useSelector((state) => state.CartReducer);
+  const selctorCart = useSelector((state) => state.CartReducer);
+  const selctorOrder = useSelector((state) => state.orderReducer);
+//לעשות קישור בין הרידקס של ההזמנה ובין התשלום של פיפל
   
   const calc = () => {
     let total = 0;
-    selctor.map((product) => {
+    selctorCart.map((product) => {
       let productTotal = +product.price * +product.qty;
       return (total += productTotal);
     });
     return total;
   };
  
-  console.log(selctor);
   const [paidFor, setPaidFot] = useState(false);
   const [error, setError] = useState(null);
   const navigetor = useNavigate();
@@ -26,7 +28,7 @@ export default function PaypalCheckOutButton() {
   };
 
   if (paidFor) {
-    navigetor("/ThancksPage");
+    navigetor("/ThanksPage");
   }
   if (error) {
     navigetor("/ErrPage");
@@ -44,9 +46,9 @@ export default function PaypalCheckOutButton() {
         });
       }}
       onApprove={async (data, action) => {
-        const order = await action.order.capture();
-        console.log("order", order);
         handleApprove(data.orderID);
+        await axios.post("http://localhost:8000/order",selctorOrder)
+        console.log("selctorOrder",selctorOrder);
       }}
       onError={(err) => {
         setError(err);

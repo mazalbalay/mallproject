@@ -3,20 +3,13 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { HiCreditCard } from "react-icons/hi";
-import { AiOutlinePlus } from "react-icons/ai";
 import PaypalCheckOutButton from "./PaypalCheckOutButton";
 import AddCard from "./AddCard";
-import {useSelector,useDispatch} from 'react-redux'
 
 export default function CheckOut3({ setOrder, order }) {
-  const selector = useSelector(state => state.CartReducer)
   const [addCard, setAddCard] = useState(false);
   const [saveCard, setSaveCard] = useState(false);
 
-
-  const product = {
-   selector
-  };
   const [payment, setPayment] = useState([
     {
       cardNumber: "1234 1234 1234 1234",
@@ -60,10 +53,15 @@ export default function CheckOut3({ setOrder, order }) {
         })}
       </div>
       {saveCard ? (
-        <button onClick={()=>{
-          setSaveCard(!saveCard)
-          window.location.reload()
-        }} className="text-cyan-600">לתשלום רגיל לחצן כאן</button>
+        <button
+          onClick={() => {
+            setSaveCard(!saveCard);
+            window.location.reload();
+          }}
+          className="text-cyan-600"
+        >
+          לתשלום רגיל לחצן כאן
+        </button>
       ) : (
         <div className="w-3/4 h-1/2 flex flex-col justify-between items-end">
           <div className="w-full">
@@ -126,31 +124,35 @@ export default function CheckOut3({ setOrder, order }) {
         </div>
       )}
       {addCard ? (
-        <AddCard payment={payment} setAddCard={setAddCard} order={order} />
+        <AddCard payment={payment} setPayment={setPayment} setAddCard={setAddCard} order={order} />
       ) : (
         ""
       )}
       <div className="flex flex-col w-full items-end">
         <button
-          onClick={() => {
+          onClick={async () => {
             if (
-              order.payment.cardNumber &&
-              order.payment.threeDigits &&
-              order.payment.cardValidity &&
+              order.payment.cardNumber !== "paypal" &&
+              order.payment.threeDigits !== "paypal" &&
+              order.payment.cardValidity !== "paypal" &&
               order.addres.allData &&
               order.shipping.allData &&
               saveCard === false
             ) {
               setAddCard(!addCard);
+              await axios.post(`http://localhost:8000/order`, order);
+              console.log(order);
             } else if (
-              order.payment.cardNumber &&
-              order.payment.threeDigits &&
-              order.payment.cardValidity &&
+              order.payment.cardNumber !== "paypal" &&
+              order.payment.threeDigits !== "paypal" &&
+              order.payment.cardValidity !== "paypal" &&
               order.addres.allData &&
               order.shipping.allData &&
               saveCard === true
             ) {
-              navigetor("/ThancksPage");
+              navigetor("/ThanksPage");
+              await axios.post("http://localhost:8000/order", order);
+              console.log(order);
             } else {
               alert("מלא את כל השדות");
             }
@@ -159,7 +161,7 @@ export default function CheckOut3({ setOrder, order }) {
         >
           אישור קנייה
         </button>
-        <PaypalCheckOutButton product={product} />
+        <PaypalCheckOutButton />
       </div>
     </div>
   );
