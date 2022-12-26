@@ -17,7 +17,7 @@ export default function StoreComp(props) {
                 onClick={() => navigate(`/instore/${props.name}`)}
               className="p-1 bg-cyan-500 hover:bg-cyan-600 text-white font-medium"
             >
-              {" "}
+            
               קנה בחנות זו
             </button>
             <div className="flex items-center md:flex-row flex-col ">
