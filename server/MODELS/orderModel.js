@@ -4,7 +4,6 @@ const orderSchema = new mongoose.Schema({
     product: [{
         productsId: String,
         productsStore: String,
-        poductsDepartmen: String,
         productName: String,
         productPrice: String,
         productQuantity: String,
@@ -22,7 +21,7 @@ const orderSchema = new mongoose.Schema({
         postalCode: String,
     },
     shipping: {
-        type: String,
+        shippingType: String,
         date: String,
         time: String,
     },

@@ -4,17 +4,19 @@ import { BsFillClockFill } from "react-icons/bs";
 import { BsTextLeft } from "react-icons/bs";
 import ChoseDate from "./ChoseDate";
 import ChoseTime from "./ChoseTime";
+import { useSelector ,useDispatch } from "react-redux";
 
 export default function CheckOut2({ setOrder, order }) {
   const [dropDwon, setDropDwon] = useState(false);
-  const expressType = () => {
+  const dispatch =useDispatch()
+  const expressShipping = () => {
     setOrder({
       ...order,
       shipping: {
         ...order.shipping,
         time: `${new Date().getHours()}:00-${new Date().getHours() + 1}:00`,
         date: `${new Date().getDate()}/${new Date().getMonth() + 1}`,
-        type: "משלוח אקספרס",
+        shippingType: "משלוח אקספרס",
         allData:true
       },
     });
@@ -48,7 +50,7 @@ export default function CheckOut2({ setOrder, order }) {
             </div>
           </div>
           <div className="md:mr-12 mr-10">
-            <span> {order.shipping.type} </span>
+            <span> {order.shipping.shippingType} </span>
             יגיע ב-
             <span> {order.shipping.date} </span>
             בין השעות
@@ -65,8 +67,9 @@ export default function CheckOut2({ setOrder, order }) {
           <button
             onClick={() => {
               if (order.addres.allData) {
-                expressType();
+                expressShipping();
                 setDropDwon(!dropDwon);
+                dispatch({ shippingType: "UPDATEORDER", payload: order })
               } else {
                 alert("מלא בבקשה את כתובת המשלוח");
               }

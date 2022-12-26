@@ -2,7 +2,7 @@ import React from "react";
 import { BsCheck2Circle } from "react-icons/bs";
 import {useNavigate} from 'react-router-dom'
 
-export default function ThancksPage({ setOrder, order }) {
+export default function ThanksPage({ setOrder, order }) {
   const navigetor = useNavigate()
   return (
     <div className=" w-full p-10 flex flex-col items-center justify-center bg-white my-1">

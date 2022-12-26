@@ -3,23 +3,27 @@ import CheckOut1 from "./CheckOut1";
 import CheckOut2 from "./CheckOut2";
 import CheckOut3 from "./CheckOut3";
 import CartStore from "../Cart/CartStore";
+import { useSelector } from "react-redux";
 
 export default function CheckOut() {
+  const selctorCart = useSelector((state) => state.CartReducer);
+  const activeUser =  JSON.parse(localStorage.getItem(("user")))?.data.user
+  // console.log(activeUser);
+
   const [order, setOrder] = useState({
     product: [
       {
         productsId: "",
         productsStore: "",
-        poductsDepartmen: "",
         productName: "",
         productPrice: "",
         productQuantity: "",
       },
     ],
     user: {
-      userId: "",
-      userName: "",
-      userMail: "",
+      userId: "אורח",
+      userName: "אורח",
+      userMail: "אורח",
     },
     addres: {
       city: "",
@@ -30,21 +34,31 @@ export default function CheckOut() {
       allData: false,
     },
     shipping: {
-      type: "משלוח רגיל",
+      shippingType: "משלוח רגיל",
       date: "",
       time: "",
       allData: false,
     },
     payment: {
-      cardNumber: "",
-      cardValidity: "",
-      threeDigits: "",
+      cardNumber: "paypal",
+      cardValidity: "paypal",
+      threeDigits: "paypal",
       allData: true,
     },
   });
+
   useEffect(() => {
-    console.log(order);
-  }, []);
+    setOrder({
+      ...order,
+      product: selctorCart.map((v) => ({
+        productsId: v._id,
+        productsStore: v.storeName,
+        productName: v.name,
+        productPrice: v.price,
+        productQuantity: v.quantity,
+      })),
+    });
+  }, [selctorCart]);
   return (
     <div className="bg-slate-200">
       <div className="md:w-3/4 w-full m-auto bg-white text-right flex md:flex-row flex-col items-start justify-start">
