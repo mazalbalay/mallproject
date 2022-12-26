@@ -1,151 +1,229 @@
-import React, {useState,useEffect} from "react";
-import {createProduct,getProducts} from '../Manager/ApiCalls/products';
-import FileBase64 from 'react-file-base64';
-import Nav from '../Navs/MainNav';
-import MainPageFooter from "../Footers/MainPageFooter";
+import React, { useState, useEffect } from "react";
+import {
+  createProduct,
+  getProducts,
+  editProduct,
+} from "../Manager/ApiCalls/products";
+import FileBase64 from "react-file-base64";
+import { useParams } from "react-router-dom";
 
 export default function CreateStore() {
+  let { productId } = useParams();
   const [ProductName, setProductName] = useState();
   const [ProductImage, setProductImage] = useState();
-  const [ProductDesq, setProductDesq] = useState();
+  const [ProductPrice, setProductprice] = useState();
+  const [ProductBrand, setProductBrand] = useState();
+  const [ProductDesc, setProductDesc] = useState();
+  const [ProductdDepartment, setProductDepartment] = useState();
+  const [ProductdSection, setProductsection] = useState();
+  const [ProductdSize, setProductSize] = useState();
+  const [ProductdColor, setProductColor] = useState();
+  const [ProductdModel, setProductModel] = useState();
+  const [ProductdStoreName, setProductStoreName] = useState();
+
   const [Product, setProduct] = useState([]);
   useEffect(() => {
-    const getProductData = async () =>{
+    const getProductData = async () => {
       const result = await getProducts();
       setProduct(result.data);
-    }
+    };
     getProductData();
-  },[]);
+  }, []);
 
-  
   async function editAndLoadPage() {
-    await editDepartment(
-      depId,
-      DepartmentName,
-      DepartmentImage.image,
-      DepartmentDesc
+    await editProduct(
+      productId,
+      ProductName,
+      ProductImage.image,
+      ProductPrice,
+      ProductBrand,
+      ProductDesc,
+      ProductdDepartment,
+      ProductdSection,
+      ProductdSize,
+      ProductdColor,
+      ProductdModel,
+      ProductdStoreName
     );
     alert("מחלקה עודכנה");
   }
 
-
-console.log(Product);
-  return ( <div>
-    <Nav/>
-<div class=" rounded m-20 text-center h-screen md:w-4/12 w-10/12 container mx-auto">
-      
-        
-      <form class="w-full bg-white shadow-md rounded ">
+  console.log(Product);
+  return (
+    <div className=" rounded m-20 text-center h-screen md:w-4/12 w-10/12 container mx-auto">
+      <form className="w-full bg-white shadow-md rounded ">
         <div className="bg-sky-300">
-       <p class="mx-auto text-center p-4 text-xl text-white		" >עריכת מוצר</p>
-       </div>
-        <div class="mb-4 p-4">
-          <label class="block text-gray-700 pb-2 text-sm font-bold mb-2 " for="name">
+          <p className="mx-auto text-center p-4 text-xl text-white">עריכת מוצר</p>
+        </div>
+        <div className="mb-4 p-4">
+          <label
+            className="block text-gray-700 font-bold mb-2  text-xl pb-2"
+            for="DepName"
+          >
             שם מוצר
           </label>
           <input
-      
-            class="shadow appearance-none border rounded text-end py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-10/12"
-
-            id="DepName"
-          onChange={(e) => setProductName(e.target.value)}
-type="text"
+            className="shadow appearance-none border rounded text-end py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-10/12"
+            id="ProductName"
+            onChange={(e) => setProductName (e.target.value)}
+            type="text"
             placeholder="שם מוצר"
           />
         </div>
-       
-        <div class="mb-4 p-4">
-          <label class="block text-gray-700 font-bold mb-2  text-xl pb-2"
-            for="description ">
+
+<div className="mb-4 p-4">
+          <label className="block text-gray-700 pb-2  font-bold mb-2 " for="image">
+            תמונת מוצר
+          </label>
+
+          <div className="flex justify-center w-full">
+            <FileBase64
+              className="shadow appearance-none border rounded text-end py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-10/12"
+              type="file"
+              onDone={({ base64 }) =>
+                setProductImage({ ...ProductImage, image: base64 })
+              }
+              placeholder={"בחירת קובץ"}
+            />
+          </div>
+        </div>
+
+
+        <div className="mb-4 p-4">
+          <label
+            className="block text-gray-700 font-bold mb-2  text-xl pb-2"
+            for="description "
+          >
             תיאור מוצר
           </label>
           <input
-            class="shadow appearance-none border rounded text-end py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-10/12"
+            className="shadow appearance-none border rounded text-end py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-10/12"
             id="DepDesc"
             type="text"
-            onChange={(e) => setProductDesq(e.target.value)}
+            onChange={(e) => setProductDesc(e.target.value)}
             placeholder="תיאור מוצר"
           />
         </div>
 
-        <div class="mb-4 p-4">
-          <label class="block text-gray-700  font-bold mb-2  text-xl pb-2"
-            for="description ">
-             מותג
+        <div className="mb-4 p-4">
+          <label
+            className="block text-gray-700  font-bold mb-2  text-xl pb-2"
+            for="ProductDepartment "
+          >
+            מחלקה
           </label>
           <input
-            class="shadow appearance-none border rounded text-end py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-10/12"
-            id="DepDesc"
+            className="shadow appearance-none border rounded text-end py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-10/12"
+            id="ProductDepartment"
             type="text"
-            onChange={(e) => setProductDesq(e.target.value)}
+            onChange={(e) => setProductDepartment(e.target.value)}
             placeholder=" מותג"
           />
         </div>
 
-        <div class="mb-4 p-4">
-          <label class="block text-gray-700 font-bold mb-2  text-xl pb-2"
-            for="description ">
-             סעיף
+        <div className="mb-4 p-4">
+          <label
+            className="block text-gray-700 font-bold mb-2  text-xl pb-2"
+            for="ProductdSection "
+          >
+            סעיף
           </label>
           <input
-            class="shadow appearance-none border rounded text-end py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-10/12"
-            id="DepDesc"
+            className="shadow appearance-none border rounded text-end py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-10/12"
+            id="ProductdSection"
             type="text"
-            onChange={(e) => setProductDesq(e.target.value)}
+            onChange={(e) => setProductsection(e.target.value)}
             placeholder=" סעיף"
           />
         </div>
 
-        <div class="mb-4 p-4">
-          <label class="block text-gray-700 font-bold mb-2  text-xl pb-2"
-            for="description ">
-             מחלקה
+        <div className="mb-4 p-4">
+          <label
+            className="block text-gray-700 font-bold mb-2  text-xl pb-2"
+            for="ProductdSize "
+          >
+            מידות
           </label>
           <input
-            class="shadow appearance-none border rounded text-end py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-10/12"
-            id="DepDesc"
+            className="shadow appearance-none border rounded text-end py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-10/12"
+            id="ProductdSize"
             type="text"
-            onChange={(e) => setProductDesq(e.target.value)}
+            onChange={(e) => setProductSize(e.target.value)}
             placeholder=" מחלקה"
           />
         </div>
 
-        <div class="mb-4 p-4">
-          
+        <div className="mb-4 p-4">
           <label
-          class="block text-gray-700 pb-2  font-bold mb-2 "
-          for="image"
+            className="block text-gray-700 font-bold mb-2  text-xl pb-2"
+            for="ProductdColor "
           >
-            תמונת מוצר
+            מידות
           </label>
-        
-        {/* <div className="flex justify-center w-full"> */}
-          <FileBase64
-          class="shadow appearance-none border rounded text-end py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-10/12"
-          type="file"
-          onDone={({ base64 }) => setProductImage({ ...ProductImage,image :  base64})}
-            placeholder={"בחירת קובץ"}
+          <input
+            className="shadow appearance-none border rounded text-end py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-10/12"
+            id="ProductdColor"
+            type="text"
+            onChange={(e) => setProductColor(e.target.value)}
+            placeholder=" מחלקה"
           />
-        {/* </div> */}
-      </div>
+        </div>
 
-        <div class="flex items-center justify-center p-4">
+        <div className="mb-4 p-4">
+          <label
+            className="block text-gray-700 font-bold mb-2  text-xl pb-2"
+            for="ProductdModel "
+          >
+            מודל
+          </label>
+          <input
+            className="shadow appearance-none border rounded text-end py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-10/12"
+            id="ProductdModel"
+            type="text"
+            onChange={(e) => setProductModel(e.target.value)}
+            placeholder=" מחלקה"
+          />
+        </div>
+
+        <div className="mb-4 p-4">
+          <label
+            className="block text-gray-700 font-bold mb-2  text-xl pb-2"
+            for="ProductStoreName "
+          >
+            חנות
+          </label>
+          <input
+            className="shadow appearance-none border rounded text-end py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-10/12"
+            id="ProductStoreName"
+            type="text"
+            onChange={(e) => setProductStoreName(e.target.value)}
+            placeholder=" מחלקה"
+          />
+        </div>
+
+        
+        
+        <div className="flex items-center justify-center p-4">
           <button
-            class="bg-sky-300 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
+            className="bg-sky-300 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
             type="button"
-            onClick={()=>editAndLoadPage(ProductName,ProductImage.base64,ProductDesq)}
+            onClick={()=>editAndLoadPage( productId,
+              ProductName,
+              ProductImage.image,
+              ProductPrice,
+              ProductBrand,
+              ProductDesc,
+              ProductdDepartment,
+              ProductdSection,
+              ProductdSize,
+              ProductdColor,
+              ProductdModel,
+              ProductdStoreName)}
           >
             עידכון מוצר
           </button>
         </div>
       </form>
-
-          {/* {Store[0]===null?<div>store deleted</div>:<button             class="bg-red-700 hover:bg-red-800 mt-4 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
- onClick={()=>deleteAndLoadPage(storeId)}>Delete Store</button>}
-{Store[0]===null?null:<DepartmentComp img={Store.image} text={Store.name}/>} */}
-   
-    </div><MainPageFooter/>
     </div>
-
-  )
+  );
 }
