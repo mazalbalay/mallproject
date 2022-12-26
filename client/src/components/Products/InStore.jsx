@@ -4,7 +4,7 @@ import HeaderStore from "../Stores/HeaderStore";
 import FilterProducts from "./FilterProducts";
 import Products from "./Products";
 import CartStore from "../Cart/CartStore";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 const InStore = () => {
@@ -25,11 +25,14 @@ const InStore = () => {
                 setInputSearch={setInputSearch}
                 prodactLength={prodactLength}
               />
-              <Products
-                storeName={storeName}
-                inputSearch={inputSearch}
-                setProdactLength={setProdactLength}
-              />
+                {useEffect(() => {
+     <Products
+     storeName={storeName}
+     inputSearch={inputSearch}
+     setProdactLength={setProdactLength}
+   />
+  }, [])}
+            
             </div>
             <div className="md:hidden block  p-4 ">
           <CartStore />

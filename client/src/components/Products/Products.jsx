@@ -66,9 +66,9 @@ export default function Products({inputSearch,setProdactLength , storeName}) {
                 return product;
               }
             })
-          }
+          
             
-            {products.map((product) => {
+            ?.map((product) => {
               return (
                 <div
                   key={product._id}
@@ -109,9 +109,11 @@ export default function Products({inputSearch,setProdactLength , storeName}) {
                 </div>
                 </div>
               );
-            })}
+            })
+          }
         </div>
       </div>
+
       <ProductPopUp
         product={popUpProduct}
         onClose={handleOneClose}

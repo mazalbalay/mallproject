@@ -45,7 +45,7 @@ const CartStore = () => {
       </div>
       {state.map((product) => {
         return (
-          <div className="w-full">
+          <div key={product._id} className="w-full">
             <div className="flex w-full p-2 justify-between">
               <div className="plus-minus w-3/12 text-center grid place-content-center">
                 <div className="">
