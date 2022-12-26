@@ -47,7 +47,7 @@ function App() {
           <Route path="/personalinfo" element={<PersonalInfo />} />
           <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/personalinfo" element={<PersonalInfo />} />
-          <Route path="/instore/:name" element={<InStore />} />
+          {/* <Route path="/instore/:name" element={<InStore />} /> */}
           <Route path="/admin" element={<AdminMain/>} />
           <Route path="/admin/Department/new" element={< CreateDepartment/>} />
           <Route path="/admin/Department/edit/:depId" element={< EditDepartment/>} />
