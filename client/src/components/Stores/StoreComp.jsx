@@ -1,10 +1,9 @@
 import React from "react";
 import { FaAddressCard } from "react-icons/fa";
-import { useNavigate  } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 
 export default function StoreComp(props) {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   return (
     <div>
       <div className="flex border-4 md:flex-row flex-col-reverse  w-[90%] md:h-[160px] h-[550px] md:my-2 mb-4 ">
@@ -14,7 +13,7 @@ export default function StoreComp(props) {
           <div className="my-1">{props.desc}</div>
           <div className="flex justify-between w-[90%]">
             <button
-                onClick={() => navigate(`/instore/${props.name}`)}
+              onClick={() => navigate(`/instore/${props.name}`)}
               className="p-3 bg-black text-white font-medium"
             >
               {" "}
