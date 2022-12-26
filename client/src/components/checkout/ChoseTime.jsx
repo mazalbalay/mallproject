@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
+import { useDispatch } from "react-redux";
 
 export default function ChoseTime({ setOrder, order, callback }) {
   const [dropDwon, setDropDwon] = useState(false);
+  const dispatch = useDispatch();
   const [number, setNumber] = useState(3);
   const time = [
     {
@@ -81,7 +83,6 @@ export default function ChoseTime({ setOrder, order, callback }) {
         <div className="flex justify-center items-center">
           <button
             onClick={() => {
-              console.log(order.shipping);
               if (order.shipping.date && order.shipping.time) {
                 callback(!dropDwon);
                 setOrder({
@@ -91,6 +92,7 @@ export default function ChoseTime({ setOrder, order, callback }) {
                     allData: true,
                   },
                 });
+                dispatch({ type: "UPDATEORDER", payload: order });
               } else {
                 alert("מלא את כל השדות");
               }

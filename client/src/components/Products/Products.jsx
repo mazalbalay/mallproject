@@ -41,8 +41,6 @@ export default function Products({ inputSearch, setProdactLength, storeName }) {
   };
 
   const showProductPopUp = (e) => {
-    console.log(e.target.name);
-    console.log(e.target.id);
     products.map((product) => {
       if (product._id === e.target.id) {
         setPopUpProduct(product);
