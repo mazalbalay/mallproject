@@ -26,6 +26,8 @@ const CartStore = () => {
     return total;
   };
 
+
+
   return (
     <div className="w-full border border-gray">
       <div className="bg-slate-700 text-white text-center p-4">
