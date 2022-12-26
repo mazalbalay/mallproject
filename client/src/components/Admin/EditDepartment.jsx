@@ -37,7 +37,7 @@ export default function EditDepartment() {
   console.log(Department);
   return ( <div>
     <Nav/>
-    <div className="w-full m-auto rounded m-20 text-center h-screen md:w-4/12 w-10/12 container mx-auto">
+    <div className=" rounded m-20 text-center h-screen md:w-4/12 w-10/12 container mx-auto">
       <form className="w-full bg-white shadow-md rounded ">
         <div className="bg-sky-300">
           <p className="mx-auto text-center p-4 text-xl text-white		">
@@ -78,7 +78,7 @@ export default function EditDepartment() {
         </div>
         <div className="mb-4 p-4">
           <label
-            className="block text-gray-700 text-sm font-bold mb-2  text-xl pb-2"
+            className="block text-gray-700 font-bold mb-2  text-xl pb-2"
             htmlFor="description "
           >
             תיאור מחלקה
