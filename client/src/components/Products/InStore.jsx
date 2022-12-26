@@ -14,9 +14,9 @@ const InStore = () => {
   const {storeName}=useParams()
 
   return (
-    <div className="w-full">      <HeaderStore />
+    <div className="w-4/5 m-auto">      <HeaderStore />
       <div className="flex">
-        <div className="h-v">
+        <div className="h-v w-1/3">
           <CartStore />
         </div>
         <div>

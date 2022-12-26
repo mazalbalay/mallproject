@@ -6,8 +6,7 @@ import { getProducts } from "../Manager/ApiCalls/products";
 import { AddProduct, ReduceQty } from "../../Redux/action/cartActions";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function Products({inputSearch,setProdactLength , storeName}) {
-
+export default function Products({ inputSearch, setProdactLength, storeName }) {
   const [popUpProduct, setPopUpProduct] = useState([]);
   const [popUp, setPopUp] = useState(false);
   const [products, setProducts] = useState([]);
@@ -19,8 +18,8 @@ export default function Products({inputSearch,setProdactLength , storeName}) {
   console.log(state);
 
   const allProduct = async () => {
-    const { data:products } = await getProducts();
-    const data = products.filter(product => product.brand === storeName)
+    const { data: products } = await getProducts();
+    const data = products.filter((product) => product.brand === storeName);
     const productsObj = data.map((product) => {
       return { ...product, qty: qty };
     });
@@ -68,9 +67,7 @@ export default function Products({inputSearch,setProdactLength , storeName}) {
                 return product;
               }
             })
-          }
-            
-            {products.map((product) => {
+            .map((product) => {
               return (
                 <div
                   key={product._id}
