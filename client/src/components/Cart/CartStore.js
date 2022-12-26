@@ -26,9 +26,11 @@ const CartStore = () => {
     return total;
   };
 
+
+
   return (
     <div className="w-full border border-gray">
-      <div className="bg-black text-white text-center p-4">
+      <div className="bg-slate-700 text-white text-center p-4">
         <p className="text-xl"> עגלת קניות</p>
       </div>
       <div className="flex justify-end bg-gray-200">
@@ -45,9 +47,9 @@ const CartStore = () => {
       </div>
       {state.map((product) => {
         return (
-          <div className="w-full">
-            <div className="flex p-2 justify-between">
-              <div className="plus-minus text-center grid place-content-center">
+          <div key={product._id} className="w-full">
+            <div className="flex w-full p-2 justify-between">
+              <div className="plus-minus w-3/12 text-center grid place-content-center">
                 <div className="">
                   <div className="minus-plus flex justify-around">
                     <button className="text-teal-400">
@@ -66,21 +68,25 @@ const CartStore = () => {
                 <h5>{`${product.price} ש"ח`}</h5>
               </div>
 
-              <div className="contact text-end">
+              <div className="contact p-2 w-8/12 text-end">
                 <h1 className="font-bold">{product.name}</h1>
                 <p className="text-gray-400 text-sm">{product.brand}</p>
                 <p className="text-gray-400 text-sm">{product.color}</p>
               </div>
 
-              <div className="right-img ">
-                <img className="w-24" src={product.image} alt={product.name} />
+              <div className="right-img w-24">
+                <img
+                  className="w-24 h-24"
+                  src={product.image}
+                  alt={product.name}
+                />
               </div>
             </div>
 
-            <div className="price pr-7">
+            {/* <div className="price pr-7">
               <h1>{product.price * product.qty} ש"ח</h1>
             </div>
-            <hr className="w-full my-3"></hr>
+            <hr className="w-full my-3"></hr> */}
           </div>
         );
       })}

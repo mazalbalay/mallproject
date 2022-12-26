@@ -72,7 +72,7 @@ console.log(user);
           <Route path="/manager/products/new" element={< AddProduct/>} />
           <Route path="/manger/stores" element={<StoresManeger/>} />
           <Route path="/manager" element={< Maneger/>} />
-          <Route exact path="products" element={<InStore />} />
+          {/* <Route exact path="products" element={<InStore />} /> */}
           <Route exact path="/checkout" element={<CheckOut/>} />
         </Routes>
       </div>
