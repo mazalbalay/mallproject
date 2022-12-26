@@ -6,12 +6,12 @@ const FilterProducts = ({setInputSearch,prodactLength}) => {
   return (
     <div>
       <div className="flex  flex-row-reverse items-center">
-        <div className="flex justify-center w-full p-20">
+        <div className="flex justify-center w-full">
           <input
             onChange={(e) => setInputSearch(e.target.value)}
             type="text"
             placeholder="חפש לפי שם"
-            className="border-2 w-1/3 p-2 rounded-md placeholder:text-center outline-none"
+            className="border-2 w-8/12 p-2 rounded-md placeholder:text-center outline-none"
           />
         </div>
       </div>

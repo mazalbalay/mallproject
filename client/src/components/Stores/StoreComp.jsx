@@ -1,10 +1,9 @@
 import React from "react";
 import { FaAddressCard } from "react-icons/fa";
-import { useNavigate  } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 
 export default function StoreComp(props) {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   return (
     <div>
       <div className="flex border-2 md:flex-row flex-col-reverse  w-[90%] md:h-[160px] h-[550px] md:my-2 mb-4 ">
