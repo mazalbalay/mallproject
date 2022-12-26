@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Nav from '../Navs/MainNav';
-import MainPageFooter from "../Footers/MainPageFooter";
 
 export default function Main() {
   const navigate = useNavigate();
@@ -18,7 +16,7 @@ export default function Main() {
 
   
   return (
-    <div> <Nav/>
+    
     <div className="w-full flex flex-col p-28">
      
       <div className="text-center	text-6xl	m-6">
@@ -41,7 +39,6 @@ export default function Main() {
         </button>
       </div>
     </div>
-    <MainPageFooter/>
-    </div>
+   
   );
 }

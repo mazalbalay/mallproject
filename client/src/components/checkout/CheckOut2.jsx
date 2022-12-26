@@ -1,100 +1,168 @@
-import React, { useState } from "react";
-import { BsChevronDown } from "react-icons/bs";
-import { BsFillClockFill } from "react-icons/bs";
-import { BsTextLeft } from "react-icons/bs";
-import ChoseDate from "./ChoseDate";
-import ChoseTime from "./ChoseTime";
-import { useSelector ,useDispatch } from "react-redux";
+import React from "react";
+import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { HiCreditCard } from "react-icons/hi";
+import PaypalCheckOutButton from "./PaypalCheckOutButton";
+import AddCard from "./AddCard";
 
-export default function CheckOut2({ setOrder, order }) {
-  const [dropDwon, setDropDwon] = useState(false);
-  const dispatch =useDispatch()
-  const expressShipping = () => {
-    setOrder({
-      ...order,
-      shipping: {
-        ...order.shipping,
-        time: `${new Date().getHours()}:00-${new Date().getHours() + 1}:00`,
-        date: `${new Date().getDate()}/${new Date().getMonth() + 1}`,
-        shippingType: "משלוח אקספרס",
-        allData:true
-      },
-    });
-  };
+export default function CheckOut3({ setOrder, order }) {
+  const [addCard, setAddCard] = useState(false);
+  const [saveCard, setSaveCard] = useState(false);
 
+  const [payment, setPayment] = useState([
+    {
+      cardNumber: "1234 1234 1234 1234",
+      cardValidity: "06/26",
+      threeDigits: "123",
+      allData: true,
+    },
+  ]);
+  const navigetor = useNavigate();
   return (
-    <>
-      {dropDwon ? (
-        <div className="w-full p-5 flex flex-col items-end justify-between bg-white my-1 border-b-4">
-          <div className="w-full flex items-end justify-between bg-white my-1">
-            <BsChevronDown
-              className="md:text-3xl text-2xl"
-              onClick={() => {
-                setDropDwon(!dropDwon);
+    <div className="w-full min-h-screen p-10 flex flex-col items-end justify-between bg-white my-4">
+      <div className="flex items-end">
+        <h1 className="font-medium text-2xl">פרטי תשלום</h1>
+        <HiCreditCard className="text-cyan-600 text-4xl ml-4" />
+      </div>
+      <div>
+        <p className="my-8 font-medium">בחר אמצעי תשלום:</p>
+        {payment.map((v, i) => {
+          return (
+            <div key={i} className="flex items-center">
+              <label className="mx-2 font-bold"> {v.cardNumber}</label>
+              <input
+                onChange={(e) => {
+                  setOrder({
+                    ...order,
+                    payment: {
+                      cardNumber: v.cardNumber,
+                      cardValidity: v.cardValidity,
+                      threeDigits: v.threeDigits,
+                    },
+                  });
+                  setSaveCard(!saveCard);
+                }}
+                type="radio"
+                name="cardNum"
+                value={v}
+                className="w-6 h-6 "
+              />
+            </div>
+          );
+        })}
+      </div>
+      {saveCard ? (
+        <button
+          onClick={() => {
+            setSaveCard(!saveCard);
+            window.location.reload();
+          }}
+          className="text-cyan-600"
+        >
+          לתשלום רגיל לחצן כאן
+        </button>
+      ) : (
+        <div className="w-3/4 h-1/2 flex flex-col justify-between items-end">
+          <div className="w-full">
+            <h3>מספר כרטיס</h3>
+            <input
+              onChange={(e) => {
                 setOrder({
                   ...order,
-                  shipping: {
-                    ...order.shipping,
-                    time: "",
-                    date: "",
-                    allData:false
+                  payment: {
+                    ...order.payment,
+                    [e.target.name]: e.target.value,
                   },
                 });
               }}
-            />
-            <div className="flex items-center">
-              <h1 className="font-medium text-2xl">זמן משלוח</h1>
-              <span>
-                <BsFillClockFill className="text-cyan-600 text-4xl ml-4 p-1" />
-              </span>
-            </div>
-          </div>
-          <div className="md:mr-12 mr-10">
-            <span> {order.shipping.shippingType} </span>
-            יגיע ב-
-            <span> {order.shipping.date} </span>
-            בין השעות
-            <span> {order.shipping.time}</span>
-          </div>
-        </div>
-      ) : (
-        <div className="w-full min-h-screen p-5 flex flex-col items-end justify-between bg-white my-1">
-          <div className="flex items-center">
-            <h1 className="text-2xl font-medium items-center">זמן משלוח</h1>
-            <BsFillClockFill className="text-cyan-600 text-3xl ml-4" />
-          </div>
-          <p>בחר שעה למשלוח בחר שעה למשלוח בחר שעה למשלוח</p>
-          <button
-            onClick={() => {
-              if (order.addres.allData) {
-                expressShipping();
-                setDropDwon(!dropDwon);
-                dispatch({ shippingType: "UPDATEORDER", payload: order })
-              } else {
-                alert("מלא בבקשה את כתובת המשלוח");
-              }
-            }}
-            // name=""
-            className="w-fit flex items-center rounded-lg hover:border-cyan-600 border-2 p-1"
-          >
-            <p className="mx-3">משלוח אקספרס - מגיע לביתך תורך שעה</p>
-            <BsFillClockFill className="text-red-700 " />
-            <BsTextLeft className="text-red-700 " />
-          </button>
-          <div className="flex w-full justify-between">
-            <ChoseDate
-              order={order}
-              setOrder={setOrder}
-              callback={(dropDwon) => setDropDwon(dropDwon)}
+              name="cardNumber"
+              type="tel"
+              placeholder="3434 3434 3434 3434"
+              maxLength={"19"}
+              className="border-b placeholder:text-right outline-none p-3 w-fit text-right"
             />
           </div>
-          <ChoseTime
-            order={order}
-            setOrder={setOrder}
-            callback={(dropDwon) => setDropDwon(dropDwon)}
-          />
+          <div className="w-full">
+            <h3>תוקף</h3>
+            <input
+              onChange={(e) => {
+                setOrder({
+                  ...order,
+                  payment: {
+                    ...order.payment,
+                    [e.target.name]: e.target.value,
+                  },
+                });
+              }}
+              name="cardValidity"
+              type="tel"
+              placeholder="34/02"
+              maxLength={"5"}
+              className=" border-b placeholder:text-right outline-none p-2 my-1 w-16 text-right"
+            />
+          </div>
+          <div className="w-full">
+            <h3>3 ספרות מאחורי הכרטיס CW</h3>
+            <input
+              onChange={(e) => {
+                setOrder({
+                  ...order,
+                  payment: {
+                    ...order.payment,
+                    [e.target.name]: e.target.value,
+                  },
+                });
+              }}
+              name="threeDigits"
+              type="tel"
+              placeholder="321"
+              maxLength={"3"}
+              className="border-b placeholder:text-right outline-none p-2 my-1 w-16 text-right"
+            />
+          </div>
         </div>
       )}
-    </>
+      {addCard ? (
+        <AddCard payment={payment} setPayment={setPayment} setAddCard={setAddCard} order={order} />
+      ) : (
+        ""
+      )}
+      <div className="flex flex-col w-full items-end">
+        <button
+          onClick={async () => {
+            if (
+              order.payment.cardNumber !== "paypal" &&
+              order.payment.threeDigits !== "paypal" &&
+              order.payment.cardValidity !== "paypal" &&
+              order.addres.allData &&
+              order.shipping.allData &&
+              saveCard === false
+            ) {
+              setAddCard(!addCard);
+              await axios.post(`http://localhost:8000/order`, order);
+              console.log(order);
+            } else if (
+              order.payment.cardNumber !== "paypal" &&
+              order.payment.threeDigits !== "paypal" &&
+              order.payment.cardValidity !== "paypal" &&
+              order.addres.allData &&
+              order.shipping.allData &&
+              saveCard === true
+            ) {
+              navigetor("/ThanksPage");
+              await axios.post("http://localhost:8000/order", order);
+              console.log(order);
+            } else {
+              alert("מלא את כל השדות");
+            }
+          }}
+          className="bg-cyan-600 rounded-md text-white py-4 px-8  m-1 w-full"
+        >
+          אישור קנייה
+        </button>
+        <PaypalCheckOutButton />
+      </div>
+    </div>
   );
 }

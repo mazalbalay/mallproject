@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { createDepartment, getDepartments } from "../ApiCalls/Departments";
 import FileBase64 from "react-file-base64";
-import Nav from '../Navs/MainNav';
-import MainPageFooter from "../Footers/MainPageFooter";
 
 export default function CreateDepartment() {
   const [DepName, setDepName] = useState();
@@ -27,9 +25,8 @@ export default function CreateDepartment() {
   console.log(Departments);
   console.log(Department);
 
-  return (<div>
-    <Nav/>
-    <div className="rounded m-20 text-center h-screen md:w-4/12 w-10/12 container mx-auto">
+  return (
+    <div className="rounded m-20 text-center h-screen md:w-4/12 w-10/12 container mx-auto p-20">
       
         
       <form className="w-full bg-white shadow-md rounded ">
@@ -51,7 +48,7 @@ export default function CreateDepartment() {
             id="DepName"
             onChange={(e) => setDepName(e.target.value)}
             type="text"
-            placeholder="department name"
+            placeholder="שם מחלקה"
           />
         </div>
         <div className="mb-4 p-4">
@@ -101,7 +98,6 @@ export default function CreateDepartment() {
         </div>
       </form>
      
-    </div><MainPageFooter/>
     </div>
   );
 }
