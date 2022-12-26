@@ -7,14 +7,15 @@ import CartStore from "../Cart/CartStore";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
-
 const InStore = () => {
   const [inputSearch, setInputSearch] = useState("");
   const [prodactLength, setProdactLength] = useState("");
-  const {storeName}=useParams()
+  const { storeName } = useParams();
 
   return (
-    <div className="w-full">      <HeaderStore />
+    <div className="w-full">
+      {" "}
+      <HeaderStore />
       <div className="flex">
         <div className="h-v">
           <CartStore />
@@ -25,7 +26,7 @@ const InStore = () => {
             prodactLength={prodactLength}
           />
           <Products
-           storeName={storeName}
+            storeName={storeName}
             inputSearch={inputSearch}
             setProdactLength={setProdactLength}
           />
