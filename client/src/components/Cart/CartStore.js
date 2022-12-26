@@ -2,11 +2,12 @@ import React from "react";
 import { FiMinusCircle, FiPlusCircle } from "react-icons/fi";
 import { IncreaseQty, ReduceQty } from "../../Redux/action/cartActions";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const CartStore = () => {
   const state = useSelector((state) => state.CartReducer);
-  console.log(state);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleIncresment = (productId) => {
     dispatch(IncreaseQty(productId));
@@ -30,18 +31,18 @@ const CartStore = () => {
       <div className="bg-slate-700 text-white text-center p-4">
         <p className="text-xl"> עגלת קניות</p>
       </div>
-            <div className="flex justify-end bg-gray-200">
-              <div className="name grid  place-content-center ">
-                <h1 className="font-bold">store name</h1>
-              </div>
-              <div className="right-img bg-gray-200 ">
-                <img
-                  className="w-24 rounded-full p-3"
-                  src="https://scontent.fhfa2-2.fna.fbcdn.net/v/t39.30808-6/291457391_556774552703567_2822531227252307747_n.png?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=CyjXaIGWAJ8AX8tQaoa&_nc_ht=scontent.fhfa2-2.fna&oh=00_AfA4xhnT3nM9QjJBVZ4sEH53UHxoc1ruMHxEMD4NO-Bh7Q&oe=63A5F3AF"
-                  alt=""
-                />
-              </div>
-            </div>
+      <div className="flex justify-end bg-gray-200">
+        <div className="name grid  place-content-center ">
+          <h1 className="font-bold">store name</h1>
+        </div>
+        <div className="right-img bg-gray-200 ">
+          <img
+            className="w-24 rounded-full p-3"
+            src="https://scontent.fhfa2-2.fna.fbcdn.net/v/t39.30808-6/291457391_556774552703567_2822531227252307747_n.png?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=CyjXaIGWAJ8AX8tQaoa&_nc_ht=scontent.fhfa2-2.fna&oh=00_AfA4xhnT3nM9QjJBVZ4sEH53UHxoc1ruMHxEMD4NO-Bh7Q&oe=63A5F3AF"
+            alt=""
+          />
+        </div>
+      </div>
       {state.map((product) => {
         return (
           <div className="w-full">
@@ -56,7 +57,9 @@ const CartStore = () => {
                     </button>
                     <h5>{product.qty}</h5>
                     <button className="text-teal-400">
-                      <FiPlusCircle onClick={() => handleIncresment(product._id)} />
+                      <FiPlusCircle
+                        onClick={() => handleIncresment(product._id)}
+                      />
                     </button>
                   </div>
                 </div>
@@ -101,14 +104,18 @@ const CartStore = () => {
         </div>
       </div>
       <div className="">
-        <button className="text-white text-xl bg-sky-500/75 w-full p-4">
-         {` לתשלום ${calc()} ש"ח`}
+        <button
+          onClick={() => {
+            navigate("/checkout");
+          }}
+          className="text-white text-xl bg-sky-500/75 w-full p-4"
+        >
+          {` לתשלום ${calc()} ש"ח`}
         </button>
       </div>
     </div>
   );
 };
 
-
-
 export default CartStore;
+

@@ -4,9 +4,11 @@ import { BsFillClockFill } from "react-icons/bs";
 import { BsTextLeft } from "react-icons/bs";
 import ChoseDate from "./ChoseDate";
 import ChoseTime from "./ChoseTime";
+import { useSelector ,useDispatch } from "react-redux";
 
 export default function CheckOut2({ setOrder, order }) {
   const [dropDwon, setDropDwon] = useState(false);
+  const dispatch =useDispatch()
   const expressType = () => {
     setOrder({
       ...order,
@@ -67,6 +69,7 @@ export default function CheckOut2({ setOrder, order }) {
               if (order.addres.allData) {
                 expressType();
                 setDropDwon(!dropDwon);
+                dispatch({ type: "UPDATEORDER", payload: order })
               } else {
                 alert("מלא בבקשה את כתובת המשלוח");
               }
