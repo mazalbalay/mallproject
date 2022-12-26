@@ -5,6 +5,7 @@ import ProductPopUp from "./ProductPopUp";
 import { getProducts } from "../Manager/ApiCalls/products";
 import { AddProduct, ReduceQty } from "../../Redux/action/cartActions";
 import { useDispatch, useSelector } from "react-redux";
+import BeatLoader from "react-spinners/BeatLoader";
 
 export default function Products({inputSearch,setProdactLength , storeName}) {
 
@@ -57,6 +58,7 @@ export default function Products({inputSearch,setProdactLength , storeName}) {
   return (
     <div>
       <div className="w-full scroll-p-[24rem] px-4 bg-white">
+        {products ? 
         <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {products
             .filter((product) => {
@@ -68,9 +70,7 @@ export default function Products({inputSearch,setProdactLength , storeName}) {
                 return product;
               }
             })
-          }
-            
-            {products.map((product) => {
+          .map((product) => {
               return (
                 <div
                   key={product._id}
@@ -109,7 +109,16 @@ export default function Products({inputSearch,setProdactLength , storeName}) {
                 </div>
               );
             })}
-        </div>
+        </div>:
+        <BeatLoader
+        color={'black'}
+        loading={true}
+        cssOverride={{display:'flex' , justifyContent:'center' , height:'30vh' , alignItems:'center'}}
+        size={20}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+        }
       </div>
       <ProductPopUp
         product={popUpProduct}

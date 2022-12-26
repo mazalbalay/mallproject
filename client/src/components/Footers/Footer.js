@@ -6,7 +6,7 @@ const Footer = () => {
 
   const data = ["פירוט עמוד", "פירוט עמוד", "פירוט עמוד", "פירוט עמוד", "אודותינו"]
   return (
-    <footer className="bg-gray-900 w-full text-gray-300 bottom-0">
+    <footer className="bg-gray-900 w-full text-gray-300  bottom-0">
       <div className="container mx-auto w-8/12 pt-10 grid grid-cols-1 sm:grid-cols-5 md:gap-6 gap-3 text-center">
         {data.map((item)=>{
           return(

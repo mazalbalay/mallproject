@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import {  useDispatch } from "react-redux";
 import * as api from "../../api/api";
 import { useNavigate ,Link} from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
 import { gapi } from "gapi-script";
-import {AiFillEye} from 'react-icons/ai'
 import FacebookLogin from "react-facebook-login";
 import axios from "axios";
-
 export default function Auth() {
   const dispatch = useDispatch()
   const navigate = useNavigate();
@@ -70,9 +68,9 @@ export default function Auth() {
   const handleClick = async () => {
     if (singUp) {
       try {
-        const { data:user } = await api.singup(userData);
+        const { data } = await api.singup(userData);
        
-        dispatch({type:'AUTH', payload:{ data: user }})
+        dispatch({type:'AUTH', payload:{ data: data }})
 
         setUserData({
           email: "",
@@ -89,10 +87,10 @@ export default function Auth() {
       }
     } else if (!singUp) {
       try {
-        const { data:user } = await api.singin(userData);
+        const { data} = await api.singin(userData);
     
 
-        dispatch({type:'AUTH', payload:{ data: user }})
+        dispatch({type:'AUTH', payload:{ data: data }})
 
         navigate("/");
         window.location.reload()
@@ -106,6 +104,7 @@ export default function Auth() {
   return (
     <div className="w-screen  flex justify-center  ">
       <div className=" flex justify-center flex-col  md:flex-row w-[100%] md:m-20 ">
+        
         <div className=" my-1 w-[100%] h-52 md:h-full  md:w-[20%] bg-red-400"></div>
         <div
           className="w-[100%]  md:w-[30%] bg-white flex flex-col  items-center text-sm py-5  md:py-0 "
@@ -204,6 +203,7 @@ export default function Auth() {
           </span>
         </div>
       </div>
+    
     </div>
   );
 }
