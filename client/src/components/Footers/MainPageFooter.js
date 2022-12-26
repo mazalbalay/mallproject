@@ -4,7 +4,7 @@ import { FaCopyright , FaLinkedinIn, FaTwitter} from "react-icons/fa"
 
 const MainPageFooter = () => {
   return (
-    <footer className="bg-gray-900 w-full text-gray-300 fixed bottom-0">
+    <footer className="bg-gray-900 w-full text-gray-300 bottom-0">
     <div className="container mx-auto w-8/12 pt-10 grid grid-cols-1 lg:grid-cols-7 md:gap-4 gap-5 text-center">
     <ul>
         <li>אודותינו</li>
