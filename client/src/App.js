@@ -45,7 +45,7 @@ console.log(user);
       
     {user ?  <StoreListNav/>:<MainNav/>}
 
-{/* <Footer/> */}
+
 
       <div>
         <Routes>
@@ -75,6 +75,8 @@ console.log(user);
           {/* <Route exact path="products" element={<InStore />} /> */}
           <Route exact path="/checkout" element={<CheckOut/>} />
         </Routes>
+        
+        {/* <Footer/>/ */}
       </div>
     </PayPalScriptProvider>
   );

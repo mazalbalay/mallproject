@@ -42,6 +42,8 @@ export default function Products({inputSearch,setProdactLength , storeName}) {
   };
 
   const showProductPopUp = (e) => {
+    console.log(e.target.name);
+    console.log(e.target.id);
     products.map((product) => {
       if (product._id === e.target.id) {
         setPopUpProduct(product);
@@ -55,7 +57,7 @@ export default function Products({inputSearch,setProdactLength , storeName}) {
   return (
     <div>
       <div className="w-full scroll-p-[24rem] px-4 bg-white">
-        <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1">
+        <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {products
             .filter((product) => {
               if (inputSearch === "") {
@@ -66,15 +68,14 @@ export default function Products({inputSearch,setProdactLength , storeName}) {
                 return product;
               }
             })
-          
+          }
             
-            ?.map((product) => {
+            {products.map((product) => {
               return (
                 <div
                   key={product._id}
-                  className="w-full border border-gray-400 flex  flex-col  hover:scale-105 duration-300"
+                  className="w-full border flex  flex-col my-4  hover:scale-105 duration-300"
                 >
-                  <div className="">
                   <img
                     id={product._id}
                     name={product}
@@ -83,37 +84,33 @@ export default function Products({inputSearch,setProdactLength , storeName}) {
                     src={product.image}
                     alt="Shoes"
                   />
-                  </div>
-                  <div className="p-2 grid gap-1">
-                  <h2 className="text-xl font-bold text-end ">
+                  <button>למוצר</button>
+                  <h2 className="text-2xl font-bold text-center py-8">
                     {product.name}
                   </h2>
 
-                  <p className="text-gray text-end ">{product.description}</p>
-                  <div className="flex justify-end gap-3">
+                  <p className="text-gray text-end">{product.description}</p>
+                  <div className="flex text-start ml-44">
                     <button>
-                        <FiMinusCircle
-                        onClick={() => handleDecresment(product)}
-                        className="hover:bg-sky-500 hover:ring-sky-500 text-2xl rounded-xl hover:text-white text-teal-500"
-                        />
-                    </button>
-                    <p className="text-xl">{product.qty}</p>
-                    <button>
-                        <FiPlusCircle
+                      <FiPlusCircle
                         onClick={() => addItem(product)}
-                        className="hover:bg-sky-500 hover:ring-sky-500 text-2xl rounded-xl hover:text-white text-teal-500"
+                        className="hover:bg-sky-500 hover:ring-sky-500 rounded-lg hover:text-white"
+                      />
+                    </button>
+                    <p>{product.qty}</p>
+                    <button>
+                      <FiMinusCircle
+                        onClick={() => handleDecresment(product)}
+                        className="hover:bg-sky-500 hover:ring-sky-500 rounded-lg hover:text-white"
                       />
                     </button>
                   </div>
-                  <p className="text-end"><span className="font-bold">סה"כ:</span> {product.price} ש'ח</p>
-                </div>
+                  <p className="text-end">סה"כ: {product.price} ש'ח</p>
                 </div>
               );
-            })
-          }
+            })}
         </div>
       </div>
-
       <ProductPopUp
         product={popUpProduct}
         onClose={handleOneClose}
@@ -122,3 +119,4 @@ export default function Products({inputSearch,setProdactLength , storeName}) {
     </div>
   );
 }
+

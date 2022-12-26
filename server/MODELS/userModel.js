@@ -9,6 +9,8 @@ const userSchema = new mongoose.Schema({
   profileImg: String,
   access: String,
   location: String,
+  birthday:String,
+  ReservedCreditCards: String,
   saveCards: String,
 });
 

@@ -27,10 +27,9 @@ window.location.reload()
             <div className='w-[100px]  h-[100px] flex justify-center items-center  border-2 rounded-full bottom-11 relative  bg-white'>
               {user?.data.profileImg ?
             <img src={user.data.profileImg} alt="" />  :
-            <div className='text-4xl'>{user?.data.email}</div>
+            <div className='text-4xl'>{user?.data.email[0].toUpperCase()}</div>
             }
             </div>
-            <div className='bottom-11 relative '>{user.data.name} </div>
            </div> 
         </div>
         <div className='w-[100%] flex md:hidden justify-around mt-2 '>
