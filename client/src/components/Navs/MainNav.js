@@ -11,7 +11,7 @@ const MainNav = ()=> {
     navigate(`${route}`)
   }
   return (
-    <nav className="bg-white fixed shadow-lg w-full  top-0 left-0">
+    <nav className="shadow-md w-full fixed top-0 left-0 bg-white">
       <div className=" container mx-auto md:flex items-center justify-between py-4 md:px-40 px-7">
         <div className=" text-4xl cursor-pointer flex items-center font-[poppins text-grey-600]">
           <span className="md:flex md:items-center">

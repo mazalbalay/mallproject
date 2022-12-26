@@ -23,7 +23,6 @@ const StoreListPage = () => {
   console.log(stores);
   return (
     <div>
-      <MainNav/>
       <HeaderStore name={depName}/>
       <div className="md:w-[45%] m-auto md:m-0 w-[90%]  absolute right-0">
         <div className="  w-[100%] ">
@@ -40,7 +39,6 @@ const StoreListPage = () => {
           <AiOutlinePlusCircle size={60} />
         </div>
       </div>
-<MainPageFooter/>
     </div>
   );
 };
