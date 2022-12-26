@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { getDepartments } from "../ApiCalls/Departments";
 import { useNavigate } from "react-router-dom";
 import DepartmentComp from "./DepartmentComp";
-import Nav from '../Navs/MainNav';
-import MainPageFooter from "../Footers/MainPageFooter";
 
 export default function Departments() {
   const [Departments, setDepartments] = useState([]);
@@ -19,8 +17,6 @@ export default function Departments() {
     navigate(`${route}`);
   }
   return (
-    <div>
-      <Nav/>
     <div className="flex-col text-center w-full p-20">
       <div className="w-2/4 m-auto ">
         <button
@@ -30,7 +26,8 @@ export default function Departments() {
         >
           + הוסף מחלקה
         </button>
-        <div className=" flex flex-wrap">
+        <div className=" flex flex-wrap justify-around">
+        <p className=" m-5 w-full bg-sky-300  text-white font-bold py-2 px-4 rounded  ">נא לחץ על מחלקה כדי לשנות\למחוק</p>
           {Departments.map((dep) => (
             <div
               key={dep._id}
@@ -43,8 +40,6 @@ export default function Departments() {
           ))}
         </div>
       </div>
-    </div>
-    <MainPageFooter/>
     </div>
   );
 }

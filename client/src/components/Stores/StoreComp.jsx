@@ -6,15 +6,15 @@ export default function StoreComp(props) {
   const navigate = useNavigate();
   return (
     <div>
-      <div className="flex border-4 md:flex-row flex-col-reverse  w-[90%] md:h-[160px] h-[550px] md:my-2 mb-4 ">
+      <div className="flex border-2 md:flex-row flex-col-reverse  w-[90%] md:h-[160px] h-[550px] md:my-2 mb-4 ">
         <div className="md:w-[70%] w-[100%] flex flex-col items-end text-right md:p-2">
           <div className="text-2xl font-medium mb-1">{props.name}</div>
           <div>(33)חוות דעת ***** </div>
           <div className="my-1">{props.desc}</div>
           <div className="flex justify-between w-[90%]">
             <button
-              onClick={() => navigate(`/instore/${props.name}`)}
-              className="p-3 bg-black text-white font-medium"
+                onClick={() => navigate(`/instore/${props.name}`)}
+              className="p-1 bg-cyan-500 hover:bg-cyan-600 text-white font-medium"
             >
             
               קנה בחנות זו

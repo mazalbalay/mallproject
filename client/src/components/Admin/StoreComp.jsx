@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function StoreComp(props) {
   return (
-    <div className=" flex justify-center w-64 h-56 m-5" style={{  
+    <div className="flex justify-center w-96 h-72 m-3" style={{  
         backgroundImage: `url(${props.img})`,
         backgroundPosition: 'center',
         backgroundSize: 'cover',
