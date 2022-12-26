@@ -2,9 +2,21 @@ import React from "react";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-export default function PaypalCheckOutButton(props) {
-  const { product } = props;
+export default function PaypalCheckOutButton() {
+  const selctor = useSelector((state) => state.CartReducer);
+  
+  const calc = () => {
+    let total = 0;
+    selctor.map((product) => {
+      let productTotal = +product.price * +product.qty;
+      return (total += productTotal);
+    });
+    return total;
+  };
+ 
+  console.log(selctor);
   const [paidFor, setPaidFot] = useState(false);
   const [error, setError] = useState(null);
   const navigetor = useNavigate();
@@ -21,13 +33,12 @@ export default function PaypalCheckOutButton(props) {
   }
   return (
     <PayPalButtons
-      className="w-full md:w-2/3 m-1 z-10"
+      className="w-full m-1 z-10"
       createOrder={(data, action) => {
         return action.order.create({
           purchase_units: [
             {
-              description: product.description,
-              amount: { value: product.price },
+              amount: { value: calc() },
             },
           ],
         });

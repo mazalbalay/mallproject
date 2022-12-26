@@ -18,7 +18,7 @@ function navigateTo (route) {
   navigate(`${route}`)
 }
 
-console.log(Departments);
+// console.log(Departments);
   return (
     <div className='flex justify-center p-8' >
         <div className='w-2/4 flex flex-col	'>

@@ -6,12 +6,16 @@ import { HiCreditCard } from "react-icons/hi";
 import { AiOutlinePlus } from "react-icons/ai";
 import PaypalCheckOutButton from "./PaypalCheckOutButton";
 import AddCard from "./AddCard";
+import {useSelector,useDispatch} from 'react-redux'
+
 export default function CheckOut3({ setOrder, order }) {
+  const selector = useSelector(state => state.CartReducer)
   const [addCard, setAddCard] = useState(false);
   const [saveCard, setSaveCard] = useState(false);
+
+
   const product = {
-    description: "description",
-    price: 5,
+   selector
   };
   const [payment, setPayment] = useState([
     {
@@ -23,7 +27,7 @@ export default function CheckOut3({ setOrder, order }) {
   ]);
   const navigetor = useNavigate();
   return (
-    <div className="w-full md:w-2/3 min-h-screen p-10 flex flex-col items-end justify-between bg-white my-4">
+    <div className="w-full min-h-screen p-10 flex flex-col items-end justify-between bg-white my-4">
       <div className="flex items-end">
         <h1 className="font-medium text-2xl">פרטי תשלום</h1>
         <HiCreditCard className="text-cyan-600 text-4xl ml-4" />
@@ -126,7 +130,7 @@ export default function CheckOut3({ setOrder, order }) {
       ) : (
         ""
       )}
-      <div className="flex flex-col w-full md:w-2/3 items-end">
+      <div className="flex flex-col w-full items-end">
         <button
           onClick={() => {
             if (
@@ -151,7 +155,7 @@ export default function CheckOut3({ setOrder, order }) {
               alert("מלא את כל השדות");
             }
           }}
-          className="bg-cyan-600 rounded-md text-white py-4 px-8  m-1 w-full md:w-2/3"
+          className="bg-cyan-600 rounded-md text-white py-4 px-8  m-1 w-full"
         >
           אישור קנייה
         </button>

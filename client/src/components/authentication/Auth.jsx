@@ -4,6 +4,7 @@ import * as api from "../../api/api";
 import { useNavigate ,Link} from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
 import { gapi } from "gapi-script";
+import {AiFillEye} from 'react-icons/ai'
 import FacebookLogin from "react-facebook-login";
 import axios from "axios";
 
@@ -11,6 +12,8 @@ export default function Auth() {
   const dispatch = useDispatch()
   const navigate = useNavigate();
   const [singUp, setsingUp] = useState(false);
+  const [showPass, setShowPass] = useState(false);
+  const [showPassConfirm, setShowPassConfirm] = useState(false);
   const [message, setMessage] = useState();
   const [userData, setUserData] = useState({
     email: "",
@@ -38,10 +41,11 @@ export default function Auth() {
       accessToken: response.accessToken,
       userID: response.userID,
     });
-    const user = data.user;
-    dispatch({type:'AUTH', payload:{ data: user }})
-    console.log("facebook login success ,client side", user);
-    navigate("/userprofile");
+    dispatch({type:'AUTH', payload:{ data: data }})
+    console.log("facebook login success ,client side", data);
+    navigate("/")
+    window.location.reload()
+
   };
 
  
@@ -49,8 +53,12 @@ export default function Auth() {
     console.log(response);
     const { data } = await axios.post("http://localhost:8000/googlelogin", {
       tokenId: response.tokenId,
-    });
-    localStorage.setItem("user", JSON.stringify({ data }));
+    }); 
+    console.log(data);
+    dispatch({type:'AUTH', payload:{ data : data }})
+    navigate("/");
+    window.location.reload()
+
 
     console.log("google login success ,client side", data);
   };
@@ -62,9 +70,9 @@ export default function Auth() {
   const handleClick = async () => {
     if (singUp) {
       try {
-        const { data } = await api.singup(userData);
-
-        localStorage.setItem("user", JSON.stringify({ data }));
+        const { data:user } = await api.singup(userData);
+       
+        dispatch({type:'AUTH', payload:{ data: user }})
 
         setUserData({
           email: "",
@@ -73,17 +81,22 @@ export default function Auth() {
           fullName: "",
           userName: "",
         });
-        navigate("/userprofile");
+        navigate("/");
+        window.location.reload()
+
       } catch (e) {
         setMessage(e.response.data);
       }
     } else if (!singUp) {
       try {
-        const { data } = await api.singin(userData);
+        const { data:user } = await api.singin(userData);
+    
 
-        localStorage.setItem("user", JSON.stringify({ data }));
+        dispatch({type:'AUTH', payload:{ data: user }})
 
-        navigate("/userprofile");
+        navigate("/");
+        window.location.reload()
+
       } catch (e) {
         setMessage(e.response.data);
       }
@@ -138,14 +151,14 @@ export default function Auth() {
           <input
             onChange={handleChange}
             name="password"
-            type="text"
+            type={showPass ? "text" : "password"}
             className="my-1 text-right w-[80%] md:w-[] outline-none border-b-2 p-2 border-neutral-300"
             placeholder="הזן סיסמא"
           />
           {singUp && (
             <input
               onChange={handleChange}
-              type="text"
+              type={showPassConfirm ? "text" : "password"}
               name="confirmPassword"
               className="text-right w-[80%] md:w-[] outline-none border-b-2 p-2 border-neutral-300"
               placeholder="אשר סיסמא"

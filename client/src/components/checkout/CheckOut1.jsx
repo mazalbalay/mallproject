@@ -22,7 +22,7 @@ export default function CheckOut1({ setOrder, order }) {
   return (
     <>
       {dropDwon ? (
-        <div className="w-full md:w-2/3 p-5 flex flex-col items-end justify-between bg-white my-1">
+        <div className="w-full p-5 flex flex-col items-end justify-between bg-white my-1 border-b-4">
           <div className="w-full flex items-end justify-between bg-white my-1">
             <BsChevronDown
               className="md:text-3xl text-2xl"
@@ -45,7 +45,7 @@ export default function CheckOut1({ setOrder, order }) {
           </div>
         </div>
       ) : (
-        <div className="w-full md:w-2/3 min-h-screen p-10 flex flex-col items-end justify-evenly bg-white my-1">
+        <div className="w-full  min-h-screen p-10 flex flex-col items-end justify-evenly bg-white my-1">
           <div className="flex items-center">
             <h1 className="font-medium text-2xl">פרטי משלוח</h1>
             <span>
@@ -56,7 +56,7 @@ export default function CheckOut1({ setOrder, order }) {
             <div className="w-full flex flex-col items-end ">
               {inputs.map((v, i) => {
                 return (
-                  <div key={i} className="md:w-2/3 w-full flex flex-col my-2">
+                  <div key={i} className=" w-full flex flex-col my-2">
                     <h3>{v.value}</h3>
                     <input
                       onChange={(e) => handleInput(e)}
@@ -69,7 +69,7 @@ export default function CheckOut1({ setOrder, order }) {
                 );
               })}
             </div>
-            <div className="w-full md:w-2/3 flex justify-between items-center mt-12">
+            <div className="w-full  flex justify-between items-center mt-12">
               <div>
                 <button className="border-b-2 border-black font-medium">
                   מחק כתובת זו
