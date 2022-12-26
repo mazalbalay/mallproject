@@ -6,6 +6,7 @@ import Products from "./Products";
 import CartStore from "../Cart/CartStore";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import Footer from '../Footers/Footer'
 
 
 const InStore = () => {
