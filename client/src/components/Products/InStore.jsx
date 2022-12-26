@@ -6,12 +6,14 @@ import Products from "./Products";
 import CartStore from "../Cart/CartStore";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import Footer from "../Footers/Footer";
+import Footer from '../Footers/Footer'
+
 
 const InStore = () => {
   const [inputSearch, setInputSearch] = useState("");
   const [prodactLength, setProdactLength] = useState("");
-  const { storeName } = useParams();
+  const {storeName}=useParams()
+
   return (
     <div className="w-full ">
       <HeaderStore />

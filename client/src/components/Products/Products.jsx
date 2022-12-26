@@ -122,5 +122,3 @@ export default function Products({inputSearch,setProdactLength , storeName}) {
     </div>
   );
 }
-
-// onClose={handleOneClose} visible={popUp}

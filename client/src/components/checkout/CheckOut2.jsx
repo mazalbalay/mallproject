@@ -9,14 +9,14 @@ import { useSelector ,useDispatch } from "react-redux";
 export default function CheckOut2({ setOrder, order }) {
   const [dropDwon, setDropDwon] = useState(false);
   const dispatch =useDispatch()
-  const expressType = () => {
+  const expressShipping = () => {
     setOrder({
       ...order,
       shipping: {
         ...order.shipping,
         time: `${new Date().getHours()}:00-${new Date().getHours() + 1}:00`,
         date: `${new Date().getDate()}/${new Date().getMonth() + 1}`,
-        type: "משלוח אקספרס",
+        shippingType: "משלוח אקספרס",
         allData:true
       },
     });
@@ -50,7 +50,7 @@ export default function CheckOut2({ setOrder, order }) {
             </div>
           </div>
           <div className="md:mr-12 mr-10">
-            <span> {order.shipping.type} </span>
+            <span> {order.shipping.shippingType} </span>
             יגיע ב-
             <span> {order.shipping.date} </span>
             בין השעות
@@ -67,9 +67,9 @@ export default function CheckOut2({ setOrder, order }) {
           <button
             onClick={() => {
               if (order.addres.allData) {
-                expressType();
+                expressShipping();
                 setDropDwon(!dropDwon);
-                dispatch({ type: "UPDATEORDER", payload: order })
+                dispatch({ shippingType: "UPDATEORDER", payload: order })
               } else {
                 alert("מלא בבקשה את כתובת המשלוח");
               }
