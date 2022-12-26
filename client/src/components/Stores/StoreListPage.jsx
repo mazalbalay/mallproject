@@ -6,6 +6,7 @@ import StoreComp from "./StoreComp";
 import HeaderStore from ".//HeaderStore";
 import MainNav from "../Navs/MainNav";
 import MainPageFooter from "../Footers/MainPageFooter";
+import CartStore from "../Cart/CartStore";
 
 const StoreListPage = () => {
   let { depName } = useParams();
@@ -24,8 +25,11 @@ const StoreListPage = () => {
   return (
     <div>
       <HeaderStore name={depName}/>
-      <div className="md:w-[45%] m-auto md:m-0 w-[90%]  absolute right-0">
-        <div className="  w-[100%] ">
+      <div className="container mx-auto md:flex gap-2 py-1 md:px-40 px-7">
+        <div className="">
+        <CartStore/>
+        </div>
+        <div className="">
           {stores?.map((store) => (
               <StoreComp
                 name={store.name}
@@ -35,9 +39,9 @@ const StoreListPage = () => {
               />
             ))}
         </div>
-        <div className="text-gray-400 flex justify-center my-3">
+        {/* <div className="text-gray-400 flex justify-center my-3">
           <AiOutlinePlusCircle size={60} />
-        </div>
+        </div> */}
       </div>
     </div>
   );
