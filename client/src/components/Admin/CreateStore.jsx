@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { createStore, getStores } from "../ApiCalls/Store";
 import FileBase64 from "react-file-base64";
-import Nav from "../Navs/MainNav";
-import MainPageFooter from "../Footers/MainPageFooter";
 
 export default function CreateStore() {
   const [StoreName, setStoreName] = useState();
@@ -40,10 +38,7 @@ export default function CreateStore() {
   console.log(Store);
 
   return (
-    <div>
-      {" "}
-      <Nav />
-      <div className="w-full m-auto rounded m-20 text-center h-screen md:w-4/12 w-10/12 container mx-auto p-12">
+      <div className="w-full m-auto rounded m-20 text-center h-screen md:w-4/12 w-10/12 container mx-auto p-20">
         <form className="w-full bg-white shadow-md rounded ">
           <div className="bg-sky-300">
             <p className="mx-auto text-center p-4 text-xl text-white		">
@@ -52,7 +47,7 @@ export default function CreateStore() {
           </div>
           <div className="mb-4 p-4">
             <label
-              className="block text-gray-700 pb-2 text-sm font-bold mb-2 "
+              className="block text-gray-700 text-sm font-bold mb-2  text-xl pb-2"
               htmlFor="name"
             >
               שם חנות
@@ -67,7 +62,7 @@ export default function CreateStore() {
           </div>
           <div className="mb-4 p-4">
             <label
-              className="block text-gray-700 pb-2 text-sm font-bold mb-2 "
+              className="block text-gray-700 text-sm font-bold mb-2  text-xl pb-2"
               htmlFor="manger name"
             >
               שם מנהל חנות
@@ -178,7 +173,6 @@ export default function CreateStore() {
           </div>
         </form>
       </div>
-      <MainPageFooter />
-    </div>
+      
   );
 }

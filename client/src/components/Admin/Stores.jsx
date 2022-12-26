@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { getStores } from "../ApiCalls/Store";
 import { useNavigate } from "react-router-dom";
 import StoreComp from "./StoreComp";
-import Nav from '../Navs/MainNav';
-import MainPageFooter from "../Footers/MainPageFooter";
 
 export default function Stores() {
   const [Stores, setStores] = useState([]);
@@ -17,8 +15,7 @@ export default function Stores() {
   }, []);
  
   return (
-    <div>
-      <Nav/>
+   
     
     <div className="flex-col text-center w-full p-20">
       <div className="w-2/4 m-auto">
@@ -29,7 +26,8 @@ export default function Stores() {
         >
           + הוסף חנות
         </button>
-        <div className=" flex flex-wrap">
+        <div className="flex flex-wrap justify-around">
+          <p className=" m-5 w-full bg-sky-300  text-white font-bold py-2 px-4 rounded ">נא לחץ על חנות כדי לשנות\למחוק</p>
           {Stores.map((dep) => (
             <div
               key={dep._id}
@@ -43,7 +41,6 @@ export default function Stores() {
         </div>
       </div>
     </div>
-    <MainPageFooter/>
-    </div>
+  
   );
 }
