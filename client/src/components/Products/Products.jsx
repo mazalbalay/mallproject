@@ -68,7 +68,9 @@ export default function Products({inputSearch,setProdactLength , storeName}) {
                 return product;
               }
             })
-            ?.map((product) => {
+          }
+            
+            {products.map((product) => {
               return (
                 <div
                   key={product._id}
