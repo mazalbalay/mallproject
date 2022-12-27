@@ -8,7 +8,7 @@ import { usersUpdate, users } from "../../api/api";
 
 export default function AddCard({ payment, setPayment, order }) {
   const selctor = useSelector((state) => state.orderReducer);
-  const user = JSON.parse(localStorage.getItem("user")).data;
+  const user = JSON.parse(localStorage?.getItem("user"))?.data;
   const navigetor = useNavigate();
   
 

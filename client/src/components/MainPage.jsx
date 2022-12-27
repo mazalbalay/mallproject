@@ -34,7 +34,7 @@ console.log(inputSearch);
         <div className='w-2/4 flex flex-col	'>
         
         <p className='text-4xl m-6 text-center '>ברוך הבא לעולם החנויות שלך</p>
-        <input onChange={e => setinputSearch(e.target.value)} className='m-6 h-12 border-current	 border-2 border-solid' type="text" placeholder='מה תרצה לחפש?'/>
+        <input onChange={e => setinputSearch(e.target.value)} className='m-6 h-12 border-current border-2 border-solid' type="text" placeholder='מה תרצה לחפש?'/>
         <p className='text-xl text-center m-6' >מחלקות שונות</p>
         
 
@@ -43,7 +43,7 @@ console.log(inputSearch);
        {Departments ? 
 
         <div className=' flex flex-wrap justify-evenly'>
-           {Departments.map(dep =>  <div key={dep._id}  onClick={()=> navigate(`${`/storelist/${dep._id}/${dep._id}`}`)} ><DepartmentComp img={dep.image} text={dep.name}/></div>)}
+           {Departments.map(dep =>  <div key={dep._id}  onClick={()=> navigate(`${`/storelist/${dep._id}/${dep.name}`}`)} ><DepartmentComp img={dep.image} text={dep.name}/></div>)}
            
      </div> : <BeatLoader
         color={'black'}
