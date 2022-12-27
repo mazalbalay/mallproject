@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { createManager } from "../ApiCalls/Manager";
+import { CreateManager } from "../ApiCalls/Manger";
 import FileBase64 from "react-file-base64";
 
 export default function CreateDepartment() {
@@ -13,7 +13,7 @@ export default function CreateDepartment() {
  
 
   async function createAndLoadPage() {
-    let user = await createManager(ManagerName,ManagerUserName,  ManagerEmail,ManagerPassword,confirmPassword);
+    let user = await CreateManager(ManagerEmail,ManagerPassword, confirmPassword, ManagerName,ManagerUserName);
     setUser([user.data]);
     console.log(User);
   }
@@ -129,7 +129,7 @@ export default function CreateDepartment() {
             className="bg-sky-300 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
             type="button"
           >
-           מנהל נוצרה
+          מנהל נוצרה
           </button>}
         </div>
       </form>

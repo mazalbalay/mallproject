@@ -10,7 +10,7 @@ const productSchema = new mongoose.Schema({
     department: String,
     section: String,
     size: [String],
-    color: String,
+    color: [String],
     model: String,
     storeName: String
 })
