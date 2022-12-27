@@ -49,7 +49,7 @@ console.log(user);
         <Routes>
           {/* <Route path="/" element={<Home />} />/ */}
         {user ? null : <Route path="/Auth" element={<Auth />} /> }
-          {/* <Route path="/" element={<MainPage />} /> */}
+          <Route path="/" element={<MainPage />} />
           <Route path="/CheckOut" element={<CheckOut />} />
           <Route path="/changepassword" element={<ChangePWD />} />
           <Route path="/forgot-password/:id" element={<ForgotPassPage />} />

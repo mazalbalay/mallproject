@@ -7,8 +7,8 @@ import { useSelector } from "react-redux";
 
 export default function CheckOut() {
   const selctorCart = useSelector((state) => state.CartReducer);
-  // const activeUser = JSON.parse(localStorage.getItem("user"))?.data.user;
-  // console.log(activeUser);
+  const selctorOrder = useSelector((state) => state.orderReducer);
+  const activeUser = JSON.parse(localStorage.getItem("user"))?.data;
 
   const [order, setOrder] = useState({
     product: [
@@ -39,29 +39,62 @@ export default function CheckOut() {
       time: "",
       allData: false,
     },
-    payment: [
+    payment: 
       {
         cardNumber: "paypal",
         cardValidity: "paypal",
         threeDigits: "paypal",
-        fourDigits: "paypal",
-        allData: true,
+        allData: false,
       },
-    ],
+    
   });
 
   useEffect(() => {
-    setOrder({
-      ...order,
-      product: selctorCart.map((v) => ({
-        productsId: v._id,
-        productsStore: v.storeName,
-        productName: v.name,
-        productPrice: v.price,
-        productQuantity: v.quantity,
-      })),
-    });
-  }, [selctorCart]);
+    if (activeUser) {
+      setOrder({
+        ...order,
+        user: {
+          userId: activeUser._id,
+          userName: activeUser.name,
+          userMail: activeUser.email,
+        },
+      });
+    }
+  }, [localStorage]);
+
+  useEffect(() => {
+    if (activeUser) {
+      setOrder({
+        ...order,
+        user: {
+          userId: activeUser._id,
+          userName: activeUser.name,
+          userMail: activeUser.email,
+        },
+        product: selctorCart.map((v) => ({
+          productsId: v._id,
+          productsStore: v.storeName,
+          productName: v.name,
+          productPrice: v.price,
+          productQuantity: v.quantity,
+        })),
+      });
+    }else{
+      setOrder({
+        ...order,
+        product: selctorCart.map((v) => ({
+          productsId: v._id,
+          productsStore: v.storeName,
+          productName: v.name,
+          productPrice: v.price,
+          productQuantity: v.quantity,
+        })),
+      });
+    }
+
+  }, [useSelector]);
+
+  console.log(activeUser);
   return (
     <div className="bg-slate-200">
       <div className="md:w-3/4 w-full m-auto bg-white text-right flex md:flex-row flex-col items-start justify-start">
