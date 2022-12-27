@@ -1,10 +1,13 @@
 import React from "react";
 import { MdCancel } from "react-icons/md";
 import { MdDoneAll } from "react-icons/md";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-// import axios from "axios";
+import axios from "axios";
 
 export default function AddCard({ payment, setPayment, order }) {
+  const user = JSON.parse(localStorage.getItem("user")).data.user;
+
   const navigetor = useNavigate();
   return (
     <div className="w-full h-screen bg-black bg-opacity-70 z-20 fixed top-0 right-0 flex items-center justify-center">
@@ -13,7 +16,7 @@ export default function AddCard({ payment, setPayment, order }) {
         <div className="flex w-1/2 justify-between">
           <button
             onClick={() => {
-              navigetor("/ThancksPage");
+              navigetor("/ThanksPage");
             }}
             className="flex items-center text-2xl text-cyan-600"
           >
@@ -30,8 +33,16 @@ export default function AddCard({ payment, setPayment, order }) {
                   cardValidity: order.payment.cardValidity,
                 },
               ]);
-              // axios.put(`http://localhost:8000/singup/${userId}`, payment);
-              navigetor("/ThancksPage");
+              if (user) {
+                navigetor("/ThanksPage");
+              } else {
+                alert("התחבר/הרשם בבקשה");
+              }
+
+              // axios.put(`http://localhost:8000/user/${user.user._id}`, {
+              //   ...user,
+              //   saveCards: payment,
+              // });
             }}
             className="flex items-center text-2xl text-cyan-600"
           >
