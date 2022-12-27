@@ -5,19 +5,26 @@ import { useNavigate } from "react-router-dom";
 import { HiCreditCard } from "react-icons/hi";
 import PaypalCheckOutButton from "./PaypalCheckOutButton";
 import AddCard from "./AddCard";
+import { useEffect } from "react";
 
 export default function CheckOut3({ setOrder, order }) {
+  const user = JSON.parse(localStorage.getItem("user")).data;
   const [addCard, setAddCard] = useState(false);
   const [saveCard, setSaveCard] = useState(false);
 
-  const [payment, setPayment] = useState([
-    {
-      cardNumber: "1234 1234 1234 1234",
-      cardValidity: "06/26",
-      threeDigits: "123",
-      allData: true,
-    },
-  ]);
+
+  const [payment, setPayment] = useState([]);
+  useEffect(() => {
+    setPayment([
+      user?.saveCards?.map((v) => ({
+        cardNumber: v.cardNumber,
+        cardValidity: v.cardValidity,
+        threeDigits: v.threeDigits,
+      })),
+    ]);
+    
+  }, []);
+
   const navigetor = useNavigate();
   return (
     <div className="w-full min-h-screen p-10 flex flex-col items-end justify-between bg-white my-4">
@@ -27,18 +34,21 @@ export default function CheckOut3({ setOrder, order }) {
       </div>
       <div>
         <p className="my-8 font-medium">בחר אמצעי תשלום:</p>
-        {payment.map((v, i) => {
+        {payment?.map((v, i) => {
           return (
             <div key={i} className="flex items-center">
-              <label className="mx-2 font-bold"> {v.cardNumber}</label>
+              <label className="mx-2 font-bold">
+                xxxx xxxx xxxx {user?.saveCards[0].cardNumber.slice(15)}
+              </label>
               <input
                 onChange={(e) => {
                   setOrder({
                     ...order,
                     payment: {
-                      cardNumber: v.cardNumber,
-                      cardValidity: v.cardValidity,
-                      threeDigits: v.threeDigits,
+                      cardNumber: user?.saveCards[0].cardNumber,
+                      cardValidity: user?.saveCards[0].cardValidity,
+                      threeDigits: user?.saveCards[0].threeDigits,
+                      
                     },
                   });
                   setSaveCard(!saveCard);
@@ -71,7 +81,6 @@ export default function CheckOut3({ setOrder, order }) {
                 setOrder({
                   ...order,
                   payment: {
-                    ...order.payment,
                     [e.target.name]: e.target.value,
                   },
                 });
@@ -124,7 +133,12 @@ export default function CheckOut3({ setOrder, order }) {
         </div>
       )}
       {addCard ? (
-        <AddCard payment={payment} setPayment={setPayment} setAddCard={setAddCard} order={order} />
+        <AddCard
+          payment={payment}
+          setPayment={setPayment}
+          setAddCard={setAddCard}
+          order={order}
+        />
       ) : (
         ""
       )}
@@ -132,9 +146,13 @@ export default function CheckOut3({ setOrder, order }) {
         <button
           onClick={async () => {
             if (
-              order.payment.cardNumber !== "paypal" &&
+              order.payment.cardNumber !== "paypal" && !undefined && !null &&
               order.payment.threeDigits !== "paypal" &&
+              !undefined &&
+              !null &&
               order.payment.cardValidity !== "paypal" &&
+              !undefined &&
+              !null &&
               order.addres.allData &&
               order.shipping.allData &&
               saveCard === false
@@ -144,8 +162,14 @@ export default function CheckOut3({ setOrder, order }) {
               console.log(order);
             } else if (
               order.payment.cardNumber !== "paypal" &&
+              !undefined &&
+              !null &&
               order.payment.threeDigits !== "paypal" &&
+              !undefined &&
+              !null &&
               order.payment.cardValidity !== "paypal" &&
+              !undefined &&
+              !null &&
               order.addres.allData &&
               order.shipping.allData &&
               saveCard === true
