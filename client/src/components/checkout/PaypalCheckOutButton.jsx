@@ -17,7 +17,6 @@ export default function PaypalCheckOutButton() {
     });
     return total;
   };
-
   const [paidFor, setPaidFot] = useState(false);
   const [error, setError] = useState(null);
   const navigetor = useNavigate();
@@ -32,6 +31,7 @@ export default function PaypalCheckOutButton() {
   if (error) {
     navigetor("/ErrPage");
   }
+  console.log();
   return (
     <PayPalButtons
       className="w-full m-1 z-10"
