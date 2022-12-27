@@ -24,7 +24,7 @@ const filterdUsers = allUsers.filter(u=>user._id ===  u)
 
   console.log(userData);
   return (
-    <div className='w-[100%] md:h-[592px] pt-10 flex flex-col md:text-right text-center py-3 px-10 bg-white'>
+    <div className='md:w-[70%] w-[100%] pt-10 flex flex-col md:text-right text-center py-3 px-10 bg-white'>
         <h1 className='text-2xl mb-5'>מידע אישי</h1>
         <div className=' flex flex-col items-end mb-5 '>
         <label className='my-1 font-medium' htmlFor="">שם פרטי</label>
