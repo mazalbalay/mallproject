@@ -1,27 +1,24 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import {FiEdit} from "react-icons/fi";
-import {BsTrash} from "react-icons/bs";
-import { deleteProduct } from "./ApiCalls/products";
+import {  useNavigate } from "react-router-dom";
+
 
 const ProductComp = (props) => {
-  const { product } = props;
+  
 
-  async function deleteAndLoadPage(productId) {
-    await deleteProduct(productId);
-    alert('Product deleted!')
-  }
+  const navigateTo= useNavigate()
+
 
   return (
     <>
-      <div className="text-center mr-10 " key={product._id}>
-        <div className="bg-slate-50 ring-2 ring-gray-300 shadow-lg mb-10 p-5 ">
-          <img src={product.image} className="h-60 container mx-auto p-5" alt={product.name} onClick />
+      <div className="text-center sm:mr-3 md:mr-7 lg:mr-10" key={props._id}>
+        <div className="w-fullbg-slate-50 ring-2 ring-gray-300 shadow-lg mb-10  ">
+          <img src={props.image} className="h-60 w-full container mx-auto " alt={props.name}   onClick={() =>
+                  navigateTo(`${`/manager/products/edit/${props._id}`}`)
+                }  />
           <div>
-            <h5 className="pb-2">{product.name.substring(0, 30)}...</h5>
-            <p className="pb-2">${product.price}</p>
-            <div className="flex justify-between">
-            </div>
+            <h5 className="lg:pb-2">{props.name.substring(0, 30)}...</h5>
+            <p className="lg:pb-2">${props.price}</p>
+           
           </div>
         </div>
       </div>

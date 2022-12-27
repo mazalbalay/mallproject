@@ -28,14 +28,14 @@ export default function Stores() {
         </button>
         <div className="flex flex-wrap justify-around">
           <p className=" m-5 w-full bg-sky-300  text-white font-bold py-2 px-4 rounded ">נא לחץ על חנות כדי לשנות\למחוק</p>
-          {Stores.map((dep) => (
+          {Stores.map((store) => (
             <div
-              key={dep._id}
+              key={store._id}
               onClick={() =>
-                navigate(`${`/admin/Store/edit/${dep._id}`}`)
+                navigate(`${`/admin/Store/edit/${store._id}`}`)
               }
             >
-              <StoreComp img={dep.image} text={dep.name} />
+              <StoreComp store={store} />
             </div>
           ))}
         </div>

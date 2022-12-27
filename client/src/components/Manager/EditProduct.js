@@ -5,32 +5,30 @@ import Nav from "../Navs/MainNav";
 import MainPageFooter from "../Footers/MainPageFooter";
 import { useParams } from "react-router-dom";
 
+export default function CreateProduct() {
+  const { productId } = useParams();
 
-export default function CreateProduct ()  {
-  const {productId} = useParams();
+  const [product, setProduct] = useState([]);
+  const [productName, setProductName] = useState("");
+  const [productPrice, setProductPrice] = useState("");
+  const [productQty, setProductQty] = useState("");
+  const [productDescription, setProductDescription] = useState("");
+  const [productSizes, setProductSizes] = useState([]);
+  const [productColors, setProductColors] = useState([]);
+  const [productBrand, setProductBrand] = useState();
+  const [productDepartment, setProductDepartment] = useState();
+  const [productStoreName, setProductStoreName] = useState();
+  const [productSection, setProductSection] = useState();
+  const [productModel, setProductModel] = useState();
+  const [productImage, setProductImage] = useState("");
 
-const [product, setProduct] = useState([]);
-const [productName, setProductName] = useState("");
-const [productPrice, setProductPrice] = useState("");
-const [productQty, setProductQty] = useState("");
-const [productDescription, setProductDescription] = useState("");
-const [productSizes, setProductSizes] = useState([]);
-const [productColors, setProductColors] = useState([]);
-const [productBrand, setProductBrand] = useState();
-const [productDepartment, setProductDepartment] = useState();
-const [productStoreName, setProductStoreName] = useState();
-const [productSection, setProductSection] = useState();
-const [productModel, setProductModel] = useState();
-const [productImage, setProductImage] = useState("");
-
-useEffect(() => {
-  const getProductData = async () => {
-    const result = await getProduct(productId);
-    setProduct([result.data]);
-  };
-getProductData();
-}, [productId]);
-
+  useEffect(() => {
+    const getProductData = async () => {
+      const result = await getProduct(productId);
+      setProduct([result.data]);
+    };
+    getProductData();
+  }, [productId]);
 
   const editedProduct = {
     name: productName,
@@ -45,8 +43,7 @@ getProductData();
     section: productSection,
     model: productModel,
     image: productImage,
-
-  }
+  };
 
   async function editAndLoadPage() {
     let editProduct = await editProduct(productId, editedProduct);
@@ -61,7 +58,6 @@ getProductData();
   console.log(product);
   return (
     <>
-   
       <div className=" rounded m-20 text-center h-screen md:w-4/12 w-10/12 container mx-auto">
         <form className="w-full bg-white shadow-md rounded ">
           <div className="bg-sky-300">
@@ -83,7 +79,6 @@ getProductData();
               placeholder="שם מוצר"
             />
           </div>
-
           <div className="w-12/12  ">
             <label
               className="w-12/12 float-right py-6 font-bold"
@@ -98,12 +93,8 @@ getProductData();
               placeholder="מחיר"
             />
           </div>
-
           <div className="w-12/12  ">
-            <label
-              className="w-12/12 float-right py-6 font-bold"
-              htmlFor="qty"
-            >
+            <label className="w-12/12 float-right py-6 font-bold" htmlFor="qty">
               כמות במלאי
             </label>
             <input
@@ -127,7 +118,6 @@ getProductData();
               placeholder="תיאור מוצר"
             />
           </div>
-
           <div className="w-12/12  ">
             <label
               className="w-12/12 float-right py-6 font-bold"
@@ -142,7 +132,6 @@ getProductData();
               placeholder="צבעים"
             />
           </div>
-
           <div className="w-12/12  ">
             <label
               className="w-12/12 float-right py-6 font-bold"
@@ -157,7 +146,6 @@ getProductData();
               placeholder="מידות"
             />
           </div>
-
           <div className="w-12/12  ">
             <label
               className="w-12/12 float-right py-6 font-bold"
@@ -172,7 +160,6 @@ getProductData();
               placeholder="מותג"
             />
           </div>
-
           <div className="w-12/12  ">
             <label
               className="w-12/12 float-right py-6 font-bold"
@@ -187,7 +174,6 @@ getProductData();
               placeholder="מחלקה"
             />
           </div>
-
           <div className="w-12/12  ">
             <label
               className="w-12/12 float-right py-6 font-bold"
@@ -202,7 +188,6 @@ getProductData();
               placeholder="סעיף"
             />
           </div>
-
           <div className="w-12/12  ">
             <label
               className="w-12/12 float-right py-6 font-bold"
@@ -217,7 +202,6 @@ getProductData();
               placeholder="שם חנות"
             />
           </div>
-
           <div className="w-12/12  ">
             <label
               className="w-12/12 float-right py-6 font-bold"
@@ -232,13 +216,8 @@ getProductData();
               placeholder="מודל"
             />
           </div>
-
-          
           <div className="w-full grid grid-cols-1 text-right pt-10">
-          <label
-              className=" py-6 font-bold"
-              htmlFor="image"
-            >
+            <label className=" py-6 font-bold" htmlFor="image">
               תמונה
             </label>
             <FileBase64
@@ -250,29 +229,29 @@ getProductData();
               placeholder={"בחירת קובץ"}
             />
           </div>
-       
           <div className="flex items-center justify-evenly p-4">
-          <button
-            className="bg-sky-300 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
-            type="button"
-            onClick={() => editAndLoadPage()}
-          >
-            עידכון מוצר
-          </button>
-          {product[0] === null ? (
-            <div className="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline">
-            מוצר נמחק
-            </div>
-          ) : (
             <button
-              className="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
-              onClick={() => deleteAndLoadPage(productId)}
+              className="bg-sky-300 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
+              type="button"
+              onClick={() => editAndLoadPage()}
             >
-              מחיקת מוצר
+              עידכון מוצר
             </button>
-          )}
-        </div>
+            {product[0] === null ? (
+              <div className="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline">
+                מוצר נמחק
+              </div>
+            ) : (
+              <button
+                className="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
+                onClick={() => deleteAndLoadPage(productId)}
+              >
+                מחיקת מוצר
+              </button>
+            )}
+          </div>
         </form>
+        <MainPageFooter />
       </div>
     </>
   );

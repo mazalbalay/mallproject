@@ -71,7 +71,7 @@ console.log(user);
           <Route path="/manager/homeScreen" element={< HomeScreen/>} />
           <Route path="/manager/products/new" element={< CreateProduct/>} />
           <Route path="/manager/stores" element={<StoresManeger/>} />
-          <Route path="/manger/stores/:storeName" element={<ProductsScreen/>} />
+          <Route path="/manager/stores/:storeName" element={<ProductsScreen/>} />
           {/* <Route exact path="products" element={<InStore />} /> */}
           <Route exact path="/checkout" element={<CheckOut/>} />
           <Route exact path="/contact-us" element={<ContactSection/>} />

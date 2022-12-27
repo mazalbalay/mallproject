@@ -17,7 +17,7 @@ const StoreListNav = ({user}) => {
         </div>
 
         <form action="">
-          <label className="relative hidden md:block ml-10">
+          <label className="relative hidden lg:block ml-10">
             <input
               className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-400 py-1 pl-40 pr-0 shadow-sm focus:outline-none focus:border-gray-500 focus:ring-gray-500 focus:ring-1"
               placeholder="?מה תרצה לחפש היום"

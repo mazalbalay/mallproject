@@ -19,39 +19,37 @@ const ProductsScreen = () => {
   }, []);
 
   return (
-    <div>
-      <div>
-        <div className="flex justify-between container mx-auto mb-20">
-          <div className=" bg-sky-600 p-3 rounded-md text-white font-semibold">
-            <Link to="/addProduct"> Create new </Link>
-          </div>
-          <h2 className="text-4xl font-semibold"> Products </h2>
-          <div className="rounded-md ring ring-gray-300 shadow pt-3">
-            <input
-              className="text-right font-medium"
-              type="search"
-              placeholder="...חפש מוצר"
-            />
-          </div>
-        </div>
-        <div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 container mx-auto">
+    <div className="flex-col text-center w-full p-20">
+    <div className="m-auto ">
+      <button
+        className=" w-5/12 bg-sky-300 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
+        type="button"
+        onClick={() => navigateTo(`${"/manager/products/new"}`)}
+      >
+        + הוסף מוצר
+      </button>
+      <div className=" flex flex-wrap justify-around">
+      <p className=" m-10 mt-7 w-7/12 bg-sky-300  text-white font-bold py-2 px-4 rounded  ">נא לחץ על מוצר כדי לשנות\למחוק</p>
+      
+          <div className=" container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       
             {products.map((product) => (
                 product.storeName === storeName ?
                 <div
+           
                 key={product._id}
                 onClick={() =>
                   navigateTo(`${`/manager/products/edit/${product._id}`}`)
                 }
               >
-                 <ProductComp product={product}/> 
+                 <ProductComp  className="container mx-auto" product={product}/> 
                  </div> : null
             ))}
           </div>
         </div>
       </div>
     </div>
+
   );
 };
 

@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="container mx-auto w-8/12 pt-10 grid grid-cols-1 sm:grid-cols-5 md:gap-6 gap-3 text-center">
         {data.map((item)=>{
           return(
-        <ul>
+        <ul key={item._id}>
           <li className="cursor-pointer"> {item}</li>
           <li className="cursor-pointer">{item} </li>
         </ul>
