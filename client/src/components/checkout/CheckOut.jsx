@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 export default function CheckOut() {
   const selctorCart = useSelector((state) => state.CartReducer);
-  const activeUser =  JSON.parse(localStorage.getItem(("user")))?.data.user
+  // const activeUser = JSON.parse(localStorage.getItem("user"))?.data.user;
   // console.log(activeUser);
 
   const [order, setOrder] = useState({
@@ -39,12 +39,15 @@ export default function CheckOut() {
       time: "",
       allData: false,
     },
-    payment: {
-      cardNumber: "paypal",
-      cardValidity: "paypal",
-      threeDigits: "paypal",
-      allData: true,
-    },
+    payment: [
+      {
+        cardNumber: "paypal",
+        cardValidity: "paypal",
+        threeDigits: "paypal",
+        fourDigits: "paypal",
+        allData: true,
+      },
+    ],
   });
 
   useEffect(() => {

@@ -8,9 +8,7 @@ const CartReducer = (state = cartInitialState, action) => {
             let qty = action.payloadQty;
             return AddProductLogic(state, product, qty);
 
-
-
-        case 'INCREAS':
+        case 'INCREASE':
             let productId1 = action.payload;
             return increaseLogic(state, productId1);
 
@@ -19,15 +17,12 @@ const CartReducer = (state = cartInitialState, action) => {
             let productId2 = action.payload;
             return reduceLogic(state, productId2);
 
-
         case 'CLEAR_CART':
             let cartState = action.payload;
             return clearCartLogic(state, cartState);
 
-
         default:
             return state;
-
     }
 }
 

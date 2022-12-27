@@ -64,7 +64,7 @@ console.log(user);
           <Route path="/Admin/Store/edit/:storeId" element={< EditStore/>} />
           <Route path="/admin/stores" element={< Stores/>} />
           <Route path="/admin/departments" element={< Departments/>} />
-          {/* <Route path="/main" element={< MainPage/>} /> */}
+          <Route path="/main" element={< MainPage/>} />
           <Route path="/storelist/:depName" element={< StoreListPage/>} />
           <Route path="/manager/products/edit/:productId" element={< EditProduct/>} />
           <Route path="/manager" element={< Maneger/>} />

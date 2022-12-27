@@ -7,9 +7,8 @@ import axios from "axios";
 
 export default function PaypalCheckOutButton() {
   const selctorCart = useSelector((state) => state.CartReducer);
-  const selctorOrder = useSelector((state) => state.orderReducer);
-//לעשות קישור בין הרידקס של ההזמנה ובין התשלום של פיפל
-  
+  const selctorOrder = useSelector((state) => state.orderReducer.state);
+
   const calc = () => {
     let total = 0;
     selctorCart.map((product) => {
@@ -18,7 +17,7 @@ export default function PaypalCheckOutButton() {
     });
     return total;
   };
- 
+
   const [paidFor, setPaidFot] = useState(false);
   const [error, setError] = useState(null);
   const navigetor = useNavigate();
@@ -47,8 +46,8 @@ export default function PaypalCheckOutButton() {
       }}
       onApprove={async (data, action) => {
         handleApprove(data.orderID);
-        await axios.post("http://localhost:8000/order",selctorOrder)
-        console.log("selctorOrder",selctorOrder);
+        await axios.post(`http://localhost:8000/order`, selctorOrder);
+        console.log(selctorOrder);
       }}
       onError={(err) => {
         setError(err);

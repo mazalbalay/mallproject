@@ -11,8 +11,8 @@ export const AddProductLogic = (state, product, qty) => {
 
 export const increaseLogic = (state, productId) => {
 
+    console.log(state)
     return state.map((item) => {
-        console.log(item)
         return item._id == productId ? {...item, qty: item.qty + 1 } : item
     })
 
@@ -20,8 +20,7 @@ export const increaseLogic = (state, productId) => {
 
 export const reduceLogic = (state, productId) => {
     let findInCart = state.find((item) => item._id === productId);
-    console.log(findInCart);
-    if (findInCart.qty == 1) {
+    if (findInCart.qty === 1) {
         return state.filter((item) =>
             item._id !== productId
         );

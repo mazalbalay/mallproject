@@ -42,12 +42,7 @@ const MainNav = ()=> {
               className="hover:text-green-400 duration-500">תנאי שימוש
               </Link>
           </li>
-          <li className="md:ml-8 md:my-0 my-7  text-l hover:underline">
-            <Link
-              to="/environmental-quality"
-              className="hover:text-green-400 duration-500"> איכות הסביבה
-            </Link>
-          </li>
+
           <li className="md:ml-8 md:my-0 my-7  text-l hover:underline">
             <Link
               to="/registration" className="hover:text-green-400 duration-500"> הרשמה

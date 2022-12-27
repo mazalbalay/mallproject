@@ -7,6 +7,7 @@ export const AddProduct = (product, qty) => {
 }
 
 export const IncreaseQty = (productId) => {
+    console.log(productId)
     return {
         type: "INCREASE",
         payload: productId

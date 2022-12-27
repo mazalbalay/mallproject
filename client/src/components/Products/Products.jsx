@@ -5,9 +5,7 @@ import ProductPopUp from "./ProductPopUp";
 import { getProducts } from "../Manager/ApiCalls/products";
 import { AddProduct, ReduceQty } from "../../Redux/action/cartActions";
 import { useDispatch, useSelector } from "react-redux";
-
 export default function Products({inputSearch,setProdactLength , storeName}) {
-
   const [popUpProduct, setPopUpProduct] = useState([]);
   const [popUp, setPopUp] = useState(false);
   const [inCart, setInCart] = useState("ADD TO CART");
@@ -15,11 +13,9 @@ export default function Products({inputSearch,setProdactLength , storeName}) {
   const [products, setProducts] = useState([]);
   const [qty, setQty] = useState(1);
   setProdactLength(products.length);
-
   const dispatch = useDispatch();
   const state = useSelector((state) => state.CartReducer);
   console.log(state);
-
   const allProduct = async () => {
     const { data:products } = await getProducts();
     const data = products.filter(product => product.brand === storeName)
@@ -28,23 +24,19 @@ export default function Products({inputSearch,setProdactLength , storeName}) {
     });
     setProducts(productsObj);
   };
-
   useEffect(() => {
     allProduct();
   }, [state]);
-
- 
   const addItem = (product) => {
     dispatch(AddProduct(product, product.qty));
     setQty(product.qty);
     const inCart = state.find((product)=> product._id === product._id);
     inCart ? setInCart("IN CART") && setDisable("disable") : setInCart("ADD TO CART")
   };
-
-
-
-
-
+  const handleDecresment = (product) => {
+    dispatch(ReduceQty(product._id));
+    setQty(product.qty);
+  };
   const showProductPopUp = (e) => {
     console.log(e.target.name);
     console.log(e.target.id);
@@ -55,9 +47,7 @@ export default function Products({inputSearch,setProdactLength , storeName}) {
       }
     });
   };
-
   const handleOneClose = () => setPopUp(false);
-
   return (
     <div>
       <div className="w-full scroll-p-[24rem] px-4 bg-white">
@@ -72,37 +62,33 @@ export default function Products({inputSearch,setProdactLength , storeName}) {
                 return product;
               }
             })
-          }
-            
-            {products.map((product) => {
+          .map((product , key) => {
               return (
                 <div
-                  key={product._id}
-                  className="w-full border flex  flex-col my-4  hover:scale-105 duration-300"
+                  key={key}
+                  className="w-full border flex  flex-col my-3  hover:scale-105 duration-300"
                 >
                   <img
                     id={product._id}
                     name={product}
                     onClick={(e) => showProductPopUp(e)}
-                    className="w-80 h-60 mx-auto  bg-white"
+                    className="h-40 mx-auto bg-white p-3"
                     src={product.image}
                     alt="Shoes"
                   />
-                  <button>למוצר</button>
-                  <h2 className="text-2xl font-bold text-center py-8">
+                  <h2 className="text-md font-bold text-center px-2 py-4">
                     {product.name}
                   </h2>
-
-                  <p className="text-gray text-end">{product.description}</p>
-                  <div className="flex text-start ml-44">
-                    <p>{product.qty}</p>
+                  <p className="text-gray text-center">{product.description}</p>
+                  <p className="text-center">סה"כ: {product.price} ש'ח</p>
+                  <div className="w-12/12">
+                  
                     <button
                         onClick={() => addItem(product)}
-                        className={`${disable} bg-sky-500 hover:bg-sky-500 hover:ring-sky-500 rounded-lg`}
-                      >{inCart}
+                        className={`bg-sky-500 hover:bg-sky-500 hover:ring-sky-500 rounded-sm p-4 mt-4 w-full`}
+                      >ADD TO CART
                     </button>
                   </div>
-                  <p className="text-end">סה"כ: {product.price} ש'ח</p>
                 </div>
               );
             })}
@@ -116,4 +102,12 @@ export default function Products({inputSearch,setProdactLength , storeName}) {
     </div>
   );
 }
+
+
+
+
+
+
+
+
 
