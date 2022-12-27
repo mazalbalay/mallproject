@@ -7,7 +7,7 @@ import BeatLoader from "react-spinners/BeatLoader";
 export default function MainPage() {
     const navigate = useNavigate();
 
-    const [Departments, setDepartments] = useState([]);
+    const [Departments, setDepartments] = useState();
     const [inputSearch, setinputSearch] = useState([]);
    
   useEffect(() => {

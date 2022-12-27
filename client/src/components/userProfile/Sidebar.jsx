@@ -39,7 +39,7 @@ window.location.reload()
         <div className='   md:flex flex-col '>
         <div onClick={()=>handleSideBar('/personal-info ', '/userProfile/userprofile/profile-info')} className={style}><div>מידע אישי</div>< BsFillPersonBadgeFill size={25} className='ml-2'/> </div>        
         <div onClick={()=>handleSideBar('/changepassword ', '/userProfile/userprofile/changepassword')} className={style}><div >החלפת סיסמא</div>< AiOutlineLock size={25} className='ml-2'/> </div>
-        <div onClick={()=>{handleSideBar('/address ', '/userProfile/userprofile/address')}} className={style}><div >כתובת שלי</div><IoHomeOutline size={25} className='ml-2'/> </div>
+        {/* <div onClick={()=>{handleSideBar('/address ', '/userProfile/userprofile/address')}} className={style}><div >כתובת שלי</div><IoHomeOutline size={25} className='ml-2'/> </div> */}
         <div onClick={()=>{handleSideBar('/payment ', '/userProfile/userprofile/payment')}} className={style}><div >נתוני תשלום</div>< BsCreditCard2Front size={25} className='ml-2'/> </div>
         <div onClick={()=>{handleSideBar('/order ', '/userProfile/userprofile/order')}}  className={style}><div >ההזמנות שלי</div>< BsBoxSeam size={25} className='ml-2'/> </div>
 

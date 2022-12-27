@@ -24,13 +24,14 @@ export default function PersonalInfo() {
     const { data } = await usersUpdate(
       { ...userData, birthday: birthday },
       user._id
-    );
+    ); console.log(data);
     const { data: allUsers } = await users();
-    const filterdUsers = allUsers.filter((u) => user._id === u);
+    const filterdUsers = allUsers.find((u) => user._id === u._id);
+    console.log(filterdUsers);
     localStorage.setItem("user", JSON.stringify({ data: filterdUsers }));
   };
 
-  console.log(userData);
+ 
   return (
     <div className="md:w-[70%] w-[100%] pt-10 flex flex-col md:text-right text-center py-3 px-10 bg-white">
       <h1 className="text-2xl mb-5">מידע אישי</h1>

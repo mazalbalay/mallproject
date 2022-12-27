@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useState , useEffect } from 'react'
+import { FaShippingFast } from 'react-icons/fa';
 
 function Order() {
 const [myOrders , setMyOrders] = useState([])
@@ -16,7 +17,8 @@ const user =  JSON.parse(localStorage.getItem(("user"))).data
             // const filterProduct = product.filter(pro => pro._id === )
 
     }
-
+console.log(user._id);
+console.log(myOrders[0]?.product[0] );
     useEffect(() => {
       findUserOrders()
     }, [])
@@ -26,14 +28,29 @@ const user =  JSON.parse(localStorage.getItem(("user"))).data
 
       <h1 className='text-2xl mb-5 ' onClick={findUserOrders}>ההזמנות שלי</h1>
 
-      {/* {myOrders.length === 0 ? 
+
+      {myOrders.length === 0 ? 
     <div> אין הזמנות קיימות </div>
-    :  */}
-    <div>
+    : <div>
+ { myOrders.map((order,key)=>(
+<div>
+  <div> שיטת שילוח: {order.shipping.shippingType}</div>
+  <div>  זמן הגעת המשלוח: {order.shipping.time}</div>
+  {order.product.map((product,key)=>(
+    <div className='border-2 p-3 rounded-md m-2'>
+      <div>{product.productsStore} :שם החנות</div>
+ <div>{product.productName}: שם המוצר </div>
+ <div>{product.productPrice}: מחיר המוצר </div>
+ </div>
+ ))}
+</div>
+))}
+</div>
+    }
 
         <h1></h1>
         </div>
-    </div>
+    
   )
 }
 
