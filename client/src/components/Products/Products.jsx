@@ -10,6 +10,8 @@ export default function Products({inputSearch,setProdactLength , storeName}) {
 
   const [popUpProduct, setPopUpProduct] = useState([]);
   const [popUp, setPopUp] = useState(false);
+  const [inCart, setInCart] = useState("ADD TO CART");
+  const [disable, setDisable] = useState();
   const [products, setProducts] = useState([]);
   const [qty, setQty] = useState(1);
   setProdactLength(products.length);
@@ -31,15 +33,17 @@ export default function Products({inputSearch,setProdactLength , storeName}) {
     allProduct();
   }, [state]);
 
+ 
   const addItem = (product) => {
     dispatch(AddProduct(product, product.qty));
     setQty(product.qty);
+    const inCart = state.find((product)=> product._id === product._id);
+    inCart ? setInCart("IN CART") && setDisable("disable") : setInCart("ADD TO CART")
   };
 
-  const handleDecresment = (product) => {
-    dispatch(ReduceQty(product._id));
-    setQty(product.qty);
-  };
+
+
+
 
   const showProductPopUp = (e) => {
     console.log(e.target.name);
@@ -91,18 +95,11 @@ export default function Products({inputSearch,setProdactLength , storeName}) {
 
                   <p className="text-gray text-end">{product.description}</p>
                   <div className="flex text-start ml-44">
-                    <button>
-                      <FiPlusCircle
-                        onClick={() => addItem(product)}
-                        className="hover:bg-sky-500 hover:ring-sky-500 rounded-lg hover:text-white"
-                      />
-                    </button>
                     <p>{product.qty}</p>
-                    <button>
-                      <FiMinusCircle
-                        onClick={() => handleDecresment(product)}
-                        className="hover:bg-sky-500 hover:ring-sky-500 rounded-lg hover:text-white"
-                      />
+                    <button
+                        onClick={() => addItem(product)}
+                        className={`${disable} bg-sky-500 hover:bg-sky-500 hover:ring-sky-500 rounded-lg`}
+                      >{inCart}
                     </button>
                   </div>
                   <p className="text-end">סה"כ: {product.price} ש'ח</p>
