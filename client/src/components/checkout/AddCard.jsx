@@ -10,6 +10,7 @@ export default function AddCard({ payment, setPayment, order }) {
   const selctor = useSelector((state) => state.orderReducer);
   const user = JSON.parse(localStorage.getItem("user")).data;
   const navigetor = useNavigate();
+  
 
   return (
     <div className="w-full h-screen bg-black bg-opacity-70 z-20 fixed top-0 right-0 flex items-center justify-center">
@@ -41,8 +42,9 @@ export default function AddCard({ payment, setPayment, order }) {
                   user._id,
                 );
                 const { data: use } = await users();
-                const filterd = use.filter((U) => U._id === user._id);
-                localStorage.setItem("user", JSON.stringify({ data: filterd }));
+                const data = use.find((U) => U._id === user._id);
+                localStorage.setItem("user", JSON.stringify({ data }));
+                console.log(user);
                 navigetor("/ThanksPage");
               } else {
                 alert("התחבר/הרשם בבקשה");
