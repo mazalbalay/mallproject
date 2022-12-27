@@ -37,6 +37,12 @@ export default function Main() {
         >
           חנויות
         </button>
+        <button
+         onClick={() => navigate(`${"/admin/Manager/new"}`)}
+          className=" bg-sky-300 hover:bg-sky-700 text-white font-bold w-48 py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
+        >
+        צור מנהל
+        </button>
       </div>
     </div>
    
