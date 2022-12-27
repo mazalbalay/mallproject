@@ -3,7 +3,12 @@ import React from 'react'
 export default function HeaderStore(props) {
   return (
     <div>
-    <header className="p-20 bg-[url('https://a7.org/pictures/000/979372.jpg')]">
+    <header className="p-20" style={{  
+  backgroundImage: `url(${props.image})`,
+  backgroundPosition: 'center',
+  backgroundSize: 'cover',
+  backgroundRepeat: 'no-repeat'
+}}>
       <h1 className="text-white  text-2xl text-center">
        {props.name}
       </h1>
