@@ -45,7 +45,7 @@ console.log(message);
         <p className='text-center my-3 '>הזן את המייל שלך ונשלח לך לינק לאיפוס הסיסמה</p>
         <input onChange={(e)=>setEmail(e.target.value)} className='border-2 w-[95%] my-4 outline-none p-2 text-right border-gray-400 rounded' placeholder='אימייל' type="email" />
         <button onClick={handleClick} className='w-[95%] rounded bg-indigo-600 p-1.5 text-gray-50 '>שלח לינק לאיפוס הסיסמה</button>
-        {/* <div className='font-bold text-orange-600 mt-2'>{message}</div> */}
+        <div className='font-bold text-orange-600 mt-2'>{message}</div>
 
         <div className="border-b-2 w-[95%] md:w-[] my-2  border-gray-400 self-center">
             <span className="relative bg-white px-1 text-lg top-3  left-[46%] ">
@@ -65,7 +65,8 @@ console.log(message);
         <button onClick={resetPassword} className='w-[95%] rounded bg-indigo-600 p-1.5 text-gray-50 '>איפוס</button>
         <div className='font-bold text-orange-600 mt-2'>{message}</div>
 
-       
+        <Link to='/Auth'  className='text-lg mt-4 font-semibold'>חזרה להתחברות</Link >
+
       
          </div>}
     </div>

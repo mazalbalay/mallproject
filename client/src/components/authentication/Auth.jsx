@@ -39,7 +39,7 @@ export default function Auth() {
       accessToken: response.accessToken,
       userID: response.userID,
     });
-    dispatch({type:'AUTH', payload:{ data: data }})
+    dispatch({type:'AUTH', payload:{  data }})
     console.log("facebook login success ,client side", data);
     navigate("/")
     window.location.reload()
@@ -53,7 +53,7 @@ export default function Auth() {
       tokenId: response.tokenId,
     }); 
     console.log(data);
-    dispatch({type:'AUTH', payload:{ data : data }})
+    dispatch({type:'AUTH', payload:{  data }})
     navigate("/");
     window.location.reload()
 
@@ -70,7 +70,7 @@ export default function Auth() {
       try {
         const { data } = await api.singup(userData);
        
-        dispatch({type:'AUTH', payload:{ data: data }})
+        dispatch({type:'AUTH', payload:{  data }})
 
         setUserData({
           email: "",
@@ -88,9 +88,9 @@ export default function Auth() {
     } else if (!singUp) {
       try {
         const { data} = await api.singin(userData);
-    
+    console.log(data);
 
-        dispatch({type:'AUTH', payload:{ data: data }})
+        dispatch({type:'AUTH', payload:{  data }})
 
         navigate("/");
         window.location.reload()

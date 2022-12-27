@@ -25,9 +25,6 @@ import MainNav from "./components/Navs/MainNav";
 import StoreListNav from "./components/Navs/StoreListNav";
 import Footer from "./components/Footers/Footer";
 import EditProduct from "./components/Manager/EditProduct";
-import Maneger from './components/Manager/HomeScreen'
-import StoresManeger from './components/Manager/Stores'
-
 import ContactSection from './components/ContactSection'
 import Maneger from "./components/Manager/HomeScreen";
 import StoresManeger from "./components/Manager/Stores";
@@ -44,7 +41,7 @@ function App() {
           "ATZnLpZdreIw8GDvsCs-eguhcXT3gn4gmDrTi8L0n0arR08UvMJeSOoAeVQCJSFuaC-2EWi669UKRbUc",
       }}
     >
-      {user ? <StoreListNav /> : <MainNav />}
+     <MainNav /> 
 
       <div>
         <Routes>
@@ -85,11 +82,12 @@ function App() {
           <Route path="/manager/products/new" element={<AddProduct />} />
           <Route path="/manger/stores" element={<StoresManeger />} />
           <Route path="/manager" element={<Maneger />} />
-          {/* <Route exact path="products" element={<InStore />} /> */}
-          <Route exact path="/checkout" element={<CheckOut/>} />
+          <Route exact path="/checkout" element={<CheckOut/>} />      
+            <Route path="/contact-us" element={<ContactSection/>}/>
+
         </Routes>
 
-        {/* <Footer/>/ */}
+        {/* <Footer/> */}
       </div>
     </PayPalScriptProvider>
   );

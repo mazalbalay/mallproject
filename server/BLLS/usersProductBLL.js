@@ -84,6 +84,7 @@ const singIn = () => async (req, res) => {
   
       try {
           const exsist = await Users.findOne({ email });
+          console.log(exsist)
           if (!exsist) return res.status(404).json("user not exsist");
   
           const currect = password === exsist.password;

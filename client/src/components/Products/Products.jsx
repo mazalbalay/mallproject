@@ -68,10 +68,10 @@ export default function Products({inputSearch,setProdactLength , storeName}) {
                 return product;
               }
             })
-          .map((product) => {
+          .map((product , key) => {
               return (
                 <div
-                  key={product._id}
+                  key={key}
                   className="w-full border flex  flex-col my-4  hover:scale-105 duration-300"
                 >
                   <img

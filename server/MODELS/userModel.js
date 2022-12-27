@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
   location: String,
   birthday:String,
   ReservedCreditCards: String,
-  saveCards: String,
+  saveCards: Array,
 });
 
 const UsersModel = mongoose.model("users", userSchema);

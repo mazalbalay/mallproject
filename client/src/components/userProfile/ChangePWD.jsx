@@ -22,10 +22,10 @@ export default function ChangePWD() {
 
       // setNewPSW(newPSW)
 
-      const {data} = await usersUpdate({...user , password:newPSW} ,user._id )
+      await usersUpdate({...user , password:newPSW} ,user._id )
       const {data:use} = await users()
-      const filterd = use.filter(U =>U._id ===  user._id )
-      const update = localStorage.setItem(("user" ) ,JSON.stringify( {data :filterd} ))
+      const data = use.find(U =>U._id ===  user._id )
+      const update = localStorage.setItem(("user" ) ,JSON.stringify( {data} ))
       console.log(data);
   }
       
