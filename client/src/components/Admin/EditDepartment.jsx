@@ -6,8 +6,6 @@ import {
 } from "../ApiCalls/Departments";
 import { useParams } from "react-router-dom";
 import FileBase64 from "react-file-base64";
-import Nav from '../Navs/MainNav';
-import MainPageFooter from "../Footers/MainPageFooter";
 
 export default function EditDepartment() {
   let { depId } = useParams();
@@ -35,8 +33,7 @@ export default function EditDepartment() {
     await deleteDepartment(depId);
   }
   console.log(Department);
-  return ( <div>
-    <Nav/>
+  return ( 
     <div className=" rounded m-20 text-center h-screen md:w-4/12 w-10/12 container mx-auto">
       <form className="w-full bg-white shadow-md rounded ">
         <div className="bg-sky-300">
@@ -116,7 +113,6 @@ export default function EditDepartment() {
       </form>
 
       
-    </div><MainPageFooter/>
     </div>
   );
 }

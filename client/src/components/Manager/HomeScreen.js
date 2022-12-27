@@ -27,7 +27,7 @@ export default function HomeScreen() {
       <div className="w-full flex flex-row justify-evenly m-6">
         
         <button
-         onClick={() => navigate(`${"/manger/stores"}`)}
+         onClick={() => navigate(`${"/manager/stores"}`)}
           className=" bg-sky-300 hover:bg-sky-700 text-white font-bold w-48 py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
         >
          לרשימת החנויות שלך

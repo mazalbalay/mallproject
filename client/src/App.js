@@ -6,7 +6,7 @@ import UserProfile from "./components/userProfile/UserProfile";
 import PersonalInfo from "./components/userProfile/PersonalInfo";
 import CheckOut from "./components/checkout/CheckOut";
 import Auth from "./components/authentication/Auth";
-import ThancksPage from "./components/checkout/ThancksPage";
+import ThanksPage from "./components/checkout/ThanksPage";
 import ErrPage from "./components/checkout/ErrPage";
 // import CartStore from "./components/CartStore";
 import ForgotPassPage from "./components/authentication/ForgotPassPage";
@@ -30,6 +30,8 @@ import Footer from './components/Footers/Footer'
 import EditProduct from "./components/Manager/EditProduct";
 import Maneger from './components/Manager/HomeScreen'
 import StoresManeger from './components/Manager/Stores'
+import ProductsScreen from "./components/Manager/ProductsScreen";
+import HomeScreen from "./components/Manager/HomeScreen";
 
 
 function App() {
@@ -45,17 +47,17 @@ console.log(user);
       
     {user ?  <StoreListNav/>:<MainNav/>}
 
-{/* <Footer/> */}
+
 
       <div>
         <Routes>
           {/* <Route path="/" element={<Home />} />/ */}
         {user ? null : <Route path="/Auth" element={<Auth />} /> }
-          <Route path="/" element={<MainPage />} />
+          {/* <Route path="/" element={<MainPage />} /> */}
           <Route path="/CheckOut" element={<CheckOut />} />
           <Route path="/changepassword" element={<ChangePWD />} />
           <Route path="/forgot-password/:id" element={<ForgotPassPage />} />
-          <Route path="/ThancksPage" element={<ThancksPage />} />
+          <Route path="/ThanksPage" element={<ThanksPage />} />
           <Route path="/ErrPage" element={<ErrPage />} />
           <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/personalinfo" element={<PersonalInfo />} />
@@ -66,19 +68,22 @@ console.log(user);
           <Route path="/Admin/Store/edit/:storeId" element={< EditStore/>} />
           <Route path="/admin/stores" element={< Stores/>} />
           <Route path="/admin/departments" element={< Departments/>} />
-          <Route path="/main" element={< MainPage/>} />
+          {/* <Route path="/main" element={< MainPage/>} /> */}
           <Route path="/storelist/:depName" element={< StoreListPage/>} />
-          <Route path="/manager/product/edit/:productId" element={< EditProduct/>} />
-          <Route path="/manager/products/new" element={< CreateProduct/>} />
-          <Route path="/manger/stores" element={<StoresManeger/>} />
+          <Route path="/manager/products/edit/:productId" element={< EditProduct/>} />
           <Route path="/manager" element={< Maneger/>} />
-          <Route exact path="products" element={<InStore />} />
+          <Route path="/manager/homeScreen" element={< HomeScreen/>} />
+          <Route path="/manager/products/new" element={< CreateProduct/>} />
+          <Route path="/manager/stores" element={<StoresManeger/>} />
+          <Route path="/manger/stores/:storeName" element={<ProductsScreen/>} />
+          {/* <Route exact path="products" element={<InStore />} /> */}
           <Route exact path="/checkout" element={<CheckOut/>} />
         </Routes>
+        
+        {/* <Footer/>/ */}
       </div>
     </PayPalScriptProvider>
   );
 }
 
 export default App;
-

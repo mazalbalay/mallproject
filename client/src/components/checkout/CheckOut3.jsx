@@ -124,7 +124,7 @@ export default function CheckOut3({ setOrder, order }) {
         </div>
       )}
       {addCard ? (
-        <AddCard payment={payment} setAddCard={setAddCard} order={order} />
+        <AddCard payment={payment} setPayment={setPayment} setAddCard={setAddCard} order={order} />
       ) : (
         ""
       )}
@@ -139,9 +139,9 @@ export default function CheckOut3({ setOrder, order }) {
               order.shipping.allData &&
               saveCard === false
             ) {
+              setAddCard(!addCard);
               await axios.post(`http://localhost:8000/order`, order);
               console.log(order);
-              setAddCard(!addCard);
             } else if (
               order.payment.cardNumber !== "paypal" &&
               order.payment.threeDigits !== "paypal" &&
@@ -150,9 +150,9 @@ export default function CheckOut3({ setOrder, order }) {
               order.shipping.allData &&
               saveCard === true
             ) {
+              navigetor("/ThanksPage");
               await axios.post("http://localhost:8000/order", order);
               console.log(order);
-              navigetor("/ThancksPage");
             } else {
               alert("מלא את כל השדות");
             }

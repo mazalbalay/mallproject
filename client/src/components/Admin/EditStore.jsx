@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { editStore, getStore, deleteStore } from "../ApiCalls/Store";
 import { useParams } from "react-router-dom";
 import FileBase64 from "react-file-base64";
-import Nav from '../Navs/MainNav';
-import MainPageFooter from "../Footers/MainPageFooter";
 
 export default function EditStore() {
   let { storeId } = useParams();
@@ -32,8 +30,6 @@ export default function EditStore() {
   }
   console.log(Store);
   return (
-    <div>
-      <Nav/>
     <div className="w-full m-auto rounded m-20 text-center h-screen md:w-4/12 w-10/12 container mx-auto p-8">
       <form className="w-full bg-white shadow-md rounded ">
       <div className="bg-sky-300">
@@ -168,7 +164,6 @@ export default function EditStore() {
 
       
     </div>
-    <MainPageFooter/>
-    </div>
+    
   );
 }

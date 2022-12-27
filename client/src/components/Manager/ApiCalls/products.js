@@ -16,31 +16,17 @@ export async function getProduct(id) {
         return error;
     }
 }
-export async function editProduct(id, name, image, description, department, section, brand) {
+export async function editProduct(productId, productObj) {
     try {
-        const response = await axios.put(`http://localhost:8000/Product/${id}`, {
-            name: name,
-            image,
-            description: description, 
-            department: department,
-            section: section,
-            brand: brand,
-        });
+        const response = await axios.put(`http://localhost:8000/Product/${productId}`, productObj);
         return response;
     } catch (error) {
         return error;
     }
 }
-export async function createProduct(name, image, description, department, section, brand) {
+export async function createProduct(productObj) {
     try {
-        const response = axios.post("http://localhost:8000/Product", {
-            name: name,
-            image,
-            description: description,
-            department: department,
-            section: section,
-            brand: brand,
-        })
+        const response = axios.post("http://localhost:8000/Product", productObj)
         return response;
     } catch (error) {
         return error;

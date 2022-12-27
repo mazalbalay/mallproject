@@ -21,7 +21,7 @@ const orderSchema = new mongoose.Schema({
         postalCode: String,
     },
     shipping: {
-        type: String,
+        shippingType: String,
         date: String,
         time: String,
     },
