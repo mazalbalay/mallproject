@@ -71,11 +71,9 @@ function App() {
           <Route path="/Admin/Store/edit/:storeId" element={< EditStore/>} />
           <Route path="/admin/stores" element={< Stores/>} />
           <Route path="/admin/departments" element={< Departments/>} />
-          <Route path="/main" element={< MainPage/>} />
-          <Route path="/storelist/:depName" element={< StoreListPage/>} />
-          <Route path="/manager/product/edit/:productId" element={< EditProduct/>} />
-          {/* <Route path="/manager/products/new" element={< AddProduct/>} /> */}
-          <Route path="/manger/stores" element={<StoresManeger/>} />
+          {/* <Route path="/main" element={< MainPage/>} /> */}
+          <Route path="/storelist/:depId/:depName" element={< StoreListPage/>} />
+          <Route path="/manager/products/edit/:productId" element={< EditProduct/>} />
           <Route path="/manager" element={< Maneger/>} />
           {/* <Route exact path="products" element={<InStore />} /> */}
           <Route exact path="/checkout" element={<CheckOut/>} />
