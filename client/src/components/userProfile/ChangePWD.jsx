@@ -32,7 +32,7 @@ export default function ChangePWD() {
 
     
   return (
-    <div className='w-[100%] h-[100%] pt-20 flex flex-col text-right py-5 px-10   bg-white items-end'>
+    <div className='w-[100%] md:h-[595px] pt-20 flex flex-col text-right py-5 px-10   bg-white items-end'>
       <h1 className='text-2xl mb-5'>החלף סיסמא </h1>
       {message}
       <label htmlFor="סיסמא נוכחית"></label>
