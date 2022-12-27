@@ -4,6 +4,7 @@ const router = express.Router();
 // http://localhost:8000/singup
 
 router.post("/singup", BLL.singUp());
+router.post("/singupManeger", BLL.singUpManager());
 router.post("/singin", BLL.singIn());
 router.post("/forgot-password", BLL.forgotPassword());
 router.get("/user/:id", BLL.getUserById());
