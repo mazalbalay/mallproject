@@ -18,7 +18,7 @@ export async function getProduct(id) {
 }
 export async function editProduct(productId, productObj) {
     try {
-        const response = await axios.put(`http://localhost:8000/Product/${productId}`, productObj);
+        const response = await axios.put(`http://localhost:8000/Product/${productId}`, ...productObj);
         return response;
     } catch (error) {
         return error;
@@ -26,7 +26,7 @@ export async function editProduct(productId, productObj) {
 }
 export async function createProduct(productObj) {
     try {
-        const response = axios.post("http://localhost:8000/Product", productObj)
+        const response = axios.post("http://localhost:8000/Product", ...productObj)
         return response;
     } catch (error) {
         return error;

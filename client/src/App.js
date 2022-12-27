@@ -18,7 +18,7 @@ import AdminMain from './components/Admin/Main'
 import MainPage from "./components/MainPage";
 import EditStore from "./components/Admin/EditStore";
 import StoreListPage from "./components/Stores/StoreListPage"
-import AddProduct from "./components/Manager/AddProduct";
+import CreateProduct from "./components/Manager/CreateProduct";
 import MainNav  from "./components/Navs/MainNav";
 import StoreListNav from './components/Navs/StoreListNav'
 import Footer from './components/Footers/Footer'
