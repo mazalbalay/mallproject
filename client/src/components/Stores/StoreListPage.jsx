@@ -6,7 +6,6 @@ import StoreComp from "./StoreComp";
 import HeaderStore from ".//HeaderStore";
 import MainNav from "../Navs/MainNav";
 import MainPageFooter from "../Footers/MainPageFooter";
-
 const StoreListPage = () => {
   let { depName } = useParams();
   const navigate = useNavigate();
@@ -16,24 +15,24 @@ const StoreListPage = () => {
     const result = data.filter((store) => store.department === depName);
     setStores(result);
   };
-
   useEffect(() => {
     storesFu();
   }, []);
   console.log(stores);
   return (
     <div>
-      <HeaderStore name={depName}/>
+      <HeaderStore name={depName} />
       <div className="md:w-[45%] m-auto md:m-0 w-[90%]  absolute right-0">
         <div className="  w-[100%] ">
-          {stores?.map((store) => (
-              <StoreComp
-                name={store.name}
-                desc={store.description}
-                location={store.location}
-                image={store.image}
-              />
-            ))}
+          {stores?.map((store,i) => (
+            
+            <StoreComp 
+              name={store.name}
+              desc={store.description}
+              location={store.location}
+              image={store.image}
+            />
+          ))}
         </div>
         <div className="text-gray-400 flex justify-center my-3">
           <AiOutlinePlusCircle size={60} />
@@ -42,6 +41,4 @@ const StoreListPage = () => {
     </div>
   );
 };
-
 export default StoreListPage;
-

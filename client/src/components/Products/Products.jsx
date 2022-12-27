@@ -5,19 +5,15 @@ import ProductPopUp from "./ProductPopUp";
 import { getProducts } from "../Manager/ApiCalls/products";
 import { AddProduct, ReduceQty } from "../../Redux/action/cartActions";
 import { useDispatch, useSelector } from "react-redux";
-
 export default function Products({inputSearch,setProdactLength , storeName}) {
-
   const [popUpProduct, setPopUpProduct] = useState([]);
   const [popUp, setPopUp] = useState(false);
   const [products, setProducts] = useState([]);
   const [qty, setQty] = useState(1);
   setProdactLength(products.length);
-
   const dispatch = useDispatch();
   const state = useSelector((state) => state.CartReducer);
   console.log(state);
-
   const allProduct = async () => {
     const { data:products } = await getProducts();
     const data = products.filter(product => product.brand === storeName)
@@ -26,21 +22,17 @@ export default function Products({inputSearch,setProdactLength , storeName}) {
     });
     setProducts(productsObj);
   };
-
   useEffect(() => {
     allProduct();
   }, [state]);
-
   const addItem = (product) => {
     dispatch(AddProduct(product, product.qty));
     setQty(product.qty);
   };
-
   const handleDecresment = (product) => {
     dispatch(ReduceQty(product._id));
     setQty(product.qty);
   };
-
   const showProductPopUp = (e) => {
     console.log(e.target.name);
     console.log(e.target.id);
@@ -51,9 +43,7 @@ export default function Products({inputSearch,setProdactLength , storeName}) {
       }
     });
   };
-
   const handleOneClose = () => setPopUp(false);
-
   return (
     <div>
       <div className="w-full scroll-p-[24rem] px-4 bg-white">
@@ -86,7 +76,6 @@ export default function Products({inputSearch,setProdactLength , storeName}) {
                   <h2 className="text-2xl font-bold text-center py-8">
                     {product.name}
                   </h2>
-
                   <p className="text-gray text-end">{product.description}</p>
                   <div className="flex text-start ml-44">
                     <button>
@@ -117,4 +106,12 @@ export default function Products({inputSearch,setProdactLength , storeName}) {
     </div>
   );
 }
+
+
+
+
+
+
+
+
 

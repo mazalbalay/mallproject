@@ -52,6 +52,35 @@ const getAllUsers = () => async(req, res) => {
     }
 };
 
+const singUpManager = () => async(req, res) => {
+    const { email, password, confirmPassword, fullName, userName } = req.body;
+
+    try {
+        const exsist = await Users.findOne({ email });
+
+        if (exsist) return res.status(404).json("user alrady exsist");
+
+        if (password !== confirmPassword)
+            return res.status(404).json("Password don't match");
+
+        // const hashedPassword = await bcryptjs.hash(password, 12);
+
+        const userResults = await Users.create({
+            email: email,
+            name: fullName,
+            password: password,
+            username: userName,
+            access:'manager'
+        });
+        return res.status(200).json(userResults);
+    } catch (e) {
+        return res.status(400).json(e);
+    }
+};
+
+
+
+
 const singUp = () => async(req, res) => {
     const { email, password, confirmPassword, fullName, userName } = req.body;
 
@@ -185,5 +214,6 @@ module.exports = {
     getUserById,
     facebooklogin,
     googlelogin,
-    forgotPassword
+    forgotPassword,
+    singUpManager
 };

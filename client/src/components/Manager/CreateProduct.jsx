@@ -1,38 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { deleteProduct, editProduct, getProduct } from "./ApiCalls/products";
+import { createProduct, getProducts } from "./ApiCalls/products";
 import FileBase64 from "react-file-base64";
 import Nav from "../Navs/MainNav";
 import MainPageFooter from "../Footers/MainPageFooter";
-import { useParams } from "react-router-dom";
 
 
 export default function CreateProduct ()  {
-  const {productId} = useParams();
+  const [productName, setProductName] = useState("");
+  const [productPrice, setProductPrice] = useState("");
+  const [productQty, setProductQty] = useState("");
+  const [productDescription, setProductDescription] = useState("");
+  const [productSizes, setProductSizes] = useState([]);
+  const [productColors, setProductColors] = useState([]);
+  const [productBrand, setProductBrand] = useState("");
+  const [productDepartment, setProductDepartment] = useState("");
+  const [productStoreName, setProductStoreName] = useState("");
+  const [productSection, setProductSection] = useState("");
+  const [productModel, setProductModel] = useState();
+  const [productImage, setProductImage] = useState("");
+  const [product, setProduct] = useState([]);
 
-const [product, setProduct] = useState([]);
-const [productName, setProductName] = useState("");
-const [productPrice, setProductPrice] = useState("");
-const [productQty, setProductQty] = useState("");
-const [productDescription, setProductDescription] = useState("");
-const [productSizes, setProductSizes] = useState([]);
-const [productColors, setProductColors] = useState([]);
-const [productBrand, setProductBrand] = useState();
-const [productDepartment, setProductDepartment] = useState();
-const [productStoreName, setProductStoreName] = useState();
-const [productSection, setProductSection] = useState();
-const [productModel, setProductModel] = useState();
-const [productImage, setProductImage] = useState("");
-
-useEffect(() => {
-  const getProductData = async () => {
-    const result = await getProduct(productId);
-    setProduct([result.data]);
-  };
-getProductData();
-}, [productId]);
-
-
-  const editedProduct = {
+  const newProduct = {
     name: productName,
     price: productPrice,
     quantity: productQty,
@@ -48,14 +36,10 @@ getProductData();
 
   }
 
-  async function editAndLoadPage() {
-    let editProduct = await editProduct(productId, editedProduct);
-    setProduct(editProduct.data);
-    console.log(editProduct);
-  }
-
-  async function deleteAndLoadPage() {
-    await deleteProduct(productId);
+  async function createAndLoadPage() {
+    let createNewProduct = await createProduct(newProduct);
+    setProduct([createNewProduct.data]);
+    console.log(createNewProduct);
   }
 
   console.log(product);
@@ -66,7 +50,7 @@ getProductData();
         <form className="w-full bg-white shadow-md rounded ">
           <div className="bg-sky-300">
             <p className="mx-auto text-center p-4 text-xl text-white		">
-              עידכון מוצר
+              יצירת מוצר
             </p>
           </div>
           <div className="w-12/12">
@@ -251,27 +235,17 @@ getProductData();
             />
           </div>
        
-          <div className="flex items-center justify-evenly p-4">
-          <button
-            className="bg-sky-300 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
-            type="button"
-            onClick={() => editAndLoadPage()}
-          >
-            עידכון מוצר
-          </button>
-          {product[0] === null ? (
-            <div className="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline">
-            מוצר נמחק
-            </div>
-          ) : (
+          <div className="flex items-center justify-center py-10">
             <button
-              className="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
-              onClick={() => deleteAndLoadPage(productId)}
+              className="bg-sky-300 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline"
+              type="button"
+              onClick={() =>
+                createAndLoadPage()
+              }
             >
-              מחיקת מוצר
+              יצירת מוצר
             </button>
-          )}
-        </div>
+          </div>
         </form>
       </div>
     </>

@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 import { BsFillClockFill } from "react-icons/bs";
 import { BsTextLeft } from "react-icons/bs";
 import ChoseDate from "./ChoseDate";
 import ChoseTime from "./ChoseTime";
-import { useSelector ,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function CheckOut2({ setOrder, order }) {
+  const selctorOrder = useSelector((state) => state.orderReducer.state);
   const [dropDwon, setDropDwon] = useState(false);
-  const dispatch =useDispatch()
+  const dispatch = useDispatch();
+
   const expressShipping = () => {
     setOrder({
       ...order,
@@ -17,10 +19,13 @@ export default function CheckOut2({ setOrder, order }) {
         time: `${new Date().getHours()}:00-${new Date().getHours() + 1}:00`,
         date: `${new Date().getDate()}/${new Date().getMonth() + 1}`,
         shippingType: "משלוח אקספרס",
-        allData:true
+        allData: true,
       },
     });
   };
+useEffect(()=>{
+   dispatch({ type: "UPDATEORDER", payload: order });
+})
 
   return (
     <>
@@ -37,7 +42,7 @@ export default function CheckOut2({ setOrder, order }) {
                     ...order.shipping,
                     time: "",
                     date: "",
-                    allData:false
+                    allData: false,
                   },
                 });
               }}
@@ -69,7 +74,7 @@ export default function CheckOut2({ setOrder, order }) {
               if (order.addres.allData) {
                 expressShipping();
                 setDropDwon(!dropDwon);
-                dispatch({ shippingType: "UPDATEORDER", payload: order })
+                console.log(selctorOrder);
               } else {
                 alert("מלא בבקשה את כתובת המשלוח");
               }

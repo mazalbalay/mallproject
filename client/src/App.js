@@ -25,6 +25,9 @@ import MainNav from "./components/Navs/MainNav";
 import StoreListNav from "./components/Navs/StoreListNav";
 import Footer from "./components/Footers/Footer";
 import EditProduct from "./components/Manager/EditProduct";
+import Maneger from './components/Manager/HomeScreen'
+import StoresManeger from './components/Manager/Stores'
+
 import ContactSection from './components/ContactSection'
 import Maneger from "./components/Manager/HomeScreen";
 import StoresManeger from "./components/Manager/Stores";
@@ -46,7 +49,7 @@ function App() {
       <div>
         <Routes>
           {/* <Route path="/" element={<Home />} />/ */}
-          {user ? null : <Route path="/Auth" element={<Auth />} />}
+        {user ? null : <Route path="/Auth" element={<Auth />} /> }
           <Route path="/" element={<MainPage />} />
           <Route path="/CheckOut" element={<CheckOut />} />
           <Route path="/personal-info" element={<PersonalInfo />} />
@@ -64,27 +67,21 @@ function App() {
           </Route>
 
           <Route path="/instore/:storeName" element={<InStore />} />
-          <Route path="/admin" element={<AdminMain />} />
-          <Route path="/admin/Department/new" element={<CreateDepartment />} />
-          <Route
-            path="/admin/Department/edit/:depId"
-            element={<EditDepartment />}
-          />
-          <Route path="/Admin/Store/edit/:storeId" element={<EditStore />} />
-          <Route path="/admin/stores" element={<Stores />} />
-          <Route path="/admin/departments" element={<Departments />} />
-          <Route path="/main" element={<MainPage />} />
-          <Route path="/storelist/:depName" element={<StoreListPage />} />
-          <Route
-            path="/manager/product/edit/:productId"
-            element={<EditProduct />}
-          />
-          <Route path="/manager/products/new" element={<AddProduct />} />
-          <Route path="/manger/stores" element={<StoresManeger />} />
-          <Route path="/manager" element={<Maneger />} />
-          <Route exact path="/checkout" element={<CheckOut/>} />      
-            <Route path="/contact-us" element={<ContactSection/>}/>
-
+          <Route path="/admin" element={<AdminMain/>} />
+          <Route path="/admin/Department/new" element={< CreateDepartment/>} />
+          <Route path="/admin/Department/edit/:depId" element={< EditDepartment/>} />
+          <Route path="/Admin/Store/edit/:storeId" element={< EditStore/>} />
+          <Route path="/admin/stores" element={< Stores/>} />
+          <Route path="/admin/departments" element={< Departments/>} />
+          <Route path="/main" element={< MainPage/>} />
+          <Route path="/storelist/:depName" element={< StoreListPage/>} />
+          <Route path="/manager/product/edit/:productId" element={< EditProduct/>} />
+          <Route path="/manager/products/new" element={< AddProduct/>} />
+          <Route path="/manger/stores" element={<StoresManeger/>} />
+          <Route path="/manager" element={< Maneger/>} />
+          {/* <Route exact path="products" element={<InStore />} /> */}
+          <Route exact path="/checkout" element={<CheckOut/>} />
+          <Route exact path="/contact-us" element={<ContactSection/>} />
         </Routes>
 
         {/* <Footer/> */}
