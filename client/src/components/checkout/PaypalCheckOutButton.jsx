@@ -28,7 +28,7 @@ export default function PaypalCheckOutButton() {
   };
 
   if (paidFor) {
-    navigetor("/ThancksPage");
+    navigetor("/ThanksPage");
   }
   if (error) {
     navigetor("/ErrPage");

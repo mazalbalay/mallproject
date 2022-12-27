@@ -44,3 +44,4 @@ const StoreListPage = () => {
 };
 
 export default StoreListPage;
+

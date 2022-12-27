@@ -7,6 +7,8 @@ import { useSelector } from "react-redux";
 
 export default function CheckOut() {
   const selctorCart = useSelector((state) => state.CartReducer);
+  const activeUser =  JSON.parse(localStorage.getItem(("user")))?.data.user
+  // console.log(activeUser);
 
   const [order, setOrder] = useState({
     product: [
@@ -19,9 +21,9 @@ export default function CheckOut() {
       },
     ],
     user: {
-      userId: "",
-      userName: "",
-      userMail: "",
+      userId: "אורח",
+      userName: "אורח",
+      userMail: "אורח",
     },
     addres: {
       city: "",
@@ -32,7 +34,7 @@ export default function CheckOut() {
       allData: false,
     },
     shipping: {
-      type: "משלוח רגיל",
+      shippingType: "משלוח רגיל",
       date: "",
       time: "",
       allData: false,

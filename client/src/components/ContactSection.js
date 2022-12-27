@@ -1,6 +1,19 @@
-import React from "react";
-
+import axios from "axios";
+import React, { useState } from "react";
 const ContactSection = () => {
+  const [data , setData] = useState({name:'' , email:'' , message:'' })
+
+  const handleChange = (e) =>{
+    setData({...data , [e.target.name]:e.target.value})
+  }
+
+  const sendMail = async(e)=>{
+  e.preventDefault()
+
+    const {data:send} = await axios.post('http://localhost:8000/contact-us' , data)
+  }
+
+
   return (
     <div className="antialiased bg-gray-100">
       <div className="flex w-full min-h-screen justify-center items-center">
@@ -52,13 +65,15 @@ const ContactSection = () => {
             <div className="absolute z-0 w-40 h-40 bg-teal-400 rounded-full -right-28 -top-28"></div>
             <div className="absolute z-0 w-40 h-40 bg-teal-400 rounded-full -left-28 -bottom-28"></div>
             <div className="relative z-10 bg-white rounded-xl shadow-lg p-8 text-gray-600 md:w-80">
-              <form action="" className="flex flex-col space-y-4">
+              <form action="" className="flex flex-col space-y-4" onSubmit={sendMail}>
                 <div>
                   <label for className="text-sm">
-                    Your name
+                    השם שלך
                   </label>
 
                   <input
+                  onChange={handleChange}
+                  name='name'
                     type="text"
                     placeholder="השם שלך"
                     className="ring-1 ring-gray-300 w-full mt-2 rounded-md px-4 py-2 outline-none focus:ring-2 focus:ring-teal-300"
@@ -66,11 +81,14 @@ const ContactSection = () => {
                 </div>
 
                 <div>
+               
                   <label for className="text-sm">
                     אימייל כתובת
                   </label>
 
                   <input
+                   onChange={handleChange}
+                  name='email'
                     type="email"
                     placeholder="האימייל שלך"
                     className="ring-1 ring-gray-300 w-full rounded-md px-4 mt-2 py-2 outline-none focus:ring-2 focus:ring-teal-300"
@@ -78,17 +96,19 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <label for className="text-sm">
-                    akhj, vusgv
+                    הודעה
                   </label>
 
                   <textarea
+                   onChange={handleChange}
+                   name='massege'
                     type="text"
                     rows="4"
                     placeholder="השם שלך"
                     className="ring-1 ring-gray-300 w-full mt-2 rounded-md px-4 py-2 outline-none focus:ring-2 focus:ring-teal-300"
                   ></textarea>
                 </div>
-                <button className="inline-block self-end bg-cyan-700 text-white font-bold rounded-lg px-6 py-2 uppercase text-sm">
+                <button   className="inline-block self-end bg-cyan-700 text-white font-bold rounded-lg px-6 py-2 uppercase text-sm">
                   שלח הודעה
                 </button>
               </form>
@@ -101,3 +121,4 @@ const ContactSection = () => {
 };
 
 export default ContactSection;
+

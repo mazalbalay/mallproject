@@ -6,9 +6,8 @@ import UserProfile from "./components/userProfile/UserProfile";
 import PersonalInfo from "./components/userProfile/PersonalInfo";
 import CheckOut from "./components/checkout/CheckOut";
 import Auth from "./components/authentication/Auth";
-import ThancksPage from "./components/checkout/ThancksPage";
+import ThanksPage from "./components/checkout/ThanksPage";
 import ErrPage from "./components/checkout/ErrPage";
-// import CartStore from "./components/CartStore";
 import ForgotPassPage from "./components/authentication/ForgotPassPage";
 import Departments from "./components/Admin/Departments";
 import InStore from "./components/Products/InStore";
@@ -16,14 +15,10 @@ import EditDepartment from "./components/Admin/EditDepartment";
 import CreateDepartment from './components/Admin/CreateDepartment';
 import Stores from './components/Admin/Stores';
 import AdminMain from './components/Admin/Main'
-// import CreateStore from "./components/Admin/CreateStore";
 import MainPage from "./components/MainPage";
 import EditStore from "./components/Admin/EditStore";
 import StoreListPage from "./components/Stores/StoreListPage"
 import AddProduct from "./components/Manager/AddProduct";
-import HeaderStore from "./components/Stores/HeaderStore";
-import StoreComp from "./components/Stores/StoreComp";
-// import MainPage from './components/MainPage';
 import MainNav  from "./components/Navs/MainNav";
 import StoreListNav from './components/Navs/StoreListNav'
 import Footer from './components/Footers/Footer'
@@ -31,6 +26,7 @@ import EditProduct from "./components/Manager/EditProduct";
 import Maneger from './components/Manager/HomeScreen'
 import StoresManeger from './components/Manager/Stores'
 
+import ContactSection from './components/ContactSection'
 
 function App() {
   const user =  JSON.parse(localStorage.getItem(("user")))?.data
@@ -45,7 +41,7 @@ console.log(user);
       
     {user ?  <StoreListNav/>:<MainNav/>}
 
-{/* <Footer/> */}
+
 
       <div>
         <Routes>
@@ -55,7 +51,7 @@ console.log(user);
           <Route path="/CheckOut" element={<CheckOut />} />
           <Route path="/changepassword" element={<ChangePWD />} />
           <Route path="/forgot-password/:id" element={<ForgotPassPage />} />
-          <Route path="/ThancksPage" element={<ThancksPage />} />
+          <Route path="/ThanksPage" element={<ThanksPage />} />
           <Route path="/ErrPage" element={<ErrPage />} />
           <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/personalinfo" element={<PersonalInfo />} />
@@ -72,13 +68,15 @@ console.log(user);
           <Route path="/manager/products/new" element={< AddProduct/>} />
           <Route path="/manger/stores" element={<StoresManeger/>} />
           <Route path="/manager" element={< Maneger/>} />
-          <Route exact path="products" element={<InStore />} />
+          {/* <Route exact path="products" element={<InStore />} /> */}
           <Route exact path="/checkout" element={<CheckOut/>} />
+          <Route exact path="/contact-us" element={<ContactSection/>} />
         </Routes>
+        
+        {/* <Footer/>/ */}
       </div>
     </PayPalScriptProvider>
   );
 }
 
 export default App;
-
