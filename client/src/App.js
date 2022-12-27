@@ -12,9 +12,10 @@ import ForgotPassPage from "./components/authentication/ForgotPassPage";
 import Departments from "./components/Admin/Departments";
 import InStore from "./components/Products/InStore";
 import EditDepartment from "./components/Admin/EditDepartment";
-import CreateDepartment from "./components/Admin/CreateDepartment";
-import Stores from "./components/Admin/Stores";
-import AdminMain from "./components/Admin/Main";
+import CreateDepartment from './components/Admin/CreateDepartment';
+import Stores from './components/Admin/Stores';
+import AdminMain from './components/Admin/Main'
+// import CreateStore from "./components/Admin/CreateStore";
 import MainPage from "./components/MainPage";
 import EditStore from "./components/Admin/EditStore";
 import StoreListPage from "./components/Stores/StoreListPage";
@@ -24,6 +25,10 @@ import MainNav from "./components/Navs/MainNav";
 import StoreListNav from "./components/Navs/StoreListNav";
 import Footer from "./components/Footers/Footer";
 import EditProduct from "./components/Manager/EditProduct";
+import Maneger from './components/Manager/HomeScreen'
+import StoresManeger from './components/Manager/Stores'
+
+import ContactSection from './components/ContactSection'
 import Maneger from "./components/Manager/HomeScreen";
 import StoresManeger from "./components/Manager/Stores";
 import Order from "./components/userProfile/Order";
@@ -81,7 +86,7 @@ function App() {
           <Route path="/manger/stores" element={<StoresManeger />} />
           <Route path="/manager" element={<Maneger />} />
           {/* <Route exact path="products" element={<InStore />} /> */}
-          <Route exact path="/checkout" element={<CheckOut />} />
+          <Route exact path="/checkout" element={<CheckOut/>} />
         </Routes>
 
         {/* <Footer/>/ */}
