@@ -103,11 +103,10 @@ export default function Auth() {
 
   return (
     <div className="w-screen  flex justify-center  ">
-      <div className=" flex justify-center flex-col  md:flex-row w-[100%] md:m-20 ">
+      <div className=" flex justify-center flex-col mt-10 md:flex-row w-[95%] md:m-20  ">
         
-        <div className=" my-1 w-[100%] h-52 md:h-full  md:w-[20%] bg-red-400"></div>
         <div
-          className="w-[100%]  md:w-[30%] bg-white flex flex-col  items-center text-sm py-5  md:py-0 "
+          className="w-[100%]  md:w-[30%] bg-white flex flex-col  items-center text-sm py-5 border-2 md:py-0 "
         >
           <h1 className="text-3xl my-1">{singUp ? "הרשמה" : "כניסה"}</h1>
 
@@ -128,14 +127,14 @@ export default function Auth() {
                 onChange={handleChange}
                 name="fullName"
                 type="text"
-                className=" my-1 text-right w-[80%] md:w-[] outline-none border-b-2 p-2 border-neutral-300"
+                className=" my-1 text-right w-[70%] outline-none border-b-2 p-2 border-neutral-300"
                 placeholder="שם מלא"
               />
               <input
                 onChange={handleChange}
                 name="userName"
                 type="text"
-                className="my-1 text-right w-[80%] md:w-[] outline-none border-b-2 p-2 border-neutral-300"
+                className="my-1 text-right w-[70%] md:w-[] outline-none border-b-2 p-2 border-neutral-300"
                 placeholder="שם משתמש"
               />
             </>
@@ -144,14 +143,14 @@ export default function Auth() {
             onChange={handleChange}
             name="email"
             type="email"
-            className="my-1 text-right w-[80%] md:w-[] outline-none border-b-2 p-2 border-neutral-300"
+            className="my-1 text-right w-[70%] md:w-[] outline-none border-b-2 p-2 border-neutral-300"
             placeholder='הזן כתובת דוא"ל'
           />
           <input
             onChange={handleChange}
             name="password"
             type={showPass ? "text" : "password"}
-            className="my-1 text-right w-[80%] md:w-[] outline-none border-b-2 p-2 border-neutral-300"
+            className="my-1 text-right w-[70%] md:w-[] outline-none border-b-2 p-2 border-neutral-300"
             placeholder="הזן סיסמא"
           />
           {singUp && (
@@ -159,18 +158,18 @@ export default function Auth() {
               onChange={handleChange}
               type={showPassConfirm ? "text" : "password"}
               name="confirmPassword"
-              className="text-right w-[80%] md:w-[] outline-none border-b-2 p-2 border-neutral-300"
+              className="text-right w-[70%] md:w-[] outline-none border-b-2 p-2 border-neutral-300"
               placeholder="אשר סיסמא"
             />
           )}
           <button
-            className="mt-3 p-2 border-2 w-[80%] md:w-[] rounded border-blue-200"
+            className="mt-3 p-2 border-2 w-[70%] md:w-[] rounded border-blue-200"
             onClick={handleClick}
           >
             {singUp ? "הירשם" : "התחבר"}
           </button>
           </div>
-          <div className="border-b-2 w-[80%] md:w-[] my-2 self-center">
+          <div className="border-b-2 w-[70%] md:w-[] my-2 self-center">
             <span className="relative bg-white px-1 text-xs top-2 left-[46%]">
               או
             </span>

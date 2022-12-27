@@ -8,7 +8,6 @@ import CheckOut from "./components/checkout/CheckOut";
 import Auth from "./components/authentication/Auth";
 import ThanksPage from "./components/checkout/ThanksPage";
 import ErrPage from "./components/checkout/ErrPage";
-// import CartStore from "./components/CartStore";
 import ForgotPassPage from "./components/authentication/ForgotPassPage";
 import Departments from "./components/Admin/Departments";
 import InStore from "./components/Products/InStore";
@@ -16,14 +15,10 @@ import EditDepartment from "./components/Admin/EditDepartment";
 import CreateDepartment from './components/Admin/CreateDepartment';
 import Stores from './components/Admin/Stores';
 import AdminMain from './components/Admin/Main'
-// import CreateStore from "./components/Admin/CreateStore";
 import MainPage from "./components/MainPage";
 import EditStore from "./components/Admin/EditStore";
 import StoreListPage from "./components/Stores/StoreListPage"
-import CreateProduct from "./components/Manager/CreateProduct";
-import HeaderStore from "./components/Stores/HeaderStore";
-import StoreComp from "./components/Stores/StoreComp";
-// import MainPage from './components/MainPage';
+import AddProduct from "./components/Manager/AddProduct";
 import MainNav  from "./components/Navs/MainNav";
 import StoreListNav from './components/Navs/StoreListNav'
 import Footer from './components/Footers/Footer'
@@ -33,6 +28,7 @@ import StoresManeger from './components/Manager/Stores'
 import ProductsScreen from "./components/Manager/ProductsScreen";
 import HomeScreen from "./components/Manager/HomeScreen";
 
+import ContactSection from './components/ContactSection'
 
 function App() {
   const user =  JSON.parse(localStorage.getItem(("user")))?.data
@@ -78,6 +74,7 @@ console.log(user);
           <Route path="/manger/stores/:storeName" element={<ProductsScreen/>} />
           {/* <Route exact path="products" element={<InStore />} /> */}
           <Route exact path="/checkout" element={<CheckOut/>} />
+          <Route exact path="/contact-us" element={<ContactSection/>} />
         </Routes>
         
         {/* <Footer/>/ */}
