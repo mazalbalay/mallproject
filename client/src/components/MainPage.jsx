@@ -16,7 +16,7 @@ export default function MainPage() {
       
       const alldepartments = async () => {
         const Deps= await getDepartments();
-        const data = Deps.data.filter(dep => dep.name.includes(inputSearch))
+        const data = Deps?.data?.filter(dep => dep.name.includes(inputSearch))
         setDepartments(data);
         console.log(data);
 

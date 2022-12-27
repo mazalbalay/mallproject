@@ -25,7 +25,7 @@ export default function CheckOut2({ setOrder, order }) {
   };
 useEffect(()=>{
    dispatch({ type: "UPDATEORDER", payload: order });
-})
+},[order])
 
   return (
     <>
