@@ -40,7 +40,7 @@ function App() {
           "ATZnLpZdreIw8GDvsCs-eguhcXT3gn4gmDrTi8L0n0arR08UvMJeSOoAeVQCJSFuaC-2EWi669UKRbUc",
       }}
     >
-      {user ? <StoreListNav /> : <MainNav />}
+       <MainNav />
 
       <div className="w-full bg-stone-100 flex flex-col justify-center">
         <Routes>

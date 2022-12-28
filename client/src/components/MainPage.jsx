@@ -7,9 +7,9 @@ import BeatLoader from "react-spinners/BeatLoader";
 export default function MainPage() {
   const navigate = useNavigate();
 
-  const [Departments, setDepartments] = useState([]);
-  const [inputSearch, setinputSearch] = useState([]);
-
+    const [Departments, setDepartments] = useState();
+    const [inputSearch, setinputSearch] = useState([]);
+   
   useEffect(() => {
     alldepartments();
   }, [inputSearch]);
@@ -21,8 +21,12 @@ export default function MainPage() {
     console.log(data);
   };
 
-  console.log(Departments);
-  console.log(inputSearch);
+
+console.log(Departments);
+console.log(inputSearch);
+
+  
+      
 
   return (
     <div className="flex justify-center p-8">

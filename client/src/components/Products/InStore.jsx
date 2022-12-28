@@ -10,6 +10,8 @@ import Footer from "../Footers/Footer";
 const InStore = () => {
   const [inputSearch, setInputSearch] = useState("");
   const [prodactLength, setProdactLength] = useState("");
+  const [Departments, setDepartments] = useState();
+
   const { storeName } = useParams();
   return (
     <div className="w-full flex flex-col justify-center items-center">

@@ -10,7 +10,7 @@ export async function getProducts() {
 }
 export async function getProduct(id) {
     try {
-        const response = await axios.get(`http://localhost:8000/Product/${id}`);
+        const response = await axios.get(`http://localhost:8000/${id}`);
         return response;
     } catch (error) {
         return error;
@@ -18,7 +18,7 @@ export async function getProduct(id) {
 }
 export async function editProduct(productId, productObj) {
     try {
-        const response = await axios.put(`http://localhost:8000/Product/${productId}`, ...productObj);
+        const response = await axios.put(`http://localhost:8000/${productId}`, ...productObj);
         return response;
     } catch (error) {
         return error;
@@ -34,7 +34,7 @@ export async function createProduct(productObj) {
 };
 export async function deleteProduct(id) {
     try {
-        const response = axios.delete(`http://localhost:8000/Product/${id}`)
+        const response = axios.delete(`http://localhost:8000/${id}`)
         return response;
     } catch (error) {
         return error;

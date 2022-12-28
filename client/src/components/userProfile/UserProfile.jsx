@@ -3,20 +3,26 @@ import Sidebar from './Sidebar'
 import PersonalInfo from './PersonalInfo'
 import ChangePWD from './ChangePWD'
 import { useState } from 'react';
+import { Routes, Route } from "react-router-dom";
+import Order from './Order';
+import Address from './Address';
+import Payment from './Payment';
+
 
 export default function UserProfile() {
-  const [showPage,setShowPage] = useState('personalInfo')
-  console.log(showPage);
+  
   return (
-    <div className='bg-gray-200  md:flex-row flex-col-reverse flex  justify-center border-slate-200 border-t-2'>
-      <div className='md:w-[38%] w-[100%] h-[100%] flex md:flex-row flex-col '>
-      {showPage === 'personalInfo' &&  <PersonalInfo  /> }
-      {showPage === 'changePassword' &&  <ChangePWD  /> }
-      </div>
-
-        <Sidebar setShowPage={setShowPage} />
-     
-       
+    <div className='bg-[#EEEEEE] flex justify-center'>
+      <div className=' md:flex-row-reverse flex-col flex md:py-2 justify-center border-slate-200 border-t-2 w-[90%] md:w-[70%]'>
+        <Sidebar  />
+     <Routes >
+      <Route path='userprofile/profile-info' element={<PersonalInfo/>} />
+      <Route path="userprofile/changepassword" element={<ChangePWD />} />
+      <Route path="userprofile/order" element={<Order />} />
+      <Route path="userprofile/payment" element={<Payment/>} />
+      <Route path="userprofile/address" element={<Address/>} />
+     </Routes>
+       </div>
     </div>
   )
 }

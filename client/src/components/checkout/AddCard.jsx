@@ -3,7 +3,6 @@ import { MdCancel } from "react-icons/md";
 import { MdDoneAll } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { usersUpdate, users } from "../../api/api";
 
 export default function AddCard({ payment, setPayment, order }) {
