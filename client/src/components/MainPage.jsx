@@ -26,14 +26,12 @@ export default function MainPage() {
 
   return (
     <div className='flex justify-center p-8' >
-        <div className='w-2/4 flex flex-col	'>
+        <div className='w-2/3 flex flex-col	'>
         
         <p className='text-4xl m-6 text-center '>ברוך הבא לעולם החנויות שלך</p>
         <input onChange={e => setinputSearch(e.target.value)} className='m-6 h-12 border-current	 border-2 border-solid' type="text" placeholder='מה תרצה לחפש?'/>
         <p className='text-xl text-center m-6' >מחלקות שונות</p>
-        
 
-      
 
        {Departments ? 
 
