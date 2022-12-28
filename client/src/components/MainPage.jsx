@@ -38,15 +38,7 @@ export default function MainPage() {
 
         {Departments ? (
           <div className=" flex flex-wrap justify-evenly">
-            {Departments.filter((dep) => {
-              if (inputSearch === "") {
-                return dep;
-              } else if (
-                dep.name.toLowerCase().includes(inputSearch.toLowerCase())
-              ) {
-                return dep;
-              }
-            }).map((dep) => (
+            {Departments?.map((dep) => (
               <div
                 key={dep._id}
                 onClick={() => navigate(`${`/storelist/${dep.name}`}`)}
