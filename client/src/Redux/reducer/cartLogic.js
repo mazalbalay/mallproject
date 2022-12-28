@@ -10,7 +10,6 @@ export const AddProductLogic = (state, product, qty) => {
 }
 
 export const increaseLogic = (state, productId) => {
-
     console.log(state)
     return state.map((item) => {
         return item._id == productId ? {...item, qty: item.qty + 1 } : item

@@ -1,6 +1,6 @@
 import React from "react";
 import { FiMinusCircle, FiPlusCircle } from "react-icons/fi";
-import { IncreaseQty, ReduceQty } from "../../Redux/action/cartActions";
+import { ClearCart, IncreaseQty, ReduceQty } from "../../Redux/action/cartActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -17,6 +17,11 @@ const CartStore = () => {
   const handleDecresment = (productId) => {
     dispatch(ReduceQty(productId));
   };
+
+      const handleDeletingCart = ()=> {
+        dispatch(ClearCart(state))
+
+      }
 
   const calc = () => {
     let total = 0;
@@ -79,6 +84,9 @@ const CartStore = () => {
           </div>
         );
       })}
+      <div className="bg-red-600 py-3 my-2 text-center text-white font-bold">
+        <button onClick={handleDeletingCart}>CLEAR CART</button>
+      </div>
       <div className="p-3">
         <div className="flex justify-between font-bold">
           <h1> {calc()}</h1>
@@ -99,6 +107,7 @@ const CartStore = () => {
           {` לתשלום ${calc()} ש"ח`}
         </button>
       </div>
+      
     </div>
   );
 };

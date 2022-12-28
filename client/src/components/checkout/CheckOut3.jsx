@@ -6,6 +6,7 @@ import { HiCreditCard } from "react-icons/hi";
 import PaypalCheckOutButton from "./PaypalCheckOutButton";
 import AddCard from "./AddCard";
 import { useEffect } from "react";
+import { ClearCart } from "../../Redux/action/cartActions";
 
 export default function CheckOut3({ setOrder, order }) {
   const user = JSON?.parse(localStorage?.getItem("user"))?.data;
@@ -180,6 +181,7 @@ export default function CheckOut3({ setOrder, order }) {
               order.addres.allData &&
               order.shipping.allData &&
               useSaveCard == true
+             
             ) {
               navigetor("/ThanksPage");
               await axios.post("http://localhost:8000/order", order);
