@@ -22,6 +22,7 @@ const ContactSection = () => {
             <div>
               <h1 className="font-bold text-4xl tracking-wide">תקשר אתנו</h1>
               <p className="pt-2 text-cyan-100 text-sm"> אנו רוצים שחוויתכם בחנות שלנו תהיה מדהימה לשיפור או לבעיות תמיד אפשר לפנות אליינו במייל למטה ולהתקשר תודה רבה </p>
+
             </div>
             <div className="flex flex-col space-y-6">
               <div className="inline-flex space-x-2 items-center">

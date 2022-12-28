@@ -14,7 +14,9 @@ const StoreListNav = ({ user }) => {
   return (
     <nav className="shadow-md w-full bg-white top-0 left-0">
       <div className=" md:container md:mx-auto flex items-center justify-between py-4 px-4 md:px-40 ">
-        <div className=" text-4xl cursor-pointer flex items-center font-[poppins text-grey-600]">
+        <div onClick={() => {
+            navigate("/");
+          }} className=" text-4xl cursor-pointer flex items-center font-[poppins text-grey-600]">
           <span className="md:flex md:items-center">
             <CiBrightnessDown />
           </span>
