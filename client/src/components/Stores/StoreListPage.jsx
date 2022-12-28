@@ -8,30 +8,34 @@ import MainNav from "../Navs/MainNav";
 import MainPageFooter from "../Footers/MainPageFooter";
 import CartStore from "../Cart/CartStore";
 const StoreListPage = () => {
+  let { depId } = useParams();
   let { depName } = useParams();
   const navigate = useNavigate();
   const [stores, setStores] = useState();
+  const [department, setdepartment] = useState();
   const storesFu = async () => {
+    const  deps  = await getDepartment(depId);
+    setdepartment([deps.data]);
     const { data } = await allStores();
     const result = data.filter((store) => store.department === depName);
     setStores(result);
   };
+ 
   useEffect(() => {
-    storesFu();
-  }, []);
+storesFu();
+  }, [depId]);
+
+  
   console.log(stores);
+  console.log(department);
   return (
-    <div className="w-full flex flex-col justify-center items-center ">
-      <div className="w-full">
-        <HeaderStore name={depName} />
-      </div>
-      <div className="md:w-3/4 w-full flex md:flex-row flex-col justify-between ">
-        <div className="md:w-1/3 w-full">
-          <CartStore />
-        </div>
-        <div className="md:w-2/3 w-full md:pl-10 ">
-          {stores?.map((store, i) => (
-            <StoreComp
+    <div>
+      <HeaderStore name={depName} />
+      <div className="md:w-[45%] m-auto md:m-0 w-[90%]  absolute right-0">
+        <div className="  w-[100%] ">
+          {stores?.map((store,i) => (
+            
+            <StoreComp 
               name={store.name}
               desc={store.description}
               location={store.location}
