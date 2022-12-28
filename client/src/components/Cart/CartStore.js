@@ -101,7 +101,7 @@ const CartStore = () => {
           onClick={() => {
             navigate("/checkout");
           }}
-          className="text-white text-xl bg-sky-500/75 w-full p-4"
+          className="text-white text-xl bg-cyan-600 w-full p-4"
         >
           {` לתשלום ${calc()} ש"ח`}
         </button>
