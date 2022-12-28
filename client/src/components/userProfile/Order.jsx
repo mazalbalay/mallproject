@@ -9,10 +9,10 @@ console.log(myOrders);
 const user =  JSON.parse(localStorage.getItem(("user"))).data
 
     const findUserOrders = async() =>{
-            const {data} = await axios.get('http://localhost:8000/order')
+            const {data} = await axios.get('https://mall-roq8.onrender.com/order')
             const filterd = data.filter(order => order.user.userId === user._id) || undefined
             setMyOrders(filterd);
-            const {data:product} = await axios.get('http://localhost:8000/product')
+            const {data:product} = await axios.get('https://mall-roq8.onrender.com/product')
             setAllProduct(product)
             // const filterProduct = product.filter(pro => pro._id === )
 

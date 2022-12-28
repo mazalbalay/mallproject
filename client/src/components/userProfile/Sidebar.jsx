@@ -30,7 +30,7 @@ window.location.reload()
             <div className='w-[100px]  h-[100px] flex justify-center items-center  border-2 rounded-full bg-white'>
               {user?.data.profileImg ?
             <img src={user.data.profileImg} alt="" />  :
-            <div className='text-4xl'>{user?.data.email[0].toUpperCase()}</div>
+            <div className='text-4xl'>{user?.data?.email}</div>
             }
             </div>
            </div> 

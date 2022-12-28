@@ -18,13 +18,11 @@ export default function MainPage() {
         const Deps= await getDepartments();
         const data = Deps.data.filter(dep => dep.name.includes(inputSearch))
         setDepartments(data);
-        console.log(data);
 
       };
 
 
-console.log(Departments);
-console.log(inputSearch);
+
 
   
       

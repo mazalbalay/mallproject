@@ -35,7 +35,7 @@ export default function Auth() {
 
   const responseFacebook = async (response) => {
     console.log(response);
-    const { data } = await axios.post("http://localhost:8000/facebooklogin", {
+    const { data } = await axios.post("https://mall-roq8.onrender.com/facebooklogin", {
       accessToken: response.accessToken,
       userID: response.userID,
     });
@@ -49,10 +49,11 @@ export default function Auth() {
  
   const responseGoogleSuccess = async (response) => {
     console.log(response);
-    const { data } = await axios.post("http://localhost:8000/googlelogin", {
+    const { data:user } = await axios.post("https://mall-roq8.onrender.com/googlelogin", {
       tokenId: response.tokenId,
     }); 
-    console.log(data);
+    const data = user.user
+    
     dispatch({type:'AUTH', payload:{  data }})
     navigate("/");
     window.location.reload()
