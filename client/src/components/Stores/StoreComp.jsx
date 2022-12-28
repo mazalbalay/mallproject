@@ -7,12 +7,12 @@ export default function StoreComp(props) {
     const navigate = useNavigate();
   return (
     <div>
-      <div className="flex border-4 md:flex-row flex-col-reverse  w-[90%] md:h-[160px] h-[550px] md:my-2 mb-4 ">
+      <div className="flex border-4 md:flex-row flex-col-reverse w-full items-center justify-center h-fit p-4 md:my-2 mb-4 ">
         <div className="md:w-[70%] w-[100%] flex flex-col items-end text-right md:p-2">
           <div className="text-2xl font-medium mb-1">{props.name}</div>
           <div>(33)חוות דעת ***** </div>
           <div className="my-1">{props.desc}</div>
-          <div className="flex justify-between w-[90%]">
+          <div className="flex justify-between w-full">
             <button
                 onClick={() => navigate(`/instore/${props.name}`)}
               className="p-3 bg-black text-white font-medium"
@@ -26,9 +26,9 @@ export default function StoreComp(props) {
             </div>
           </div>
         </div>
-        <div className="md:w-[30%] w-[100%] ">
+        <div className="md:w-[30%] w-[100%] m-auto">
           <img
-            className="w-[100%] md:w-[200px] h-full"
+            className="w-full md:w-[200px] h-full"
             src={props.image}
             alt=""
           />

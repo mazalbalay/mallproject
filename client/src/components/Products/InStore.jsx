@@ -14,33 +14,28 @@ const InStore = () => {
 
   const { storeName } = useParams();
   return (
-    <div className="w-full ">
-      <HeaderStore />
-      <div className="container mx-auto">
-        <div className="flex justify-center">
-          <div className=" container mx-auto md:flex justify-between py-4 md:px-40 px-7">
-            <div className="hidden lg:block w-4/12  ">
-              <CartStore />
-            </div>
-            <div>
-              <FilterProducts
-                setInputSearch={setInputSearch}
-                prodactLength={prodactLength}
-              />
-              
-              <Products
-                storeName={storeName}
-                inputSearch={inputSearch}
-                setProdactLength={setProdactLength}
-              />
-            </div>
-            <div className="md:hidden block  p-4 ">
-              <CartStore />
-            </div>
+    <div className="w-full flex flex-col justify-center items-center">
+      <div className="w-full">
+        <HeaderStore />
+      </div>
+      <div className="w-full flex justify-evenly items-center">
+        <div className=" md:w-3/4 w-full flex md:flex-row flex-col justify-between">
+          <div className="md:w-1/3 w-full">
+            <CartStore />
+          </div>
+          <div className="md:w-2/3 w-full md:pl-10">
+            <FilterProducts
+              setInputSearch={setInputSearch}
+              prodactLength={prodactLength}
+            />
+            <Products
+              storeName={storeName}
+              inputSearch={inputSearch}
+              setProdactLength={setProdactLength}
+            />
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };
