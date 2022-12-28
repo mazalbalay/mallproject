@@ -27,28 +27,28 @@ const CartStore = () => {
   };
 
   return (
-    <div className="w-full border border-gray">
+    <div className="w-full border border-gray p-2 md:my-10">
       <div className="bg-black text-white text-center p-4">
         <p className="text-xl"> עגלת קניות</p>
       </div>
-      <div className="flex justify-end bg-gray-200">
+      <div className="flex justify-center w-full bg-gray-200 p-2">
         <div className="name grid  place-content-center ">
           <h1 className="font-bold">store name</h1>
         </div>
-        <div className="right-img bg-gray-200 ">
+        {/* <div className="right-img bg-gray-200 ">
           <img
             className="w-24 rounded-full p-3"
             src="https://scontent.fhfa2-2.fna.fbcdn.net/v/t39.30808-6/291457391_556774552703567_2822531227252307747_n.png?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=CyjXaIGWAJ8AX8tQaoa&_nc_ht=scontent.fhfa2-2.fna&oh=00_AfA4xhnT3nM9QjJBVZ4sEH53UHxoc1ruMHxEMD4NO-Bh7Q&oe=63A5F3AF"
             alt=""
           />
-        </div>
+        </div> */}
       </div>
       {state.map((product) => {
         return (
-          <div className="w-full">
+          <div className="w-full ">
             <div className="flex p-2 justify-between">
-              <div className="plus-minus text-center grid place-content-center">
-                <div className="">
+              <div className="plus-minus text-center grid place-content-center py-10">
+                <div className="w-full">
                   <div className="minus-plus flex justify-around">
                     <button className="text-teal-400">
                       <FiMinusCircle
@@ -66,7 +66,7 @@ const CartStore = () => {
                 <h5>{`${product.price} ש"ח`}</h5>
               </div>
 
-              <div className="contact text-end">
+              <div className="contact text-end py-10">
                 <h1 className="font-bold">{product.name}</h1>
                 <p className="text-gray-400 text-sm">{product.brand}</p>
                 <p className="text-gray-400 text-sm">{product.color}</p>
@@ -77,10 +77,7 @@ const CartStore = () => {
               </div>
             </div>
 
-            <div className="price pr-7">
-              <h1>{product.price * product.qty} ש"ח</h1>
-            </div>
-            <hr className="w-full my-3"></hr>
+            
           </div>
         );
       })}
@@ -91,7 +88,7 @@ const CartStore = () => {
           <h1>:סה"כ</h1>
         </div>
         <div className="flex justify-between">
-          <h1 className="font-bold">37 ש"ח</h1>
+          <h1 className="font-bold">0 ש"ח</h1>
           <h1 className="">:בקניה זו חסכת</h1>
         </div>
         <div className="flex justify-between">

@@ -46,8 +46,8 @@ export default function Products({inputSearch,setProdactLength , storeName}) {
   const handleOneClose = () => setPopUp(false);
   return (
     <div>
-      <div className="w-full scroll-p-[24rem] px-4 bg-white">
-        <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="w-full px-4">
+        <div className="w-full flex flex-wrap justify-between">
           {products
             .filter((product) => {
               if (inputSearch === "") {
@@ -62,22 +62,22 @@ export default function Products({inputSearch,setProdactLength , storeName}) {
               return (
                 <div
                   key={key}
-                  className="w-full border flex  flex-col my-4  hover:scale-105 duration-300"
+                  className="md:w-[30%] w-full flex flex-col justify-around border-white border-2 p-2 items-center my-4 rounded-md hover:scale-105 duration-300 hover:shadow-md hover:shadow-black"
                 >
                   <img
                     id={product._id}
                     name={product}
                     onClick={(e) => showProductPopUp(e)}
-                    className="w-80 h-60 mx-auto  bg-white"
+                    className="w-full mx-auto"
                     src={product.image}
                     alt="Shoes"
                   />
                   <button>למוצר</button>
-                  <h2 className="text-2xl font-bold text-center py-8">
+                  <h2 className="font-bold text-center py-8">
                     {product.name}
                   </h2>
                   <p className="text-gray text-end">{product.description}</p>
-                  <div className="flex text-start ml-44">
+                  <div className="flex w-full ">
                     <button>
                       <FiPlusCircle
                         onClick={() => addItem(product)}

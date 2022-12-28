@@ -6,6 +6,7 @@ import StoreComp from "./StoreComp";
 import HeaderStore from ".//HeaderStore";
 import MainNav from "../Navs/MainNav";
 import MainPageFooter from "../Footers/MainPageFooter";
+import CartStore from "../Cart/CartStore";
 const StoreListPage = () => {
   let { depName } = useParams();
   const navigate = useNavigate();
@@ -20,22 +21,23 @@ const StoreListPage = () => {
   }, []);
   console.log(stores);
   return (
-    <div>
-      <HeaderStore name={depName} />
-      <div className="md:w-[45%] m-auto md:m-0 w-[90%]  absolute right-0">
-        <div className="  w-[100%] ">
-          {stores?.map((store,i) => (
-            
-            <StoreComp 
+    <div className="w-full flex flex-col justify-center items-center ">
+      <div className="w-full">
+        <HeaderStore name={depName} />
+      </div>
+      <div className="md:w-3/4 w-full flex md:flex-row flex-col justify-between ">
+        <div className="md:w-1/3 w-full">
+          <CartStore />
+        </div>
+        <div className="md:w-2/3 w-full md:pl-10 ">
+          {stores?.map((store, i) => (
+            <StoreComp
               name={store.name}
               desc={store.description}
               location={store.location}
               image={store.image}
             />
           ))}
-        </div>
-        <div className="text-gray-400 flex justify-center my-3">
-          <AiOutlinePlusCircle size={60} />
         </div>
       </div>
     </div>
