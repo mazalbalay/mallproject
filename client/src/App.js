@@ -27,7 +27,7 @@ import Maneger from "./components/Manager/HomeScreen";
 import StoresManeger from "./components/Manager/Stores";
 import ProductsScreen from "./components/Manager/ProductsScreen";
 import HomeScreen from "./components/Manager/HomeScreen";
-
+import FAQ from './components/AboutPage/FAQ'
 import ContactSection from "./components/ContactSection";
 
 function App() {
@@ -78,6 +78,7 @@ function App() {
           />
           <Route exact path="/checkout" element={<CheckOut />} />
           <Route exact path="/contact-us" element={<ContactSection />} />
+          <Route exact path="/faq" element={<FAQ />} />
         </Routes>
 
         <Footer/>

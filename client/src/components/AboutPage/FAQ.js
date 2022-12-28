@@ -42,8 +42,8 @@ const FAQ = () => {
   ];
 
   return (
-    <div className="mt-20  max-w-4xl text-right">
-      <div className=" mt-8  text-end">
+    <div className="mt-20 min-h-screen flex flex-col justify-center items-center w-full ">
+      <div className=" mt-8   w-1/2 flex flex-col ">
         <h3 className="m-10 text-2xl text-center leading-8  tracking-tight text-gray-500 sm:leading-10">
           שאלות נפוצות
         </h3>

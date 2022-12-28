@@ -1,22 +1,25 @@
 import React from "react";
 import { BsFacebook, BsInstagram, BsFillEnvelopeFill } from "react-icons/bs";
 import { FaCopyright } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
 
-  const data = ["פירוט עמוד", "פירוט עמוד", "פירוט עמוד", "פירוט עמוד", "אודותינו"]
+  const data = [
+    { name: "צור קשר", rout: "/contact-us" },
+    { name: "אודות", rout: "" },
+    { name: "שאלות ",rout: "/faq" },
+    // { name: "צור קשר", rout: "/contact-us" },
+  ];
   return (
     <footer className="bg-gray-900 w-full text-gray-300  bottom-0">
-      <div className="container mx-auto w-8/12 pt-10 grid grid-cols-1 sm:grid-cols-5 md:gap-6 gap-3 text-center">
-        {data.map((item)=>{
-          return(
-        <ul>
-          <li className="cursor-pointer"> {item}</li>
-          <li className="cursor-pointer">{item} </li>
+      <div className="w-full pt-10  flex justify-center">
+        <ul className="flex w-2/3 justify-evenly">
+          {data.map((item) => {
+            return <li onClick={()=>navigate(item.rout)} className="cursor-pointer"> {item.name}</li>;
+          })}
         </ul>
-          )
-        })}
-   
       </div>
 
       <div className="flex justify-center items-center pt-10 pb-3 ">
@@ -24,7 +27,7 @@ const Footer = () => {
           <BsFacebook className=" cursor-pointer" />
         </span>
         <span className="text-2xl">
-          <BsInstagram className=" cursor-pointer"/>
+          <BsInstagram className=" cursor-pointer" />
         </span>
         <span className="mx-4 text-2xl">
           <BsFillEnvelopeFill className=" cursor-pointer" />

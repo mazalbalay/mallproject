@@ -21,7 +21,7 @@ const ContactSection = () => {
           <div className="flex flex-col apace-y-8 justify-between">
             <div>
               <h1 className="font-bold text-4xl tracking-wide">תקשר אתנו</h1>
-              <p className="pt-2 text-cyan-100 text-sm">בלה בלה בלה בלה בלה בלה בה להלבלבלבלבלב לב הלב הלב לב הלב הלב הלבלבהלב הלבה</p>
+              <p className="pt-2 text-cyan-100 text-sm">צור קשר עם מנהלי האתר  צור קשר עם מנהלי האתר צור קשר עם מנהלי האתר </p>
             </div>
             <div className="flex flex-col space-y-6">
               <div className="inline-flex space-x-2 items-center">
