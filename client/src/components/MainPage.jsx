@@ -38,11 +38,11 @@ export default function MainPage() {
 
         {Departments ? (
           <div className=" flex flex-wrap justify-evenly">
-            {Departments.filter((dep) => {
+            {Departments?.filter((dep) => {
               if (inputSearch === "") {
                 return dep;
               } else if (
-                dep.name.toLowerCase().includes(inputSearch.toLowerCase())
+                dep.name.includes(inputSearch)
               ) {
                 return dep;
               }
