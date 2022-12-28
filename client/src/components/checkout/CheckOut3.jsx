@@ -30,7 +30,7 @@ export default function CheckOut3({ setOrder, order }) {
         <h1 className="font-medium text-2xl">פרטי תשלום</h1>
         <HiCreditCard className="text-cyan-600 text-4xl ml-4" />
       </div>
-      {user.saveCards ? (
+      {user?.saveCards ? (
         <div>
           <p className="my-8 font-medium">בחר אמצעי תשלום:</p>
           {payment?.map((v, i) => {

@@ -11,11 +11,11 @@ const FilterProducts = ({setInputSearch,prodactLength}) => {
             onChange={(e) => setInputSearch(e.target.value)}
             type="text"
             placeholder="חפש לפי שם"
-            className="border-2 w-8/12 p-2 rounded-md placeholder:text-center outline-none"
+            className="border-2 w-8/12 p-2 rounded-md placeholder:text-center outline-none my-20"
           />
         </div>
       </div>
-      <div className=" flex flex-row-reverse">
+      <div className=" flex flex-row-reverse justify-center">
         <AiFillShop className="text-2xl text-cyan-500 my-2" />
         <h1 className="text-2xl">נמצאו</h1>
         <h1 className="text-2xl text-cyan-500">{prodactLength}</h1>
