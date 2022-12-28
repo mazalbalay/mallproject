@@ -186,7 +186,7 @@ const forgotPassword = () => async (req,res) =>{
         service: "gmail",
         auth: {
           user: "techteamproject555.@gmail.com",
-          pass: "ndzfjousvysltkjk",
+          pass: "hdiezizgfubnwfhp",
         },
       });
       const details = {

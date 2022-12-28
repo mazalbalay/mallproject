@@ -166,7 +166,7 @@ export default function CheckOut3({ setOrder, order }) {
               useSaveCard == false
             ) {
               setAddCard(!addCard);
-              await axios.post(`https://mall-roq8.onrender.com/order`, order);
+              await axios.post(`http://localhost:8000/order`, order);
               console.log(order);
             } else if (
               !undefined &&

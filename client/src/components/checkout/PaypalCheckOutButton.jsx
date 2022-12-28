@@ -46,7 +46,7 @@ export default function PaypalCheckOutButton() {
       }}
       onApprove={async (data, action) => {
         handleApprove(data.orderID);
-        await axios.post(`https://mall-roq8.onrender.com/order`, selctorOrder);
+        await axios.post(`http://localhost:8000/order`, selctorOrder);
         console.log(selctorOrder);
       }}
       onError={(err) => {

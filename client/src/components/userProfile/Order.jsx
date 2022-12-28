@@ -9,7 +9,7 @@ console.log(myOrders);
 const user =  JSON.parse(localStorage.getItem(("user"))).data
 
     const findUserOrders = async() =>{
-            const {data} = await axios.get('https://mall-roq8.onrender.com/order')
+            const {data} = await axios.get('http://localhost:8000/order')
             const filterd = data.filter(order => order.user.userId === user._id) || undefined
             setMyOrders(filterd);
             const {data:product} = await axios.get('https://mall-roq8.onrender.com/product')
@@ -34,8 +34,8 @@ console.log(myOrders[0]?.product[0] );
     : <div>
  { myOrders.map((order,key)=>(
 <div>
-  <div> שיטת שילוח: {order.shipping.shippingType}</div>
-  <div>  זמן הגעת המשלוח: {order.shipping.time}</div>
+  <div> שיטת שילוח: {order?.shipping?.shippingType}</div>
+  <div>  זמן הגעת המשלוח: {order?.shipping?.time}</div>
   {order.product.map((product,key)=>(
     <div className='border-2 p-3 rounded-md m-2'>
       <div>{product.productsStore} :שם החנות</div>
