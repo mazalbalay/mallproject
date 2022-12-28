@@ -182,7 +182,7 @@ export default function CheckOut3({ setOrder, order }) {
               useSaveCard == true
             ) {
               navigetor("/ThanksPage");
-              await axios.post("https://mall-roq8.onrender.com/order", order);
+              await axios.post("http://localhost:8000/order", order);
               console.log(order);
             } else {
               alert("מלא את כל השדות");

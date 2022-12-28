@@ -12,7 +12,7 @@ const user =  JSON.parse(localStorage.getItem(("user"))).data
             const {data} = await axios.get('http://localhost:8000/order')
             const filterd = data.filter(order => order.user.userId === user._id) || undefined
             setMyOrders(filterd);
-            const {data:product} = await axios.get('https://mall-roq8.onrender.com/product')
+            const {data:product} = await axios.get('http://localhost:8000/product')
             setAllProduct(product)
             // const filterProduct = product.filter(pro => pro._id === )
 
